@@ -1136,7 +1136,85 @@
       }, 2600);
     }
 
+    
+    // ==================== LOCALSTORAGE PERSISTENCE ENGINE ====================
+    function saveToStorage() {
+      try {
+        localStorage.setItem('friday_today_items_v6', JSON.stringify(state.today.items));
+        localStorage.setItem('friday_today_workouts_v6', JSON.stringify(state.today.workouts));
+        localStorage.setItem('friday_food_db_v6', JSON.stringify(foodDatabase));
+        localStorage.setItem('friday_workout_db_v6', JSON.stringify(workoutDatabase));
+        localStorage.setItem('friday_history_logs_v6', JSON.stringify(fullHistoricalLogs));
+        localStorage.setItem('friday_coins_v6', state.coins.toString());
+      } catch (e) {
+        console.error('Storage save error:', e);
+      }
+    }
+
+    function loadFromStorage() {
+      try {
+        // 1. Load Food Database
+        const fDb = localStorage.getItem('friday_food_db_v6');
+        if (fDb) {
+          const parsed = JSON.parse(fDb);
+          if (Array.isArray(parsed) && parsed.length > 0) foodDatabase = parsed;
+        }
+
+        // 2. Load Workout Database
+        const wDb = localStorage.getItem('friday_workout_db_v6');
+        if (wDb) {
+          const parsed = JSON.parse(wDb);
+          if (Array.isArray(parsed) && parsed.length > 0) workoutDatabase = parsed;
+        }
+
+        // 3. Load Historical Logs
+        const hLogs = localStorage.getItem('friday_history_logs_v6');
+        if (hLogs) {
+          const parsed = JSON.parse(hLogs);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            for (let i = 0; i < parsed.length; i++) {
+              if (i < fullHistoricalLogs.length) fullHistoricalLogs[i] = parsed[i];
+              else fullHistoricalLogs.push(parsed[i]);
+            }
+          }
+        }
+
+        // 4. Load Today Items
+        const tItems = localStorage.getItem('friday_today_items_v6');
+        if (tItems) {
+          const parsed = JSON.parse(tItems);
+          if (Array.isArray(parsed)) {
+            state.today.items = parsed;
+            if (fullHistoricalLogs.length > 0) fullHistoricalLogs[0].items = parsed;
+          }
+        }
+
+        // 5. Load Today Workouts
+        const tWorkouts = localStorage.getItem('friday_today_workouts_v6');
+        if (tWorkouts) {
+          const parsed = JSON.parse(tWorkouts);
+          if (Array.isArray(parsed)) {
+            state.today.workouts = parsed;
+            if (fullHistoricalLogs.length > 0) fullHistoricalLogs[0].workouts = parsed;
+          }
+        }
+
+        // 6. Load Coins
+        const c = localStorage.getItem('friday_coins_v6');
+        if (c) {
+          state.coins = parseInt(c) || 650;
+          const hc = document.getElementById('header-coins');
+          if (hc) hc.innerText = state.coins;
+          const sc = document.getElementById('shop-coins-display');
+          if (sc) sc.innerText = state.coins;
+        }
+      } catch (e) {
+        console.error('Storage load error:', e);
+      }
+    }
+
     // Populate Datalists for future auto-complete
+
     function updateDatalists() {
       const wDatalist = document.getElementById('workout-datalist');
       if (wDatalist) {
@@ -1275,6 +1353,8 @@
 
     function deleteTodayFood(idx) {
       state.today.items.splice(idx, 1);
+      fullHistoricalLogs[0].items = state.today.items;
+      saveToStorage();
       renderDashboard();
       renderAllFoodHistory();
       initChart(state.periodMode);
@@ -1283,6 +1363,8 @@
 
     function deleteTodayWorkout(idx) {
       state.today.workouts.splice(idx, 1);
+      fullHistoricalLogs[0].workouts = state.today.workouts;
+      saveToStorage();
       renderDashboard();
       renderAllFoodHistory();
       initChart(state.periodMode);
@@ -1745,6 +1827,7 @@
 
     // ==================== EVENT LISTENERS ====================
     document.addEventListener('DOMContentLoaded', () => {
+      loadFromStorage();
       updateDatalists();
       renderDashboard();
       renderMonthlyCalendar('nov');
@@ -1848,6 +1931,8 @@
         wDur.value = '';
         wCal.value = '';
 
+        fullHistoricalLogs[0].workouts = state.today.workouts;
+        saveToStorage();
         showToast(`บันทึกการออกกำลังกาย: "${name}" (+${cal} kcal)`);
       });
 
@@ -1908,6 +1993,8 @@
         renderDashboard();
         renderAllFoodHistory();
         initChart(state.periodMode);
+        fullHistoricalLogs[0].items = state.today.items;
+        saveToStorage();
         showToast(`บันทึก "${name}" และเซฟลงคลังเรียบร้อย`);
       });
 
