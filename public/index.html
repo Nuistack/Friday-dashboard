@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="th" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friday Coach - Fitness & Calorie Tracker</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+            },
+            dark: {
+              bg: '#090d16',
+              card: '#131c2e',
+              border: '#1e293b',
+              muted: '#334155'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Prompt', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #090d16;
+      color: #f8fafc;
+    }
+    /* Hide scrollbars for clean app feel */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #090d16; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    .nav-btn.active {
+      color: #38bdf8;
+      border-color: #38bdf8;
+    }
+  </style>
+</head>
+<body class="min-h-screen pb-24 md:pb-12 text-slate-100 flex flex-col items-center">
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed top-5 z-50 flex flex-col items-center space-y-2 pointer-events-none w-full max-w-sm px-4"></div>
+
+  <!-- App Wrapper (Mobile-first, Max Width 640px for clean app experience, scales to desktop) -->
+  <div class="w-full max-w-2xl px-4 py-4 md:py-6 space-y-5">
+    
+    <!-- Top Bar Header -->
+    <header class="flex items-center justify-between border-b border-slate-800 pb-3">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-emerald-400 flex items-center justify-center shadow-lg shadow-cyan-500/20 font-bold text-slate-900 text-lg">
+          F
+        </div>
+        <div>
+          <h1 class="text-lg font-bold leading-tight flex items-center gap-2">
+            <span>Friday Coach</span>
+            <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">6-Pack Mode</span>
+          </h1>
+          <p class="text-xs text-slate-400">ผู้ช่วยส่วนตัวคุมอาหาร & ลดไขมัน</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <!-- Audio Mute/Unmute -->
+        <button id="btn-sound" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-sm flex items-center gap-1" title="เปิด/ปิดเสียงเอฟเฟกต์">
+          <span id="sound-icon">🔊</span>
+        </button>
+        <!-- InBody Profile Trigger -->
+        <button onclick="openModal('profile-modal')" class="px-2.5 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-xs font-medium text-cyan-400 flex items-center gap-1.5 transition">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+          <span>ข้อมูล InBody</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="flex border-b border-slate-800 text-sm font-medium gap-1 overflow-x-auto pb-1" id="tab-nav">
+      <button onclick="switchTab('dashboard')" class="nav-btn active px-4 py-2 border-b-2 border-transparent transition flex items-center gap-1.5 whitespace-nowrap">
+        <span>📊 แดชบอร์ด</span>
+      </button>
+      <button onclick="switchTab('food')" class="nav-btn px-4 py-2 border-b-2 border-transparent transition text-slate-400 hover:text-slate-200 flex items-center gap-1.5 whitespace-nowrap">
+        <span>🥗 บันทึกอาหาร</span>
+      </button>
+      <button onclick="switchTab('workout')" class="nav-btn px-4 py-2 border-b-2 border-transparent transition text-slate-400 hover:text-slate-200 flex items-center gap-1.5 whitespace-nowrap">
+        <span>🏋️‍♂️ ออกกำลังกาย</span>
+      </button>
+      <button onclick="switchTab('alcohol')" class="nav-btn px-4 py-2 border-b-2 border-transparent transition text-slate-400 hover:text-slate-200 flex items-center gap-1.5 whitespace-nowrap">
+        <span>🍺 โซนแอลกอฮอล์</span>
+      </button>
+      <button onclick="switchTab('coach')" class="nav-btn px-4 py-2 border-b-2 border-transparent transition text-slate-400 hover:text-slate-200 flex items-center gap-1.5 whitespace-nowrap">
+        <span>💡 ปรึกษา Friday</span>
+      </button>
+    </nav>
+
+    <!-- TAB 1: DASHBOARD -->
+    <div id="tab-dashboard" class="space-y-5">
+      <!-- Main Calorie & Deficit Hero Card -->
+      <div class="bg-gradient-to-br from-slate-900 to-[#131c2e] border border-slate-800 rounded-2xl p-5 shadow-xl relative overflow-hidden">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <!-- Circular Ring Gauge -->
+          <div class="relative w-36 h-36 flex items-center justify-center flex-shrink-0">
+            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="50" stroke="#1e293b" stroke-width="10" fill="transparent" />
+              <circle id="calorie-progress-circle" cx="60" cy="60" r="50" stroke="#06b6d4" stroke-width="10" 
+                      stroke-dasharray="314" stroke-dashoffset="60" stroke-linecap="round" fill="transparent" class="transition-all duration-700" />
+            </svg>
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+              <span class="text-xs text-slate-400 font-medium">กินไปแล้ว</span>
+              <span id="dash-calories" class="text-2xl font-bold text-cyan-400 leading-tight">1,530</span>
+              <span class="text-[10px] text-slate-400">/ 1,900 kcal</span>
+            </div>
+          </div>
+
+          <!-- Quick Stats Column -->
+          <div class="flex-1 w-full space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-medium text-slate-300">โควตามื้อเย็นที่เหลือ:</span>
+              <span id="dash-remaining-cal" class="text-base font-bold text-amber-400">370 kcal</span>
+            </div>
+            <!-- Progress Bar of Calories -->
+            <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden">
+              <div id="calorie-bar" class="bg-gradient-to-r from-cyan-500 to-amber-400 h-2.5 rounded-full transition-all duration-500" style="width: 80.5%;"></div>
+            </div>
+
+            <!-- Net Deficit Badge -->
+            <div class="bg-emerald-950/40 border border-emerald-500/30 rounded-xl p-3 flex items-center justify-between">
+              <div>
+                <div class="text-[11px] font-semibold text-emerald-400 uppercase tracking-wider">สถานะการเบิร์นไขมันจริง (Net Deficit)</div>
+                <div class="text-xs text-slate-300">เผาผลาญรวม <span id="dash-tdee" class="font-bold text-slate-100">2,465</span> - กิน <span id="dash-consumed-sub" class="font-bold text-slate-100">1,530</span></div>
+              </div>
+              <div id="dash-deficit" class="text-lg font-black text-emerald-400">-935 kcal</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Macro Cards -->
+        <div class="grid grid-cols-3 gap-2.5 pt-4 mt-4 border-t border-slate-800/80">
+          <!-- Protein Card -->
+          <div class="bg-slate-800/50 rounded-xl p-3 border border-emerald-500/20 text-center">
+            <div class="text-[11px] text-slate-400 font-medium">โปรตีน (Protein)</div>
+            <div class="text-lg font-bold text-emerald-400 my-0.5"><span id="dash-protein">115.0</span> <span class="text-xs font-normal text-slate-400">g</span></div>
+            <div class="text-[10px] text-slate-400">เป้า: 160g (<span id="dash-protein-left" class="text-emerald-400 font-semibold">ขาด 45g</span>)</div>
+          </div>
+          <!-- Carbs Card -->
+          <div class="bg-slate-800/50 rounded-xl p-3 border border-amber-500/20 text-center">
+            <div class="text-[11px] text-slate-400 font-medium">คาร์บ (Carbs)</div>
+            <div class="text-lg font-bold text-amber-400 my-0.5"><span id="dash-carbs">120.5</span> <span class="text-xs font-normal text-slate-400">g</span></div>
+            <div class="text-[10px] text-slate-400">พลังงาน ~482 kcal</div>
+          </div>
+          <!-- Fat Card -->
+          <div class="bg-slate-800/50 rounded-xl p-3 border border-rose-500/20 text-center">
+            <div class="text-[11px] text-slate-400 font-medium">ไขมัน (Fat)</div>
+            <div class="text-lg font-bold text-rose-400 my-0.5"><span id="dash-fat">58.9</span> <span class="text-xs font-normal text-slate-400">g</span></div>
+            <div class="text-[10px] text-slate-400">เพดาน: 65g (แตะพอดี)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Add Favorites Section -->
+      <div class="bg-[#131c2e] border border-slate-800 rounded-2xl p-4 space-y-3">
+        <div class="flex items-center justify-between">
+          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+            <span>⚡ เมนูกดเพิ่มทันที (Quick Add)</span>
+          </h2>
+          <span class="text-[11px] text-slate-500">แตะเพื่อบันทึกรายการโปรด</span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2" id="quick-preset-container">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Macro Ratio Chart Container -->
+      <div class="bg-[#131c2e] border border-slate-800 rounded-2xl p-4 space-y-3">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400">สัดส่วนสารอาหารวันนี้ (Macronutrient Split)</h2>
+        <div class="relative h-56 w-full flex items-center justify-center">
+          <canvas id="macroDonutChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: FOOD LOGGER -->
+    <div id="tab-food" class="space-y-4 hidden">
+      <div class="flex items-center justify-between">
+        <h2 class="text-sm font-bold text-slate-200">รายการอาหารวันนี้</h2>
+        <button onclick="openModal('add-food-modal')" class="px-3 py-1.5 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold rounded-xl text-xs flex items-center gap-1 transition shadow-md shadow-cyan-500/20">
+          <span>+ เพิ่มอาหารเอง</span>
+        </button>
+      </div>
+
+      <!-- Meal Log List Container -->
+      <div id="food-list-container" class="space-y-3">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- TAB 3: WORKOUT TRACKER -->
+    <div id="tab-workout" class="space-y-4 hidden">
+      <div class="bg-[#131c2e] border border-slate-800 rounded-2xl p-4 space-y-3">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-sm font-bold text-slate-100">บันทึกการออกกำลังกาย</h2>
+            <p class="text-xs text-slate-400">เพิ่มยอดการเผาผลาญประจำวันอัตโนมัติ</p>
+          </div>
+          <button onclick="openModal('add-workout-modal')" class="px-3 py-1.5 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-semibold rounded-xl text-xs flex items-center gap-1 transition shadow-md shadow-emerald-500/20">
+            <span>+ เพิ่มกิจกรรม</span>
+          </button>
+        </div>
+
+        <!-- Quick Workout Presets -->
+        <div class="grid grid-cols-2 gap-2 pt-2">
+          <button onclick="quickAddWorkout('เวทเทรนนิ่ง (หลัง/ปีก Pull Day)', 60, 320)" class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/70 text-left transition">
+            <div class="text-xs font-bold text-slate-200">🏋️‍♂️ เวทหลัง/ปีก (Pull Day)</div>
+            <div class="text-[11px] text-emerald-400 font-medium">60 นาที | ~320 kcal</div>
+          </button>
+          <button onclick="quickAddWorkout('เดินชันลู่วิ่ง Zone 2 (Incline Walk)', 30, 220)" class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/70 text-left transition">
+            <div class="text-xs font-bold text-slate-200">🏃‍♂️ เดินชันลู่วิ่ง Zone 2</div>
+            <div class="text-[11px] text-cyan-400 font-medium">30 นาที | ~220 kcal</div>
+          </button>
+          <button onclick="quickAddWorkout('เวทขา (Leg Day จัดเต็ม)', 70, 480)" class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/70 text-left transition">
+            <div class="text-xs font-bold text-slate-200">🦵 เวทขา (Leg Day)</div>
+            <div class="text-[11px] text-amber-400 font-medium">70 นาที | ~480 kcal</div>
+          </button>
+          <button onclick="quickAddWorkout('เวทอก/ไหล่ (Push Day)', 60, 300)" class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/70 text-left transition">
+            <div class="text-xs font-bold text-slate-200">💪 เวทอก/ไหล่ (Push Day)</div>
+            <div class="text-[11px] text-rose-400 font-medium">60 นาที | ~300 kcal</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Logged Workouts Container -->
+      <div id="workout-list-container" class="space-y-2.5">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- TAB 4: ALCOHOL & RECOVERY SHIELD -->
+    <div id="tab-alcohol" class="space-y-4 hidden">
+      <div class="bg-gradient-to-br from-amber-950/30 to-[#131c2e] border border-amber-500/30 rounded-2xl p-5 space-y-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">🍺</span>
+            <div>
+              <h2 class="text-sm font-bold text-amber-200">Alcohol & 6-Pack Shield</h2>
+              <p class="text-xs text-slate-400">ตัวคำนวณผลกระทบแอลกอฮอล์ต่อไขมันหน้าท้อง</p>
+            </div>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 font-medium border border-amber-500/30">Friday System</span>
+        </div>
+
+        <!-- Alcohol Freeze Stats -->
+        <div class="grid grid-cols-2 gap-3">
+          <div class="bg-slate-900/80 rounded-xl p-3 border border-slate-800 text-center">
+            <div class="text-[11px] text-slate-400">แอลกอฮอล์บริสุทธิ์สะสม</div>
+            <div id="alc-grams" class="text-xl font-black text-amber-400 my-0.5">0.0 <span class="text-xs font-normal text-slate-400">g</span></div>
+            <div class="text-[10px] text-slate-500">ตับเผาผลาญ ~8-10g/ชม.</div>
+          </div>
+          <div class="bg-slate-900/80 rounded-xl p-3 border border-slate-800 text-center">
+            <div class="text-[11px] text-slate-400">ระยะเวลาหยุดเผาผลาญไขมัน</div>
+            <div id="alc-freeze-hours" class="text-xl font-black text-rose-400 my-0.5">0 <span class="text-xs font-normal text-slate-400">ชม.</span></div>
+            <div class="text-[10px] text-slate-500">Fat Burn Freeze Time</div>
+          </div>
+        </div>
+
+        <!-- Quick Drink Logger Buttons -->
+        <div class="space-y-2 pt-2">
+          <div class="text-xs font-bold text-slate-300">บันทึกเครื่องดื่มคืนนี้:</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <button onclick="quickAddDrink('Singha Highball Cola 340ml', 110, 13.4)" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700/80 text-left border border-slate-700 transition flex items-center justify-between">
+              <div>
+                <div class="text-xs font-bold text-slate-100">🥃 Singha Highball Cola</div>
+                <div class="text-[10px] text-emerald-400">ALC 5% | 110 kcal (ไร้แป้งมอลต์)</div>
+              </div>
+              <span class="text-xs text-slate-400 font-bold">+1</span>
+            </button>
+            <button onclick="quickAddDrink('Hoshi Highball Lemon 330ml', 155, 18.2)" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700/80 text-left border border-slate-700 transition flex items-center justify-between">
+              <div>
+                <div class="text-xs font-bold text-slate-100">🍋 Hoshi Highball Lemon</div>
+                <div class="text-[10px] text-cyan-400">ALC 7% | 155 kcal</div>
+              </div>
+              <span class="text-xs text-slate-400 font-bold">+1</span>
+            </button>
+            <button onclick="quickAddDrink('เบียร์สิงห์ กระป๋องยาว 490ml', 195, 19.3)" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700/80 text-left border border-slate-700 transition flex items-center justify-between">
+              <div>
+                <div class="text-xs font-bold text-slate-100">🍺 เบียร์สิงห์ กระป๋องยาว</div>
+                <div class="text-[10px] text-amber-400">ALC 5% | ~195 kcal (คาร์บ 16g)</div>
+              </div>
+              <span class="text-xs text-slate-400 font-bold">+1</span>
+            </button>
+            <button onclick="quickAddDrink('เบียร์สิงห์ ขวดใหญ่ 620ml', 240, 24.5)" class="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700/80 text-left border border-slate-700 transition flex items-center justify-between">
+              <div>
+                <div class="text-xs font-bold text-slate-100">🍾 เบียร์สิงห์ ขวดใหญ่</div>
+                <div class="text-[10px] text-rose-400">ALC 5% | ~240 kcal (คาร์บ 20g)</div>
+              </div>
+              <span class="text-xs text-slate-400 font-bold">+1</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Protocol Rules -->
+        <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-800/80 space-y-1.5 text-xs text-slate-300">
+          <div class="font-bold text-amber-400 flex items-center gap-1">
+            <span>🛡️ กฎเหล็กดื่มแล้วพุงไม่ยื่น (Friday Protocol):</span>
+          </div>
+          <p>1. <strong>จำกัด 1–2 กระป๋อง/ขวดพอชื่นใจ</strong> อย่าลากยาวข้ามเที่ยงคืน</p>
+          <p>2. <strong>งบกับแกล้มของทอดเด็ดขาด</strong> เปลี่ยนเป็นถั่วแระญี่ปุ่น หรือ Plantae Bites</p>
+          <p>3. <strong>ดื่มน้ำเปล่า 2 แก้วใหญ่ก่อนนอน</strong> ช่วยตับขับแอลกอฮอล์และลดบวมน้ำ</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: COACH FRIDAY INTERACTIVE -->
+    <div id="tab-coach" class="space-y-4 hidden">
+      <div class="bg-[#131c2e] border border-slate-800 rounded-2xl p-5 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-400 to-emerald-500 flex items-center justify-center text-slate-900 font-black text-xl shadow-lg shadow-cyan-500/20">
+            F
+          </div>
+          <div>
+            <h2 class="text-base font-bold text-slate-100">Friday AI Coach</h2>
+            <p class="text-xs text-slate-400">ที่ปรึกษาส่วนตัวตอบโจทย์ทันที</p>
+          </div>
+        </div>
+
+        <!-- Question Pills -->
+        <div class="space-y-2">
+          <div class="text-xs font-semibold text-slate-400">คำถามด่วนที่พบบ่อย:</div>
+          <div class="grid grid-cols-1 gap-2">
+            <button onclick="askCoach('dinner_budget')" class="p-2.5 bg-slate-800/90 hover:bg-slate-700/80 rounded-xl text-left text-xs font-medium text-slate-200 border border-slate-700 transition">
+              🤔 มื้อเย็นเหลือ 370 kcal กินอะไรให้โปรตีนถึงเป้า?
+            </button>
+            <button onclick="askCoach('beer_vs_highball')" class="p-2.5 bg-slate-800/90 hover:bg-slate-700/80 rounded-xl text-left text-xs font-medium text-slate-200 border border-slate-700 transition">
+              🍺 คืนนี้ดื่มเบียร์หรือไฮบอลดีกว่ากัน?
+            </button>
+            <button onclick="askCoach('workout_today')" class="p-2.5 bg-slate-800/90 hover:bg-slate-700/80 rounded-xl text-left text-xs font-medium text-slate-200 border border-slate-700 transition">
+              💪 วันนี้ควรเน้นเล่นเวทส่วนไหน หรือวิ่งดี?
+            </button>
+            <button onclick="askCoach('hangover_fix')" class="p-2.5 bg-slate-800/90 hover:bg-slate-700/80 rounded-xl text-left text-xs font-medium text-slate-200 border border-slate-700 transition">
+              💧 เมื่อคืนดื่มดึก ตื่นมาตัวบวมน้ำ แก้อย่างไร?
+            </button>
+          </div>
+        </div>
+
+        <!-- Coach Response Bubble -->
+        <div id="coach-response-box" class="bg-slate-900/90 border border-cyan-500/30 rounded-xl p-4 text-xs leading-relaxed space-y-2 text-slate-200">
+          <div class="flex items-center gap-1.5 font-bold text-cyan-400">
+            <span>💬 คำตอบจาก Friday:</span>
+          </div>
+          <p id="coach-response-text">
+            สวัสดีครับ! วันนี้คุณสะสมโปรตีนมาดีมากแล้ว โควตามื้อเย็นยังเหลือสบายๆ แนะนำให้เลือกเมนูอกไก่ต้มลีนหรือปลานึ่ง 150-200 กรัม เพื่อส่งโปรตีนเข้าเป้า 160 กรัมพอดีเป๊ะครับ!
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- End App Wrapper -->
+
+  <!-- MODAL: ADD FOOD -->
+  <div id="add-food-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-[#131c2e] border border-slate-700 rounded-2xl w-full max-w-md p-5 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="text-sm font-bold text-slate-100">+ เพิ่มรายการอาหาร</h3>
+        <button onclick="closeModal('add-food-modal')" class="text-slate-400 hover:text-slate-200 text-lg">&times;</button>
+      </div>
+      <form id="form-add-food" onsubmit="handleAddFood(event)" class="space-y-3">
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">ชื่ออาหาร / เครื่องดื่ม</label>
+          <input type="text" id="food-name" required placeholder="เช่น อกไก่ต้ม, ข้าวสวย, นมโปรตีน" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-cyan-500">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">มื้ออาหาร</label>
+            <select id="food-meal" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-cyan-500">
+              <option value="มื้อเช้า">มื้อเช้า</option>
+              <option value="มื้อเที่ยง">มื้อเที่ยง</option>
+              <option value="ของว่างบ่าย">ของว่างบ่าย</option>
+              <option value="มื้อเย็น">มื้อเย็น</option>
+              <option value="รอบดึก">รอบดึก</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">พลังงาน (kcal)</label>
+            <input type="number" id="food-cal" required min="0" placeholder="เช่น 250" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-cyan-500">
+          </div>
+        </div>
+        <div class="grid grid-cols-3 gap-2">
+          <div>
+            <label class="block text-[11px] font-medium text-slate-300 mb-1">โปรตีน (g)</label>
+            <input type="number" id="food-protein" step="0.1" min="0" placeholder="0" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-2 py-1.5 text-xs text-slate-100">
+          </div>
+          <div>
+            <label class="block text-[11px] font-medium text-slate-300 mb-1">คาร์บ (g)</label>
+            <input type="number" id="food-carbs" step="0.1" min="0" placeholder="0" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-2 py-1.5 text-xs text-slate-100">
+          </div>
+          <div>
+            <label class="block text-[11px] font-medium text-slate-300 mb-1">ไขมัน (g)</label>
+            <input type="number" id="food-fat" step="0.1" min="0" placeholder="0" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-2 py-1.5 text-xs text-slate-100">
+          </div>
+        </div>
+        <div class="pt-2 flex justify-end gap-2">
+          <button type="button" onclick="closeModal('add-food-modal')" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-medium transition">ยกเลิก</button>
+          <button type="submit" class="px-4 py-2 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-xl text-xs transition">บันทึกอาหาร</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: ADD WORKOUT -->
+  <div id="add-workout-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-[#131c2e] border border-slate-700 rounded-2xl w-full max-w-md p-5 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="text-sm font-bold text-slate-100">+ บันทึกการออกกำลังกาย</h3>
+        <button onclick="closeModal('add-workout-modal')" class="text-slate-400 hover:text-slate-200 text-lg">&times;</button>
+      </div>
+      <form id="form-add-workout" onsubmit="handleAddWorkout(event)" class="space-y-3">
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">กิจกรรม</label>
+          <input type="text" id="workout-name" required placeholder="เช่น เวทเทรนนิ่งหลัง, วิ่งลู่วิ่ง" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-emerald-500">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">ระยะเวลา (นาที)</label>
+            <input type="number" id="workout-duration" required min="1" placeholder="45" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">เผาผลาญ (kcal)</label>
+            <input type="number" id="workout-cal" required min="1" placeholder="250" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-100">
+          </div>
+        </div>
+        <div class="pt-2 flex justify-end gap-2">
+          <button type="button" onclick="closeModal('add-workout-modal')" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-medium transition">ยกเลิก</button>
+          <button type="submit" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-bold rounded-xl text-xs transition">บันทึกกิจกรรม</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: INBODY PROFILE -->
+  <div id="profile-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-[#131c2e] border border-slate-700 rounded-2xl w-full max-w-md p-5 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="text-sm font-bold text-slate-100">ข้อมูลร่างกาย & เป้าหมาย 6-Pack (InBody 270)</h3>
+        <button onclick="closeModal('profile-modal')" class="text-slate-400 hover:text-slate-200 text-lg">&times;</button>
+      </div>
+      <div class="grid grid-cols-2 gap-2 text-xs">
+        <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800">
+          <span class="text-slate-400 block text-[10px]">น้ำหนักปัจจุบัน</span>
+          <span class="text-base font-bold text-slate-100">83.1 kg</span>
+        </div>
+        <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800">
+          <span class="text-slate-400 block text-[10px]">เป้าหมาย 6-Pack</span>
+          <span class="text-base font-bold text-emerald-400">73 - 75 kg</span>
+        </div>
+        <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800">
+          <span class="text-slate-400 block text-[10px]">มวลกล้ามเนื้อ (SMM)</span>
+          <span class="text-base font-bold text-cyan-400">36.5 kg (สูง)</span>
+        </div>
+        <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800">
+          <span class="text-slate-400 block text-[10px]">เปอร์เซ็นต์ไขมัน (PBF)</span>
+          <span class="text-base font-bold text-rose-400">22.8% (19.0 kg)</span>
+        </div>
+        <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800">
+          <span class="text-slate-400 block text-[10px]">อัตราเผาผลาญพื้นฐาน (BMR)</span>
+          <span class="text-base font-bold text-slate-100">1,755 kcal</span>
+        </div>
+        <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800">
+          <span class="text-slate-400 block text-[10px]">เป้าหมายแคลอรี่ต่อวัน</span>
+          <span class="text-base font-bold text-amber-400">1,900 kcal/วัน</span>
+        </div>
+      </div>
+      <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-800 text-[11px] text-slate-300 leading-relaxed">
+        💡 <strong>กลยุทธ์ของ Friday:</strong> คุณมีฐานมวลกล้ามเนื้อที่แน่นมาก (36.5 kg) เมื่อคุมแคลอรี่ติดลบ ~400–600 kcal และกินโปรตีนให้ถึง 160g ไขมันรอบเอวจะยุบลงอย่างรวดเร็วโดยที่กล้ามเนื้อไม่หายครับ!
+      </div>
+    </div>
+  </div>
+
+  <!-- APPLICATION LOGIC (INLINE JS) -->
+  <script>
+    // Audio synthesizer for pleasant micro-interactions
+    let soundEnabled = true;
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function playTone(freq, type = 'sine', duration = 0.15) {
+      if (!soundEnabled) return;
+      try {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    document.getElementById('btn-sound').addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      document.getElementById('sound-icon').textContent = soundEnabled ? '🔊' : '🔇';
+      showToast(soundEnabled ? 'เปิดเสียงเอฟเฟกต์แล้ว' : 'ปิดเสียงแล้ว');
+      if (soundEnabled) playTone(587.33);
+    });
+
+    // Preset Favorite Items from Conversation History
+    const quickPresets = [
+      { name: 'อกไก่ต้มลีน 200g', meal: 'มื้อเที่ยง', cal: 320, p: 61, c: 0, f: 5.5, icon: '🍗' },
+      { name: 'อกไก่นุ่ม CP Delight', meal: 'มื้อเย็น', cal: 90, p: 17.5, c: 1, f: 1.5, icon: '🥩' },
+      { name: 'ไข่ต้ม 2 ฟอง', meal: 'มื้อเที่ยง', cal: 140, p: 13, c: 1, f: 9.5, icon: '🥚' },
+      { name: 'Hooray Protein Shake (340ml)', meal: 'ของว่างบ่าย', cal: 230, p: 33, c: 17, f: 3.5, icon: '🥛' },
+      { name: 'Vitaday High Protein (480ml)', meal: 'ของว่างบ่าย', cal: 160, p: 38, c: 7, f: 0, icon: '🍇' },
+      { name: 'BOBBI Plant Protein (500ml)', meal: 'ของว่างบ่าย', cal: 180, p: 36, c: 8, f: 0, icon: '🍋' }
+    ];
+
+    // Initial State pre-populated with today's real logged items
+    const defaultData = {
+      targetCal: 1900,
+      targetProtein: 160,
+      baseTdee: 2150,
+      foods: [
+        { id: 1, name: 'หมูปิ้งนมสด 2 ไม้ + ข้าวเหนียว 2 คำ', meal: 'มื้อเช้า', cal: 335, p: 16.0, c: 25.0, f: 19.2 },
+        { id: 2, name: 'อกไก่ 200g + หมูกระเทียม + ไข่ต้ม + ข้าวครึ่งชาม', meal: 'มื้อเที่ยง', cal: 695, p: 88.0, c: 22.5, f: 23.6 },
+        { id: 3, name: 'ขนมโตเกียว 3 ชิ้น + มินิแพนเค้ก 2 ชิ้น', meal: 'ของว่างบ่าย', cal: 495, p: 11.0, c: 73.0, f: 16.1 },
+        { id: 4, name: 'กาแฟอเมริกาโน่เย็นไม่หวาน 1 แก้ว', meal: 'ของว่างบ่าย', cal: 5, p: 0.0, c: 0.0, f: 0.0 }
+      ],
+      workouts: [
+        { id: 1, name: 'เวทเทรนนิ่งหลังและปีก (Pull Day)', duration: 60, cal: 316 }
+      ],
+      drinks: []
+    };
+
+    let appData = defaultData;
+
+    // Load from LocalStorage
+    try {
+      const saved = localStorage.getItem('friday_fitness_app_data');
+      if (saved) {
+        appData = JSON.parse(saved);
+      }
+    } catch (e) {
+      console.warn('LocalStorage unavailable, using in-memory state');
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem('friday_fitness_app_data', JSON.stringify(appData));
+      } catch (e) {
+        console.warn('LocalStorage save failed');
+      }
+      renderAll();
+    }
+
+    // Toast function
+    function showToast(msg) {
+      const c = document.getElementById('toast-container');
+      const t = document.createElement('div');
+      t.className = 'bg-slate-800 text-slate-100 border border-slate-700 text-xs px-4 py-2.5 rounded-xl shadow-lg transition-all duration-300 transform -translate-y-2 opacity-0 pointer-events-auto';
+      t.textContent = msg;
+      c.appendChild(t);
+      setTimeout(() => {
+        t.classList.remove('-translate-y-2', 'opacity-0');
+      }, 10);
+      setTimeout(() => {
+        t.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => t.remove(), 300);
+      }, 2500);
+    }
+
+    // Modal helpers
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    // Tab switching
+    function switchTab(tabId) {
+      playTone(440);
+      document.querySelectorAll('#tab-nav .nav-btn').forEach(btn => {
+        btn.classList.remove('active', 'text-cyan-400');
+        btn.classList.add('text-slate-400');
+      });
+      event.currentTarget.classList.add('active', 'text-cyan-400');
+      event.currentTarget.classList.remove('text-slate-400');
+
+      ['dashboard', 'food', 'workout', 'alcohol', 'coach'].forEach(t => {
+        const el = document.getElementById(`tab-${t}`);
+        if (t === tabId) {
+          el.classList.remove('hidden');
+        } else {
+          el.classList.add('hidden');
+        }
+      });
+      if (tabId === 'dashboard' && macroChart) {
+        macroChart.update();
+      }
+    }
+
+    // Actions: Add Food
+    function handleAddFood(e) {
+      e.preventDefault();
+      const name = document.getElementById('food-name').value.trim();
+      const meal = document.getElementById('food-meal').value;
+      const cal = parseFloat(document.getElementById('food-cal').value) || 0;
+      const p = parseFloat(document.getElementById('food-protein').value) || 0;
+      const c = parseFloat(document.getElementById('food-carbs').value) || 0;
+      const f = parseFloat(document.getElementById('food-fat').value) || 0;
+
+      appData.foods.push({
+        id: Date.now(),
+        name,
+        meal,
+        cal,
+        p,
+        c,
+        f
+      });
+      closeModal('add-food-modal');
+      e.target.reset();
+      playTone(523.25);
+      showToast(`บันทึก ${name} เรียบร้อยแล้ว`);
+      saveState();
+    }
+
+    function addPresetFood(p) {
+      appData.foods.push({
+        id: Date.now(),
+        name: p.name,
+        meal: p.meal,
+        cal: p.cal,
+        p: p.p,
+        c: p.c,
+        f: p.f
+      });
+      playTone(659.25);
+      showToast(`เพิ่ม ${p.name} (+${p.p}g โปรตีน) เรียบร้อย`);
+      saveState();
+    }
+
+    function deleteFood(id) {
+      appData.foods = appData.foods.filter(item => item.id !== id);
+      playTone(330);
+      showToast('ลบรายการอาหารแล้ว');
+      saveState();
+    }
+
+    // Actions: Workout
+    function handleAddWorkout(e) {
+      e.preventDefault();
+      const name = document.getElementById('workout-name').value.trim();
+      const duration = parseInt(document.getElementById('workout-duration').value) || 0;
+      const cal = parseInt(document.getElementById('workout-cal').value) || 0;
+
+      appData.workouts.push({
+        id: Date.now(),
+        name,
+        duration,
+        cal
+      });
+      closeModal('add-workout-modal');
+      e.target.reset();
+      playTone(587.33);
+      showToast(`บันทึกกิจกรรม ${name} เผาผลาญ +${cal} kcal`);
+      saveState();
+    }
+
+    function quickAddWorkout(name, duration, cal) {
+      appData.workouts.push({
+        id: Date.now(),
+        name,
+        duration,
+        cal
+      });
+      playTone(659.25);
+      showToast(`บันทึก ${name} (+${cal} kcal) สำเร็จ`);
+      saveState();
+    }
+
+    function deleteWorkout(id) {
+      appData.workouts = appData.workouts.filter(w => w.id !== id);
+      playTone(330);
+      showToast('ลบกิจกรรมออกกำลังกายแล้ว');
+      saveState();
+    }
+
+    // Actions: Alcohol Drink
+    function quickAddDrink(name, cal, alcGrams) {
+      appData.drinks.push({
+        id: Date.now(),
+        name,
+        cal,
+        alcGrams
+      });
+      // Also add to foods list as alcohol meal
+      appData.foods.push({
+        id: Date.now() + 1,
+        name,
+        meal: 'เครื่องดื่มแอลกอฮอล์',
+        cal,
+        p: 0,
+        c: Math.round(cal * 0.3 / 4),
+        f: 0
+      });
+      playTone(493.88);
+      showToast(`บันทึก ${name} เรียบร้อย`);
+      saveState();
+    }
+
+    // AI Coach Q&A
+    const coachAnswers = {
+      dinner_budget: "โควตามื้อเย็นที่เหลือของคุณอยู่ที่ 370 kcal ครับ แนะนำให้จัด **อกไก่ต้มลีน 150-200g (หรือปลานึ่ง)** ไร้แป้ง ไร้น้ำมัน จะได้โปรตีนเน้นๆ ~45g ส่งยอดโปรตีนรวมแตะเป้า 160g พอดีเป๊ะโดยไม่หลุดงบครับ!",
+      beer_vs_highball: "แนะนำ **Singha Highball หรือ Hoshi Highball (110–155 kcal)** ดีกว่าเบียร์มากครับ เพราะวิสกี้โซดาไม่มีคาร์บจากมอลต์ แคลอรี่ต่ำกว่าเบียร์ขวดใหญ่เกินครึ่ง และไม่ทำให้อืดท้องครับ!",
+      workout_today: "ถ้าเมื่อวานเล่นอกและหน้าท้องไปแล้ว วันนี้แนะนำ **เวทหลัง (Pull Day) 40 นาที ต่อด้วยเดินชัน Zone 2 อีก 20 นาที** จะช่วยขยายปีกหลังให้หุ่นเป็น V-Shape เอวดูคอดลงทันทีครับ!",
+      hangover_fix: "ตื่นมาตัวบวมน้ำจากแอลกอฮอล์ ให้ **จิบน้ำเปล่าตามเยอะๆ (2–3 ลิตรต่อวัน)** เพื่อขับโซเดียม และเลือกดื่ม **น้ำมะพร้าว 100% หรือนมโปรตีนสูงที่มีโพแทสเซียม (Hooray/Sunshine)** จะช่วยดึงน้ำกลับเข้าเซลล์และยุบบวมได้เร็วที่สุดครับ!"
+    };
+
+    function askCoach(key) {
+      playTone(523.25);
+      const box = document.getElementById('coach-response-box');
+      const text = document.getElementById('coach-response-text');
+      box.classList.add('ring-2', 'ring-cyan-400');
+      text.innerHTML = coachAnswers[key] || "Friday พร้อมช่วยเหลือเสมอครับ!";
+      setTimeout(() => box.classList.remove('ring-2', 'ring-cyan-400'), 600);
+    }
+
+    // Chart.js instance
+    let macroChart = null;
+
+    function initChart(pCal, cCal, fCal) {
+      const ctx = document.getElementById('macroDonutChart').getContext('2d');
+      macroChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['โปรตีน (Protein)', 'คาร์บ (Carbs)', 'ไขมัน (Fat)'],
+          datasets: [{
+            data: [pCal, cCal, fCal],
+            backgroundColor: ['#10b981', '#f59e0b', '#f43f5e'],
+            borderColor: '#090d16',
+            borderWidth: 3,
+            hoverOffset: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                color: '#94a3b8',
+                font: { family: 'Prompt', size: 11 },
+                padding: 15
+              }
+            }
+          },
+          cutout: '72%'
+        }
+      });
+    }
+
+    // Render Function
+    function renderAll() {
+      // 1. Calculate totals
+      let totalCal = 0, totalP = 0, totalC = 0, totalF = 0;
+      appData.foods.forEach(f => {
+        totalCal += f.cal;
+        totalP += f.p;
+        totalC += f.c;
+        totalF += f.f;
+      });
+
+      let workoutBurn = 0;
+      appData.workouts.forEach(w => {
+        workoutBurn += w.cal;
+      });
+
+      let totalAlcGrams = 0;
+      appData.drinks.forEach(d => {
+        totalAlcGrams += d.alcGrams;
+      });
+
+      const currentTdee = appData.baseTdee + workoutBurn;
+      const netDeficit = currentTdee - totalCal;
+      const remainingCal = Math.max(0, appData.targetCal - totalCal);
+      const proteinLeft = Math.max(0, appData.targetProtein - totalP);
+
+      // 2. Update Dashboard Hero Readouts
+      document.getElementById('dash-calories').textContent = Math.round(totalCal).toLocaleString();
+      document.getElementById('dash-remaining-cal').textContent = `${Math.round(remainingCal).toLocaleString()} kcal`;
+      document.getElementById('dash-tdee').textContent = Math.round(currentTdee).toLocaleString();
+      document.getElementById('dash-consumed-sub').textContent = Math.round(totalCal).toLocaleString();
+      document.getElementById('dash-deficit').textContent = `${netDeficit >= 0 ? '-' : '+'}${Math.abs(Math.round(netDeficit))} kcal`;
+      document.getElementById('dash-deficit').className = netDeficit >= 0 ? 'text-lg font-black text-emerald-400' : 'text-lg font-black text-rose-400';
+
+      // Bar and Circular progress
+      const calPct = Math.min(100, Math.round((totalCal / appData.targetCal) * 100));
+      document.getElementById('calorie-bar').style.width = `${calPct}%`;
+      const circleOffset = 314 - (314 * Math.min(1, totalCal / appData.targetCal));
+      document.getElementById('calorie-progress-circle').style.strokeDashoffset = circleOffset;
+
+      // Macro cards
+      document.getElementById('dash-protein').textContent = totalP.toFixed(1);
+      document.getElementById('dash-protein-left').textContent = proteinLeft > 0 ? `ขาด ${proteinLeft.toFixed(1)}g` : 'ครบเป้าแล้ว! 🎉';
+      document.getElementById('dash-carbs').textContent = totalC.toFixed(1);
+      document.getElementById('dash-fat').textContent = totalF.toFixed(1);
+
+      // 3. Alcohol Freeze Hours
+      document.getElementById('alc-grams').innerHTML = `${totalAlcGrams.toFixed(1)} <span class="text-xs font-normal text-slate-400">g</span>`;
+      const freezeHrs = (totalAlcGrams / 8).toFixed(1);
+      document.getElementById('alc-freeze-hours').innerHTML = `${freezeHrs} <span class="text-xs font-normal text-slate-400">ชม.</span>`;
+
+      // 4. Update Donut Chart
+      const pCal = totalP * 4;
+      const cCal = totalC * 4;
+      const fCal = totalF * 9;
+      if (macroChart) {
+        macroChart.data.datasets[0].data = [Math.round(pCal), Math.round(cCal), Math.round(fCal)];
+        macroChart.update();
+      } else {
+        initChart(Math.round(pCal), Math.round(cCal), Math.round(fCal));
+      }
+
+      // 5. Render Food List
+      const foodContainer = document.getElementById('food-list-container');
+      if (appData.foods.length === 0) {
+        foodContainer.innerHTML = '<div class="text-center py-8 text-slate-500 text-xs">ยังไม่มีรายการอาหารวันนี้ กดปุ่ม "+ เพิ่มอาหารเอง" ด้านบนได้เลยครับ</div>';
+      } else {
+        foodContainer.innerHTML = appData.foods.map(item => `
+          <div class="bg-[#131c2e] border border-slate-800 rounded-xl p-3 flex items-center justify-between hover:border-slate-700 transition">
+            <div class="space-y-0.5">
+              <div class="flex items-center gap-2">
+                <span class="text-[10px] px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 font-medium">${item.meal}</span>
+                <span class="text-xs font-bold text-slate-100">${item.name}</span>
+              </div>
+              <div class="text-[11px] text-slate-400 flex items-center gap-3">
+                <span class="text-emerald-400 font-medium">โปรตีน ${item.p}g</span>
+                <span class="text-amber-400 font-medium">คาร์บ ${item.c}g</span>
+                <span class="text-rose-400 font-medium">ไขมัน ${item.f}g</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-xs font-bold text-cyan-400">${item.cal} kcal</span>
+              <button onclick="deleteFood(${item.id})" class="text-slate-500 hover:text-rose-400 text-base transition p-1" title="ลบรายการ">&times;</button>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // 6. Render Workout List
+      const workoutContainer = document.getElementById('workout-list-container');
+      if (appData.workouts.length === 0) {
+        workoutContainer.innerHTML = '<div class="text-center py-6 text-slate-500 text-xs">ยังไม่มีกิจกรรมออกกำลังกายวันนี้</div>';
+      } else {
+        workoutContainer.innerHTML = appData.workouts.map(w => `
+          <div class="bg-[#131c2e] border border-emerald-500/20 rounded-xl p-3 flex items-center justify-between">
+            <div>
+              <div class="text-xs font-bold text-slate-100 flex items-center gap-1.5">
+                <span>🔥</span>
+                <span>${w.name}</span>
+              </div>
+              <div class="text-[11px] text-slate-400 mt-0.5">ระยะเวลา: ${w.duration} นาที</div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-xs font-black text-emerald-400">+${w.cal} kcal</span>
+              <button onclick="deleteWorkout(${w.id})" class="text-slate-500 hover:text-rose-400 text-base transition p-1" title="ลบกิจกรรม">&times;</button>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    // Render Quick Add Presets
+    function renderQuickPresets() {
+      const container = document.getElementById('quick-preset-container');
+      container.innerHTML = quickPresets.map(p => `
+        <button onclick='addPresetFood(${JSON.stringify(p)})' class="p-2.5 rounded-xl bg-slate-800/70 hover:bg-slate-700/80 border border-slate-700/60 text-left transition flex flex-col justify-between">
+          <div class="flex items-center gap-1.5 text-xs font-bold text-slate-200">
+            <span>${p.icon}</span>
+            <span class="truncate">${p.name}</span>
+          </div>
+          <div class="flex items-center justify-between mt-2 text-[10px]">
+            <span class="text-cyan-400 font-semibold">${p.cal} kcal</span>
+            <span class="text-emerald-400 font-semibold">+${p.p}g P</span>
+          </div>
+        </button>
+      `).join('');
+    }
+
+    // Init on load
+    window.onload = function() {
+      renderQuickPresets();
+      renderAll();
+    };
+  </script>
+</body>
+</html>
