@@ -788,42 +788,61 @@
     </div>
   </div>
 
-  <!-- Cloud Sync & Export Modal -->
+  <!-- Cloud Sync & Export Modal (GitHub + Vercel Architecture) -->
   <div id="modal-cloud-sync" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-    <div class="bg-cyber-surface border border-cyber-border rounded-2xl max-w-sm w-full p-4 space-y-3">
+    <div class="bg-cyber-surface border border-cyber-border rounded-2xl max-w-sm w-full p-4 space-y-3 max-h-[88vh] overflow-y-auto">
       <div class="flex items-center justify-between border-b border-cyber-border pb-2">
-        <span class="font-extrabold text-white text-sm">☁️ สถานะฐานข้อมูล & Cloud Sync</span>
+        <span class="font-extrabold text-white text-sm">☁️ ระบบซิงค์ข้อมูลเข้า GitHub (แบบในคลิป)</span>
         <button id="btn-close-sync-modal" class="text-slate-400 hover:text-white text-xl font-bold">&times;</button>
       </div>
+
       <div class="text-xs text-slate-300 space-y-2 leading-relaxed">
         <p class="bg-cyber-black p-2.5 rounded-xl border border-cyber-border">
-          <strong class="text-emerald-400">✓ บันทึกในเครื่อง (Local DB):</strong> ทำงานอัตโนมัติทุกครั้งที่เพิ่ม/แก้ไข/ลบ รีเฟรชไม่หายครับ
-        </p>
-        <p class="bg-cyber-black p-2.5 rounded-xl border border-cyber-border">
-          <strong class="text-amber-400">ℹ️ ทำไม AI ในแชทถึงไม่เห็น?</strong> เว็บนี้รันแบบ Static HTML บนมือถือ ยังไม่ได้เชื่อม Server กลาง (Firebase/Supabase) หากต้องการส่งข้อมูลให้ Friday ในแชท กดปุ่มคัดลอกด้านล่างได้เลยครับ
+          <strong class="text-emerald-400">✓ หลักการทำงาน:</strong> เมื่อกดบันทึกบนมือถือ ระบบจะเซฟลงเครื่องทันทีแล้วส่งไฟล์ข้อมูลไปเก็บใน <b>GitHub (Nuistack/Friday-dashboard)</b> อัตโนมัติ ทำให้เปิดจากคอมหรือมือถือเครื่องอื่นข้อมูลก็ตรงกัน 100%
         </p>
       </div>
+
+      <!-- GitHub Sync Settings -->
+      <div class="bg-cyber-black/80 p-3 rounded-xl border border-cyan-900/60 space-y-2 text-xs">
+        <span class="font-bold text-cyber-cyan block">🔗 เชื่อมต่อ GitHub Repository</span>
+        <div>
+          <label class="block text-[11px] text-slate-400 mb-0.5">Repository (เจ้าของ/ชื่อโปรเจกต์):</label>
+          <input id="gh-repo-input" type="text" value="Nuistack/Friday-dashboard" class="w-full bg-cyber-card border border-cyber-border rounded-lg px-2.5 py-1.5 text-xs text-white font-mono focus:outline-none focus:border-cyber-cyan">
+        </div>
+        <div>
+          <label class="block text-[11px] text-slate-400 mb-0.5">ไฟล์เก็บข้อมูลใน GitHub:</label>
+          <input id="gh-path-input" type="text" value="data/friday_data.json" class="w-full bg-cyber-card border border-cyber-border rounded-lg px-2.5 py-1.5 text-xs text-white font-mono focus:outline-none focus:border-cyber-cyan">
+        </div>
+        <div>
+          <label class="block text-[11px] text-slate-400 mb-0.5">GitHub Personal Access Token (เก็บเฉพาะในเครื่องคุณ):</label>
+          <input id="gh-token-input" type="password" placeholder="ghp_xxxxxxxxxxxx หรือ github_pat_xxxx" class="w-full bg-cyber-card border border-cyber-border rounded-lg px-2.5 py-1.5 text-xs text-white font-mono focus:outline-none focus:border-cyber-cyan">
+        </div>
+        <div class="flex gap-2 pt-1">
+          <button id="btn-save-gh-sync" class="flex-1 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-black text-xs">
+            ✓ บันทึก & ซิงค์เลย
+          </button>
+          <button id="btn-pull-gh-sync" class="px-3 py-2 rounded-lg bg-cyber-card border border-cyber-border text-emerald-400 font-bold text-xs">
+            ⬇ ดึงล่าสุด
+          </button>
+        </div>
+      </div>
+
       <button id="btn-copy-today-summary" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 font-black text-xs">
         📋 คัดลอกสรุปวันนี้ส่งให้ Friday ในแชท
       </button>
+
       <div class="grid grid-cols-2 gap-2">
         <button id="btn-export-json" class="py-2 rounded-xl bg-cyber-card border border-cyber-border text-slate-200 hover:border-cyan-500 font-bold text-xs">
-          💾 สำรองข้อมูล (.json)
+          💾 สำรองไฟล์ (.json)
         </button>
         <label class="py-2 rounded-xl bg-cyber-card border border-cyber-border text-slate-200 hover:border-emerald-500 font-bold text-xs text-center cursor-pointer">
-          📂 กู้คืนข้อมูล
+          📂 กู้คืนไฟล์
           <input id="input-import-json" type="file" accept=".json,application/json" class="hidden">
         </label>
       </div>
-      <div class="pt-2 border-t border-cyber-border space-y-1.5">
-        <label class="block text-[11px] font-bold text-slate-400">หรือเชื่อมต่อ Firebase Realtime DB URL (ถ้ามี):</label>
-        <div class="flex gap-1.5">
-          <input id="cloud-firebase-url" type="url" placeholder="https://your-app.firebaseio.com" class="flex-1 bg-cyber-black border border-cyber-border rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-cyber-cyan">
-          <button id="btn-save-cloud-url" class="px-3 py-1.5 rounded-lg bg-cyan-600 text-white font-bold text-xs">เชื่อม</button>
-        </div>
-      </div>
     </div>
   </div>
+
 
   <!-- Food Database Modal -->
   <div id="modal-food-db" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 hidden">
@@ -1355,8 +1374,112 @@
       if (userStatus) userStatus.innerHTML = `คุณนุ้ย &bull; ${thai.dayNum} ${thai.monthName} ${thai.yearCE} &bull; 83.1 kg &bull; 22.8% Fat`;
     }
 
-    // ==================== LOCALSTORAGE & CLOUD SYNC ENGINE ====================
-    let cloudSyncUrl = localStorage.getItem('friday_cloud_url_v8') || '';
+    // ==================== LOCALSTORAGE & GITHUB CLOUD SYNC ENGINE ====================
+    let ghConfig = {
+      repo: localStorage.getItem('friday_gh_repo') || 'Nuistack/Friday-dashboard',
+      path: localStorage.getItem('friday_gh_path') || 'data/friday_data.json',
+      token: localStorage.getItem('friday_gh_token') || ''
+    };
+    let ghSyncTimer = null;
+
+    function setSyncBadge(status, colorClass) {
+      const lbl = document.getElementById('sync-status-label');
+      const btn = document.getElementById('btn-open-sync');
+      if (!lbl || !btn) return;
+      lbl.innerText = status;
+      btn.className = `flex items-center gap-1 bg-cyber-card px-2.5 py-1.5 rounded-xl border text-[11px] font-bold active:scale-95 transition-transform ${colorClass}`;
+    }
+
+    function utf8ToBase64(str) {
+      const bytes = new TextEncoder().encode(str);
+      let bin = '';
+      bytes.forEach(b => bin += String.fromCharCode(b));
+      return btoa(bin);
+    }
+
+    function base64ToUtf8(b64) {
+      const bin = atob(b64.replace(/\s/g, ''));
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return new TextDecoder().decode(bytes);
+    }
+
+    async function pushToGitHub() {
+      if (!ghConfig.token || !ghConfig.repo || !ghConfig.path) return;
+      setSyncBadge('Syncing...', 'border-amber-600 text-amber-400 animate-pulse');
+      try {
+        const apiUrl = `https://api.github.com/repos/${ghConfig.repo}/contents/${ghConfig.path}`;
+        const headers = {
+          'Authorization': `Bearer ${ghConfig.token}`,
+          'Accept': 'application/vnd.github+json',
+          'Content-Type': 'application/json'
+        };
+
+        // Get current file SHA if it exists
+        let sha = null;
+        const getRes = await fetch(apiUrl, { headers });
+        if (getRes.ok) {
+          const info = await getRes.json();
+          sha = info.sha;
+        }
+
+        const payloadObj = {
+          updatedAt: new Date().toISOString(),
+          updatedThai: getThaiDate().todayLabel,
+          coins: state.coins,
+          foodDatabase,
+          workoutDatabase,
+          fullHistoricalLogs
+        };
+
+        const body = {
+          message: `Update Friday Dashboard log (${getThaiDate().isoDate})`,
+          content: utf8ToBase64(JSON.stringify(payloadObj, null, 2))
+        };
+        if (sha) body.sha = sha;
+
+        const putRes = await fetch(apiUrl, {
+          method: 'PUT',
+          headers,
+          body: JSON.stringify(body)
+        });
+
+        if (putRes.ok) {
+          setSyncBadge('Synced ✓', 'border-emerald-700 text-emerald-400');
+        } else {
+          setSyncBadge('Sync Err', 'border-rose-700 text-rose-400');
+        }
+      } catch (e) {
+        console.error('GitHub push error:', e);
+        setSyncBadge('Offline', 'border-amber-700 text-amber-400');
+      }
+    }
+
+    async function pullFromGitHub() {
+      if (!ghConfig.repo || !ghConfig.path) return false;
+      try {
+        const headers = { 'Accept': 'application/vnd.github+json' };
+        if (ghConfig.token) headers['Authorization'] = `Bearer ${ghConfig.token}`;
+        const apiUrl = `https://api.github.com/repos/${ghConfig.repo}/contents/${ghConfig.path}`;
+        const res = await fetch(apiUrl, { headers, cache: 'no-store' });
+        if (!res.ok) return false;
+        const info = await res.json();
+        if (!info.content) return false;
+        const data = JSON.parse(base64ToUtf8(info.content));
+
+        if (data && Array.isArray(data.fullHistoricalLogs) && data.fullHistoricalLogs.length > 0) {
+          localStorage.setItem('friday_history_logs_v8', JSON.stringify(data.fullHistoricalLogs));
+          if (Array.isArray(data.foodDatabase)) localStorage.setItem('friday_food_db_v8', JSON.stringify(data.foodDatabase));
+          if (Array.isArray(data.workoutDatabase)) localStorage.setItem('friday_workout_db_v8', JSON.stringify(data.workoutDatabase));
+          if (typeof data.coins === 'number') localStorage.setItem('friday_coins_v8', data.coins.toString());
+          setSyncBadge('Synced ✓', 'border-emerald-700 text-emerald-400');
+          return true;
+        }
+      } catch (e) {
+        console.error('GitHub pull error:', e);
+      }
+      return false;
+    }
 
     function saveToStorage() {
       try {
@@ -1365,22 +1488,10 @@
         localStorage.setItem('friday_history_logs_v8', JSON.stringify(fullHistoricalLogs));
         localStorage.setItem('friday_coins_v8', state.coins.toString());
 
-        if (cloudSyncUrl) {
-          const cleanUrl = cloudSyncUrl.replace(/\/$/, '') + '/friday_data.json';
-          fetch(cleanUrl, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              updatedAt: new Date().toISOString(),
-              foodDatabase,
-              workoutDatabase,
-              fullHistoricalLogs,
-              coins: state.coins
-            })
-          }).then(() => {
-            const lbl = document.getElementById('sync-status-label');
-            if (lbl) lbl.innerText = 'Synced';
-          }).catch(() => {});
+        if (ghConfig.token) {
+          setSyncBadge('Syncing...', 'border-amber-600 text-amber-400');
+          clearTimeout(ghSyncTimer);
+          ghSyncTimer = setTimeout(pushToGitHub, 1200);
         }
       } catch (e) {
         console.error('Storage save error:', e);
@@ -1389,21 +1500,11 @@
 
     async function loadFromStorage() {
       try {
-        if (cloudSyncUrl) {
-          const lbl = document.getElementById('sync-status-label');
-          if (lbl) lbl.innerText = 'Cloud';
-          try {
-            const cleanUrl = cloudSyncUrl.replace(/\/$/, '') + '/friday_data.json';
-            const res = await fetch(cleanUrl);
-            if (res.ok) {
-              const cloudData = await res.json();
-              if (cloudData && Array.isArray(cloudData.fullHistoricalLogs)) {
-                localStorage.setItem('friday_history_logs_v8', JSON.stringify(cloudData.fullHistoricalLogs));
-                if (Array.isArray(cloudData.foodDatabase)) localStorage.setItem('friday_food_db_v8', JSON.stringify(cloudData.foodDatabase));
-                if (Array.isArray(cloudData.workoutDatabase)) localStorage.setItem('friday_workout_db_v8', JSON.stringify(cloudData.workoutDatabase));
-              }
-            }
-          } catch (err) {}
+        if (ghConfig.token) {
+          setSyncBadge('Loading...', 'border-cyan-700 text-cyan-400');
+          await pullFromGitHub();
+        } else {
+          setSyncBadge('Local', 'border-emerald-800/70 text-emerald-400');
         }
 
         const fDb = localStorage.getItem('friday_food_db_v8');
@@ -2236,21 +2337,49 @@
         showToast('บันทึกการแก้ไขเรียบร้อย');
       });
 
-      // Cloud Sync Modal Listeners
+      // Cloud Sync Modal Listeners (GitHub Repo Sync)
       document.getElementById('btn-open-sync').addEventListener('click', () => {
-        document.getElementById('cloud-firebase-url').value = cloudSyncUrl;
+        document.getElementById('gh-repo-input').value = ghConfig.repo;
+        document.getElementById('gh-path-input').value = ghConfig.path;
+        document.getElementById('gh-token-input').value = ghConfig.token;
         document.getElementById('modal-cloud-sync').classList.remove('hidden');
       });
       document.getElementById('btn-close-sync-modal').addEventListener('click', () => {
         document.getElementById('modal-cloud-sync').classList.add('hidden');
       });
-      document.getElementById('btn-save-cloud-url').addEventListener('click', () => {
-        cloudSyncUrl = document.getElementById('cloud-firebase-url').value.trim();
-        localStorage.setItem('friday_cloud_url_v8', cloudSyncUrl);
-        saveToStorage();
-        showToast(cloudSyncUrl ? 'เชื่อมต่อ Cloud DB สำเร็จ!' : 'ยกเลิก Cloud Sync (ใช้ Local DB)');
+      document.getElementById('btn-save-gh-sync').addEventListener('click', async () => {
+        ghConfig.repo = document.getElementById('gh-repo-input').value.trim() || 'Nuistack/Friday-dashboard';
+        ghConfig.path = document.getElementById('gh-path-input').value.trim() || 'data/friday_data.json';
+        ghConfig.token = document.getElementById('gh-token-input').value.trim();
+        localStorage.setItem('friday_gh_repo', ghConfig.repo);
+        localStorage.setItem('friday_gh_path', ghConfig.path);
+        localStorage.setItem('friday_gh_token', ghConfig.token);
+        if (ghConfig.token) {
+          await pushToGitHub();
+          showToast('เชื่อมต่อและซิงค์เข้า GitHub สำเร็จ!');
+        } else {
+          setSyncBadge('Local', 'border-emerald-800/70 text-emerald-400');
+          showToast('บันทึกโหมด Local เรียบร้อย');
+        }
         document.getElementById('modal-cloud-sync').classList.add('hidden');
       });
+      document.getElementById('btn-pull-gh-sync').addEventListener('click', async () => {
+        ghConfig.repo = document.getElementById('gh-repo-input').value.trim() || 'Nuistack/Friday-dashboard';
+        ghConfig.path = document.getElementById('gh-path-input').value.trim() || 'data/friday_data.json';
+        ghConfig.token = document.getElementById('gh-token-input').value.trim();
+        const ok = await pullFromGitHub();
+        if (ok) {
+          await loadFromStorage();
+          syncThaiDateTime();
+          updateDatalists();
+          refreshAllViews();
+          document.getElementById('modal-cloud-sync').classList.add('hidden');
+          showToast('ดึงข้อมูลล่าสุดจาก GitHub สำเร็จ!');
+        } else {
+          showToast('ไม่พบไฟล์ข้อมูลใน GitHub หรือ Token ไม่ถูกต้อง');
+        }
+      });
+
       document.getElementById('btn-copy-today-summary').addEventListener('click', () => {
         const d = state.today;
         const foods = d.items.map(i => `- ${i.name} (${i.cal} kcal / P ${i.p}g)`).join('\n') || '- ยังไม่มี';
