@@ -798,7 +798,7 @@
 
       <div class="text-xs text-slate-300 space-y-2 leading-relaxed">
         <p class="bg-cyber-black p-2.5 rounded-xl border border-cyber-border">
-          <strong class="text-emerald-400">✓ หลักการทำงาน:</strong> เมื่อกดบันทึกบนมือถือ ระบบจะเซฟลงเครื่องทันทีแล้วส่งไฟล์ข้อมูลไปเก็บใน <b>GitHub (Nuistack/Friday-dashboard)</b> อัตโนมัติ ทำให้เปิดจากคอมหรือมือถือเครื่องอื่นข้อมูลก็ตรงกัน 100%
+          <strong class="text-emerald-400">✓ หลักการทำงาน:</strong> เมื่อกดบันทึกบนมือถือ ระบบจะเซฟลงเครื่องทันทีแล้วส่งข้อมูลไปอัปเดตทั้ง <b>data/friday_data.json</b>, <b>vault/food_log.md</b> และ <b>vault/workout_log.md</b> ใน GitHub อัตโนมัติ ทำให้เปิดจากคอมหรือมือถือเครื่องอื่นข้อมูลก็ตรงกัน 100%
         </p>
       </div>
 
@@ -1404,24 +1404,72 @@
       return new TextDecoder().decode(bytes);
     }
 
+    function buildFoodLogMarkdown() {
+      let md = '# Food & Nutrition Log\n\n';
+      fullHistoricalLogs.forEach(day => {
+        const cleanTitle = day.dayName.replace(' - วันนี้', '').replace('(วันนี้)', '').trim();
+        md += `## ${day.date} (${cleanTitle.replace(/^\d+\s+\S+\s*/, '').replace(/[()]/g, '') || cleanTitle})\n\n`;
+        if (day.items && day.items.length > 0) {
+          day.items.forEach(it => {
+            md += `- **${it.time || '12:00'}:** ${it.name} | ${it.cal || 0} kcal | P ${it.p || 0}g | C ${it.c || 0}g | F ${it.f || 0}g\n`;
+          });
+        } else {
+          md += `- *ยังไม่มีรายการอาหาร*\n`;
+        }
+        const defSign = day.deficitBurn >= 0 ? `-${day.deficitBurn}` : `+${Math.abs(day.deficitBurn)}`;
+        md += `- **สรุปวัน:** กิน ${day.caloriesEaten.toLocaleString()} kcal | โปรตีน ${day.protein}g | เบิร์นออก ${day.tdee.toLocaleString()} kcal | ติดลบจริง ${defSign} kcal\n\n`;
+      });
+      return md;
+    }
+
+    function buildWorkoutLogMarkdown() {
+      let md = '# Workout & Activity Log\n\n';
+      fullHistoricalLogs.forEach(day => {
+        const cleanTitle = day.dayName.replace(' - วันนี้', '').replace('(วันนี้)', '').trim();
+        md += `## ${day.date} (${cleanTitle.replace(/^\d+\s+\S+\s*/, '').replace(/[()]/g, '') || cleanTitle})\n\n`;
+        if (day.workouts && day.workouts.length > 0) {
+          day.workouts.forEach(w => {
+            md += `- **${w.category || 'ออกกำลังกาย'}:** ${w.name} | ${w.duration || 0} นาที | เบิร์น +${w.calBurn || 0} kcal\n`;
+          });
+          md += `- **สรุปเบิร์นออกกำลังกาย:** +${(day.exerciseBurn || 0).toLocaleString()} kcal (TDEE รวม ${day.tdee.toLocaleString()} kcal)\n\n`;
+        } else {
+          md += `- *วันพักฟื้น / ไม่มีรายการออกกำลังกาย* (TDEE ฐาน ${day.tdee.toLocaleString()} kcal)\n\n`;
+        }
+      });
+      return md;
+    }
+
+    async function upsertGitHubFile(filePath, contentStr, commitMsg, headers) {
+      const apiUrl = `https://api.github.com/repos/${ghConfig.repo}/contents/${filePath}`;
+      let sha = null;
+      const getRes = await fetch(apiUrl, { headers, cache: 'no-store' });
+      if (getRes.ok) {
+        const info = await getRes.json();
+        sha = info.sha;
+      }
+      const body = {
+        message: commitMsg,
+        content: utf8ToBase64(contentStr)
+      };
+      if (sha) body.sha = sha;
+
+      const putRes = await fetch(apiUrl, {
+        method: 'PUT',
+        headers,
+        body: JSON.stringify(body)
+      });
+      return putRes.ok;
+    }
+
     async function pushToGitHub() {
       if (!ghConfig.token || !ghConfig.repo || !ghConfig.path) return;
       setSyncBadge('Syncing...', 'border-amber-600 text-amber-400 animate-pulse');
       try {
-        const apiUrl = `https://api.github.com/repos/${ghConfig.repo}/contents/${ghConfig.path}`;
         const headers = {
           'Authorization': `Bearer ${ghConfig.token}`,
           'Accept': 'application/vnd.github+json',
           'Content-Type': 'application/json'
         };
-
-        // Get current file SHA if it exists
-        let sha = null;
-        const getRes = await fetch(apiUrl, { headers });
-        if (getRes.ok) {
-          const info = await getRes.json();
-          sha = info.sha;
-        }
 
         const payloadObj = {
           updatedAt: new Date().toISOString(),
@@ -1432,20 +1480,32 @@
           fullHistoricalLogs
         };
 
-        const body = {
-          message: `Update Friday Dashboard log (${getThaiDate().isoDate})`,
-          content: utf8ToBase64(JSON.stringify(payloadObj, null, 2))
-        };
-        if (sha) body.sha = sha;
+        const dateTag = getThaiDate().isoDate;
+        const okJson = await upsertGitHubFile(
+          ghConfig.path,
+          JSON.stringify(payloadObj, null, 2),
+          `Update JSON log (${dateTag})`,
+          headers
+        );
 
-        const putRes = await fetch(apiUrl, {
-          method: 'PUT',
-          headers,
-          body: JSON.stringify(body)
-        });
+        const okFoodMd = await upsertGitHubFile(
+          'vault/food_log.md',
+          buildFoodLogMarkdown(),
+          `Update food_log.md (${dateTag})`,
+          headers
+        );
 
-        if (putRes.ok) {
+        const okWorkoutMd = await upsertGitHubFile(
+          'vault/workout_log.md',
+          buildWorkoutLogMarkdown(),
+          `Update workout_log.md (${dateTag})`,
+          headers
+        );
+
+        if (okJson && okFoodMd && okWorkoutMd) {
           setSyncBadge('Synced ✓', 'border-emerald-700 text-emerald-400');
+        } else if (okJson) {
+          setSyncBadge('Partial ✓', 'border-amber-600 text-amber-400');
         } else {
           setSyncBadge('Sync Err', 'border-rose-700 text-rose-400');
         }
