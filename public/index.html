@@ -81,7 +81,7 @@
           <span class="font-black text-white text-sm tracking-wider">FRIDAY COACH</span>
           <span class="text-[10px] bg-cyan-950 text-cyan-400 border border-cyan-800 px-2 py-0.5 rounded-full font-bold">INBODY AI</span>
         </div>
-        <span class="text-xs text-slate-400 block">คุณนุ้ย &bull; 83.1 kg &bull; 22.8% Fat</span>
+        <span id="header-user-status" class="text-xs text-slate-400 block">คุณนุ้ย &bull; 83.1 kg &bull; 22.8% Fat</span>
       </div>
     </div>
     <div class="flex items-center gap-2">
@@ -105,7 +105,7 @@
         <div class="flex items-center justify-between">
           <div>
             <span class="text-xs uppercase font-extrabold text-cyber-cyan tracking-wider font-mono block">ENERGY & DEFICIT</span>
-            <span class="text-sm font-black text-white block">10 พ.ย. (วันนี้) &bull; สรุปพลังงาน</span>
+            <span id="header-today-title" class="text-sm font-black text-white block">11 พ.ย. (วันพุธ - วันนี้) &bull; สรุปพลังงาน</span>
           </div>
           <span id="metric-deficit-badge" class="px-3 py-1 rounded-full text-xs font-black bg-emerald-950 text-emerald-300 border border-emerald-800">
             ✓ Super Deficit
@@ -119,17 +119,17 @@
           <div class="bg-cyber-black/85 p-2.5 rounded-xl border border-cyber-border flex flex-col justify-between">
             <span class="text-xs text-slate-300 font-bold block mb-1">กิน / โควตา</span>
             <div class="my-auto">
-              <span id="metric-calories-eaten" class="text-xl font-black text-white font-num">405</span>
+              <span id="metric-calories-eaten" class="text-xl font-black text-white font-num">635</span>
               <span class="text-xs text-slate-400 font-bold block">/ 1,900 kcal</span>
             </div>
-            <span class="text-[11px] text-emerald-400 block font-bold">เหลือ 1,495</span>
+            <span class="text-[11px] text-emerald-400 block font-bold">เหลือ 1,265</span>
           </div>
 
           <!-- Card 2: โปรตีน / เป้าหมาย -->
           <div class="bg-cyber-black/85 p-2.5 rounded-xl border border-amber-900/60 glow-amber flex flex-col justify-between">
             <span class="text-xs text-amber-300 font-bold block mb-1">โปรตีน / เป้าหมาย</span>
             <div class="my-auto">
-              <span id="metric-protein-eaten" class="text-xl font-black text-amber-400 font-num">53.0</span>
+              <span id="metric-protein-eaten" class="text-xl font-black text-amber-400 font-num">54.5</span>
               <span class="text-xs text-slate-400 font-bold block">/ 160 g</span>
             </div>
             <span class="text-[11px] text-amber-400/90 block font-bold">ขาด 107g</span>
@@ -150,7 +150,7 @@
         <div class="bg-cyber-black/90 p-3 rounded-xl border border-cyber-border/80 space-y-2">
           <div class="flex items-center justify-between text-xs">
             <span class="text-slate-200 font-bold">แถบแสดงโควต้าระดับการเผาผลาญ:</span>
-            <span class="text-cyber-cyan font-extrabold font-num text-sm">Deficit: <span id="metric-deficit">-2,315</span> kcal</span>
+            <span class="text-cyber-cyan font-extrabold font-num text-sm">Deficit: <span id="metric-deficit">-2,085</span> kcal</span>
           </div>
           
           <!-- Dual-level Metabolism Progress Gauge -->
@@ -161,8 +161,8 @@
           </div>
 
           <div class="flex items-center justify-between text-xs text-slate-400">
-            <span>กิน: <b id="bar-eat-text" class="text-white">405</b> kcal</span>
-            <span>โควตาว่าง: <b id="metric-calories-left" class="text-emerald-400 font-num font-bold">1,495</b> kcal</span>
+            <span>กิน: <b id="bar-eat-text" class="text-white">635</b> kcal</span>
+            <span>โควตาว่าง: <b id="metric-calories-left" class="text-emerald-400 font-num font-bold">1,265</b> kcal</span>
             <span>เพดาน TDEE: <b id="bar-tdee-text" class="text-cyber-cyan font-num font-bold">2,720</b> kcal</span>
           </div>
         </div>
@@ -284,7 +284,7 @@
       <!-- 4. CARD รายการที่ทานวันนี้ -->
       <div class="bg-cyber-surface p-4 rounded-2xl border border-cyber-border space-y-3">
         <div class="flex items-center justify-between border-b border-cyber-border/70 pb-2">
-          <span class="text-sm font-black text-white">🍽️ รายการที่ทานวันนี้ (10 พ.ย.)</span>
+          <span id="today-meals-title" class="text-sm font-black text-white">🍽️ รายการที่ทานวันนี้ (11 พ.ย.)</span>
           <span id="today-item-count" class="text-xs text-cyber-cyan font-num font-bold">2 รายการ</span>
         </div>
         <div id="today-items-list" class="space-y-2"></div>
@@ -787,19 +787,20 @@
         date: '2026-11-10',
         dayName: '10 พ.ย. (วันอังคาร - วันนี้)',
         zone: 'super_deficit',
-        statusText: '✓ Super Deficit (กำลังดำเนินการ)',
-        caloriesEaten: 405,
+        statusText: '✓ Super Deficit (กิน 635 kcal & เบิร์น +520 kcal)',
+        caloriesEaten: 635,
         exerciseBurn: 520,
         baseTdee: 2200,
         tdee: 2720,
-        deficitBurn: 2315,
-        rawDeficit: -2315,
-        protein: 53.0,
+        deficitBurn: 2085,
+        rawDeficit: -2085,
+        protein: 54.5,
         workouts: [
           { id: 'w1', category: 'เวท', name: '🏋️ เวทเทรนนิ่ง Upper Body Power', duration: 50, calBurn: 320 },
           { id: 'w2', category: 'คาร์ดิโอ', name: '🏃 เดินลู่ชัน Incline Zone 2', duration: 25, calBurn: 200 }
         ],
         items: [
+          { time: '00:40', name: '🍺 เบียร์สิงห์ขวดใหญ่ 620ml', cal: 230, p: 1.5, c: 16.0, f: 0 },
           { time: '12:30', name: '🍱 ข้าวสวย 100g + ไก่ย่างลอกหนัง 200g', cal: 400, p: 53.0, c: 28, f: 5.5 },
           { time: '11:00', name: '☕ อเมริกาโน่เย็นไม่หวาน 1 แก้ว', cal: 5, p: 0, c: 1, f: 0 }
         ]
@@ -1137,14 +1138,94 @@
     }
 
     
+    
+    // ==================== BANGKOK AUTO DATE & DAY ROLLOVER ENGINE ====================
+    function getThaiDate() {
+      const now = new Date();
+      const bkkString = now.toLocaleString('en-US', { timeZone: 'Asia/Bangkok' });
+      const bkkDate = new Date(bkkString);
+
+      const y = bkkDate.getFullYear();
+      const m = String(bkkDate.getMonth() + 1).padStart(2, '0');
+      const d = String(bkkDate.getDate()).padStart(2, '0');
+      const isoDate = `${y}-${m}-${d}`;
+
+      const thaiMonths = ['', 'ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
+      const thaiDays = ['วันอาทิตย์', 'วันจันทร์', 'วันอังคาร', 'วันพุธ', 'วันพฤหัสบดี', 'วันศุกร์', 'วันเสาร์'];
+
+      const dayOfWeek = thaiDays[bkkDate.getDay()];
+      const monthName = thaiMonths[bkkDate.getMonth() + 1];
+      const buddhistYear = y + 543;
+
+      return {
+        isoDate,
+        dayNum: bkkDate.getDate(),
+        monthIndex: bkkDate.getMonth() + 1,
+        monthName,
+        yearCE: y,
+        yearBE: buddhistYear,
+        dayOfWeek,
+        todayLabel: `${bkkDate.getDate()} ${monthName} (${dayOfWeek} - วันนี้)`
+      };
+    }
+
+    function syncThaiDateTime() {
+      const thai = getThaiDate();
+
+      // Check if date has rolled over
+      if (fullHistoricalLogs.length > 0 && fullHistoricalLogs[0].date !== thai.isoDate) {
+        // Finalize previous day name (remove 'วันนี้')
+        if (fullHistoricalLogs[0].dayName.includes('วันนี้')) {
+          fullHistoricalLogs[0].dayName = fullHistoricalLogs[0].dayName.replace(' - วันนี้', '').replace('วันนี้', '').trim();
+        }
+
+        // Check if an entry for today already exists
+        let todayLog = fullHistoricalLogs.find(d => d.date === thai.isoDate);
+        if (!todayLog) {
+          todayLog = {
+            date: thai.isoDate,
+            dayName: thai.todayLabel,
+            zone: 'super_deficit',
+            statusText: '✓ Super Deficit (เริ่มต้นวันใหม่)',
+            caloriesEaten: 0,
+            exerciseBurn: 0,
+            baseTdee: 2200,
+            tdee: 2200,
+            deficitBurn: 2200,
+            rawDeficit: -2200,
+            protein: 0,
+            workouts: [],
+            items: []
+          };
+          fullHistoricalLogs.unshift(todayLog);
+        }
+
+        state.today = todayLog;
+        saveToStorage();
+      } else if (fullHistoricalLogs.length > 0) {
+        state.today = fullHistoricalLogs[0];
+        state.today.dayName = thai.todayLabel;
+      }
+
+      // Update Header & UI Titles
+      const headerTitle = document.getElementById('header-today-title');
+      if (headerTitle) headerTitle.innerHTML = `${thai.todayLabel} &bull; สรุปพลังงาน`;
+
+      const mealsTitle = document.getElementById('today-meals-title');
+      if (mealsTitle) mealsTitle.innerHTML = `🍽️ รายการที่ทานวันนี้ (${thai.dayNum} ${thai.monthName})`;
+
+      const userStatus = document.getElementById('header-user-status');
+      if (userStatus) userStatus.innerHTML = `คุณนุ้ย &bull; ${thai.dayNum} ${thai.monthName} ${thai.yearCE} &bull; 83.1 kg &bull; 22.8% Fat`;
+    }
+
     // ==================== LOCALSTORAGE PERSISTENCE ENGINE ====================
     function saveToStorage() {
       try {
-        localStorage.setItem('friday_today_items_v6', JSON.stringify(state.today.items));
+        localStorage.setItem('friday_today_items_v7', JSON.stringify(state.today.items));
         localStorage.setItem('friday_today_workouts_v6', JSON.stringify(state.today.workouts));
         localStorage.setItem('friday_food_db_v6', JSON.stringify(foodDatabase));
         localStorage.setItem('friday_workout_db_v6', JSON.stringify(workoutDatabase));
-        localStorage.setItem('friday_history_logs_v6', JSON.stringify(fullHistoricalLogs));
+        localStorage.setItem('friday_history_logs_v7', JSON.stringify(fullHistoricalLogs));
         localStorage.setItem('friday_coins_v6', state.coins.toString());
       } catch (e) {
         console.error('Storage save error:', e);
@@ -1168,7 +1249,7 @@
         }
 
         // 3. Load Historical Logs
-        const hLogs = localStorage.getItem('friday_history_logs_v6');
+        const hLogs = localStorage.getItem('friday_history_logs_v7');
         if (hLogs) {
           const parsed = JSON.parse(hLogs);
           if (Array.isArray(parsed) && parsed.length > 0) {
@@ -1180,7 +1261,7 @@
         }
 
         // 4. Load Today Items
-        const tItems = localStorage.getItem('friday_today_items_v6');
+        const tItems = localStorage.getItem('friday_today_items_v7');
         if (tItems) {
           const parsed = JSON.parse(tItems);
           if (Array.isArray(parsed)) {
@@ -1434,41 +1515,46 @@
       }
     }
 
-    function renderNovemberGrid(grid) {
-      const novData = {
-        1: { type: 'super', badge: '✓ -460', date: '2026-11-01' },
-        2: { type: 'super', badge: '✓ -670', date: '2026-11-02' },
-        3: { type: 'super', badge: '✓ -680', date: '2026-11-03' },
-        4: { type: 'safe', badge: '✓ -515', date: '2026-11-04' },
-        5: { type: 'super', badge: '✓ -270', date: '2026-11-05' },
-        6: { type: 'surplus', badge: '⚠️ +110', date: '2026-11-06' },
-        7: { type: 'safe', badge: '⚡ +60', date: '2026-11-07' },
-        8: { type: 'super', badge: '✓ -865', date: '2026-11-08' },
-        9: { type: 'super', badge: '✓ -950', date: '2026-11-09' }
-      };
+        function renderNovemberGrid(grid) {
+      const thai = getThaiDate();
+      const currentDay = thai.dayNum; // e.g. 11
 
       for (let day = 1; day <= 30; day++) {
         const btn = document.createElement('button');
         btn.className = 'p-1 rounded-lg border flex flex-col items-center justify-between min-h-[46px] text-xs active:scale-95 transition-transform';
+        const dateStr = `2026-11-${String(day).padStart(2, '0')}`;
 
-        if (novData[day]) {
-          const d = novData[day];
-          if (d.type === 'super') {
-            btn.className += ' bg-emerald-950/80 border-emerald-600 text-emerald-300';
-            btn.innerHTML = `<span class="font-bold text-slate-200 text-sm">${day}</span><span class="text-[9px] text-emerald-400 font-num font-bold">${d.badge}</span>`;
-          } else if (d.type === 'safe') {
-            btn.className += ' bg-amber-950/70 border-amber-600 text-amber-300';
-            btn.innerHTML = `<span class="font-bold text-slate-200 text-sm">${day}</span><span class="text-[9px] text-amber-400 font-num font-bold">${d.badge}</span>`;
-          } else {
-            btn.className += ' bg-rose-950/70 border-rose-700 text-rose-300';
-            btn.innerHTML = `<span class="font-bold text-slate-200 text-sm">${day}</span><span class="text-[9px] text-rose-400 font-num font-bold">${d.badge}</span>`;
-          }
-          btn.onclick = () => openDayDetailsModal(d.date);
-        } else if (day === 10) {
+        if (day === currentDay) {
+          // TODAY in Thailand
           btn.className += ' bg-cyan-950/90 border-cyan-400 text-cyan-300 ring-1 ring-cyan-400 glow-cyan';
-          btn.innerHTML = `<span class="font-extrabold text-white text-sm">10</span><span class="text-[9px] text-cyber-cyan font-bold">วันนี้</span>`;
-          btn.onclick = () => openDayDetailsModal('2026-11-10');
+          btn.innerHTML = `<span class="font-extrabold text-white text-sm">${day}</span><span class="text-[9px] text-cyber-cyan font-bold">วันนี้</span>`;
+          btn.onclick = () => openDayDetailsModal(dateStr);
+        } else if (day < currentDay) {
+          // PAST DAYS
+          const log = fullHistoricalLogs.find(d => d.date === dateStr);
+          if (log) {
+            let badgeText = '';
+            let btnClass = '';
+            if (log.deficitBurn >= 400) {
+              btnClass = ' bg-emerald-950/80 border-emerald-600 text-emerald-300';
+              badgeText = `✓ -${Math.abs(log.deficitBurn).toLocaleString()}`;
+            } else if (log.deficitBurn >= 0) {
+              btnClass = ' bg-amber-950/70 border-amber-600 text-amber-300';
+              badgeText = `⚡ -${Math.abs(log.deficitBurn).toLocaleString()}`;
+            } else {
+              btnClass = ' bg-rose-950/70 border-rose-700 text-rose-300';
+              badgeText = `⚠️ +${Math.abs(log.deficitBurn).toLocaleString()}`;
+            }
+            btn.className += btnClass;
+            btn.innerHTML = `<span class="font-bold text-slate-200 text-sm">${day}</span><span class="text-[8px] font-num font-bold">${badgeText}</span>`;
+            btn.onclick = () => openDayDetailsModal(dateStr);
+          } else {
+            btn.className += ' bg-cyber-card/30 border-cyber-border text-slate-500';
+            btn.innerHTML = `<span class="font-bold">${day}</span><span class="text-[8px] text-slate-600">-</span>`;
+            btn.onclick = () => showToast(`${day} พ.ย. 2026: ไม่มีบันทึก`);
+          }
         } else {
+          // FUTURE DAYS
           btn.className += ' bg-cyber-card/30 border-cyber-border text-slate-500';
           btn.innerHTML = `<span class="font-bold">${day}</span><span class="text-[8px] text-slate-600">-</span>`;
           btn.onclick = () => showToast(`${day} พ.ย. 2026: โควตารายวัน 1,900 kcal`);
@@ -1828,6 +1914,7 @@
     // ==================== EVENT LISTENERS ====================
     document.addEventListener('DOMContentLoaded', () => {
       loadFromStorage();
+      syncThaiDateTime();
       updateDatalists();
       renderDashboard();
       renderMonthlyCalendar('nov');
