@@ -1,0 +1,1019 @@
+{
+  "updatedAt": "2026-11-11T08:17:47.466Z",
+  "updatedThai": "11 พ.ย. (วันพุธ - วันนี้)",
+  "coins": 650,
+  "foodDatabase": [
+    {
+      "id": "f1",
+      "name": "ข้าวสวย 100g + ไก่ย่างลอกหนัง 200g",
+      "cal": 400,
+      "p": 53,
+      "c": 28,
+      "f": 5.5
+    },
+    {
+      "id": "f2",
+      "name": "ข้าวสวย 100g (1 ทัพพี)",
+      "cal": 130,
+      "p": 2.7,
+      "c": 28,
+      "f": 0.3
+    },
+    {
+      "id": "f3",
+      "name": "ไก่ย่างลอกหนัง 200g",
+      "cal": 270,
+      "p": 50,
+      "c": 0,
+      "f": 5.2
+    },
+    {
+      "id": "f4",
+      "name": "อกไก่นุ่ม CP Delight 2 ซอง (พริกสด + กะเพรา)",
+      "cal": 180,
+      "p": 35,
+      "c": 2,
+      "f": 3
+    },
+    {
+      "id": "f5",
+      "name": "Vitaday High Protein องุ่นเคียวโฮ 480ml",
+      "cal": 160,
+      "p": 38,
+      "c": 0,
+      "f": 0
+    },
+    {
+      "id": "f6",
+      "name": "นมโปรตีน Sunshine Dairy มอลต์ช็อกโกแลต 340ml",
+      "cal": 230,
+      "p": 33,
+      "c": 23,
+      "f": 1
+    },
+    {
+      "id": "f7",
+      "name": "ไข่ต้ม CP 2 ฟอง",
+      "cal": 140,
+      "p": 13,
+      "c": 1,
+      "f": 10
+    },
+    {
+      "id": "f8",
+      "name": "ไข่ขาวต้ม 4 ฟอง",
+      "cal": 68,
+      "p": 14.4,
+      "c": 0.8,
+      "f": 0.2
+    },
+    {
+      "id": "f9",
+      "name": "อเมริกาโน่เย็นไม่หวาน 1 แก้ว",
+      "cal": 5,
+      "p": 0,
+      "c": 1,
+      "f": 0
+    },
+    {
+      "id": "f10",
+      "name": "สลัดอกไก่ฉีกน้ำสลัดบัลซามิก",
+      "cal": 260,
+      "p": 32,
+      "c": 12,
+      "f": 6
+    },
+    {
+      "id": "f11",
+      "name": "เบียร์สิงห์กระป๋องยาว 490ml",
+      "cal": 215,
+      "p": 0,
+      "c": 16,
+      "f": 0
+    },
+    {
+      "id": "f12",
+      "name": "เบียร์ NAD NAP Lager 490ml",
+      "cal": 190,
+      "p": 1.5,
+      "c": 15,
+      "f": 0
+    },
+    {
+      "id": "f13",
+      "name": "ส้มตำไทยไม่หวาน (จานกลาง)",
+      "cal": 120,
+      "p": 3,
+      "c": 25,
+      "f": 1
+    },
+    {
+      "id": "f14",
+      "name": "BOBBI Plant Protein Lemonade",
+      "cal": 180,
+      "p": 36,
+      "c": 8,
+      "f": 0
+    },
+    {
+      "id": "f15",
+      "name": "โยเกิร์ตปั่น Soto รสต้นตำรับ 0%",
+      "cal": 140,
+      "p": 35,
+      "c": 12,
+      "f": 1.5
+    }
+  ],
+  "workoutDatabase": [
+    {
+      "name": "เวทเทรนนิ่ง Upper Body Power",
+      "duration": 50,
+      "cal": 320,
+      "cat": "เวท"
+    },
+    {
+      "name": "เวทเทรนนิ่ง อก & หลังแขน",
+      "duration": 50,
+      "cal": 320,
+      "cat": "เวท"
+    },
+    {
+      "name": "เวทเทรนนิ่ง หลัง & หน้าแขน",
+      "duration": 55,
+      "cal": 350,
+      "cat": "เวท"
+    },
+    {
+      "name": "เวทเทรนนิ่ง Leg Day จัดเต็ม",
+      "duration": 60,
+      "cal": 420,
+      "cat": "เวท"
+    },
+    {
+      "name": "เวทเทรนนิ่ง ไหล่ & แขน",
+      "duration": 50,
+      "cal": 330,
+      "cat": "เวท"
+    },
+    {
+      "name": "เวทเทรนนิ่ง Full Body Pump",
+      "duration": 45,
+      "cal": 300,
+      "cat": "เวท"
+    },
+    {
+      "name": "เดินชันบนลู่วิ่งไฟฟ้า Incline Zone 2",
+      "duration": 30,
+      "cal": 250,
+      "cat": "คาร์ดิโอ"
+    },
+    {
+      "name": "วิ่งลู่วิ่ง Zone 2",
+      "duration": 35,
+      "cal": 320,
+      "cat": "คาร์ดิโอ"
+    },
+    {
+      "name": "ปั่นจักรยาน Stationary Bike",
+      "duration": 40,
+      "cal": 300,
+      "cat": "คาร์ดิโอ"
+    },
+    {
+      "name": "กระโดดเชือก Jump Rope",
+      "duration": 20,
+      "cal": 220,
+      "cat": "คาร์ดิโอ"
+    },
+    {
+      "name": "ตีแบดมินตัน Badminton Game",
+      "duration": 60,
+      "cal": 450,
+      "cat": "กีฬา"
+    },
+    {
+      "name": "ว่ายน้ำฟรีสไตล์ Swimming",
+      "duration": 45,
+      "cal": 400,
+      "cat": "กีฬา"
+    },
+    {
+      "name": "เตะฟุตบอล Football Match",
+      "duration": 60,
+      "cal": 500,
+      "cat": "กีฬา"
+    },
+    {
+      "name": "ชกมวย Boxing Training",
+      "duration": 45,
+      "cal": 420,
+      "cat": "กีฬา"
+    },
+    {
+      "name": "เดินเยอะกลางแจ้ง 12,000 ก้าว",
+      "duration": 60,
+      "cal": 350,
+      "cat": "กีฬา"
+    }
+  ],
+  "fullHistoricalLogs": [
+    {
+      "date": "2026-11-11",
+      "dayName": "11 พ.ย. (วันพุธ - วันนี้)",
+      "zone": "super_deficit",
+      "statusText": "✓ Super Deficit (กิน 400 & เบิร์น +0 kcal)",
+      "caloriesEaten": 400,
+      "exerciseBurn": 0,
+      "baseTdee": 2200,
+      "tdee": 2200,
+      "deficitBurn": 1800,
+      "rawDeficit": -1800,
+      "protein": 40,
+      "workouts": [],
+      "items": [
+        {
+          "id": 1794384122724,
+          "time": "15:02",
+          "name": "ข้าวสวย 100g + ไก่ย่างลอกหนัง 200g",
+          "cal": 400,
+          "p": 40,
+          "c": 28,
+          "f": 5.5
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "dayName": "10 พ.ย. (วันอังคาร)",
+      "zone": "super_deficit",
+      "statusText": "✓ Super Deficit (กิน 635 kcal & เบิร์น +520 kcal)",
+      "caloriesEaten": 635,
+      "exerciseBurn": 520,
+      "baseTdee": 2200,
+      "tdee": 2720,
+      "deficitBurn": 2085,
+      "rawDeficit": -2085,
+      "protein": 54.5,
+      "workouts": [
+        {
+          "id": "w1",
+          "category": "เวท",
+          "name": "🏋️ เวทเทรนนิ่ง Upper Body Power",
+          "duration": 50,
+          "calBurn": 320
+        },
+        {
+          "id": "w2",
+          "category": "คาร์ดิโอ",
+          "name": "🏃 เดินลู่ชัน Incline Zone 2",
+          "duration": 25,
+          "calBurn": 200
+        }
+      ],
+      "items": [
+        {
+          "time": "00:40",
+          "name": "🍺 เบียร์สิงห์ขวดใหญ่ 620ml",
+          "cal": 230,
+          "p": 1.5,
+          "c": 16,
+          "f": 0
+        },
+        {
+          "time": "12:30",
+          "name": "🍱 ข้าวสวย 100g + ไก่ย่างลอกหนัง 200g",
+          "cal": 400,
+          "p": 53,
+          "c": 28,
+          "f": 5.5
+        },
+        {
+          "time": "11:00",
+          "name": "☕ อเมริกาโน่เย็นไม่หวาน 1 แก้ว",
+          "cal": 5,
+          "p": 0,
+          "c": 1,
+          "f": 0
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "dayName": "9 พ.ย. (วันจันทร์)",
+      "zone": "super_deficit",
+      "statusText": "✓ Super Deficit (Deficit 950 kcal)",
+      "caloriesEaten": 1790,
+      "exerciseBurn": 588,
+      "baseTdee": 2152,
+      "tdee": 2740,
+      "deficitBurn": 950,
+      "rawDeficit": -950,
+      "protein": 165.5,
+      "workouts": [
+        {
+          "id": "w3",
+          "category": "คาร์ดิโอ",
+          "name": "🏃 วิ่งลู่วิ่งไฟฟ้า 2.06 km (32:53 นาที)",
+          "duration": 33,
+          "calBurn": 251
+        },
+        {
+          "id": "w4",
+          "category": "เวท",
+          "name": "🏋️ เวทเทรนนิ่ง Pull Day (1 ชม.)",
+          "duration": 60,
+          "calBurn": 337
+        }
+      ],
+      "items": [
+        {
+          "time": "00:30",
+          "name": "🍺 เบียร์สิงห์กระป๋องยาว 2 กระป๋อง + ขวดใหญ่ 1 ขวด",
+          "cal": 630,
+          "p": 1,
+          "c": 51,
+          "f": 0
+        },
+        {
+          "time": "22:15",
+          "name": "🥛 Vitaday High Protein กลิ่นองุ่นเคียวโฮ 480ml",
+          "cal": 160,
+          "p": 38,
+          "c": 0,
+          "f": 0
+        },
+        {
+          "time": "20:20",
+          "name": "🥛 นมโปรตีน Sunshine Dairy มอลต์ช็อกโกแลต 340ml",
+          "cal": 230,
+          "p": 33,
+          "c": 23,
+          "f": 1
+        },
+        {
+          "time": "19:58",
+          "name": "🍗 อกไก่นุ่ม CP Delight 2 ซอง (รสพริกสด + กะเพรา)",
+          "cal": 180,
+          "p": 35,
+          "c": 2,
+          "f": 3
+        },
+        {
+          "time": "15:30",
+          "name": "🥚 ไข่ขาวต้ม 2 ฟอง + กล้วยเบรกแตก 6 ชิ้น",
+          "cal": 145,
+          "p": 8,
+          "c": 14.4,
+          "f": 6
+        },
+        {
+          "time": "12:58",
+          "name": "🍱 ข้าวสวย 80g + ไก่ย่างลอกหนัง 150g + น้ำจิ้มแจ่ว + ไข่ต้ม 1 ฟอง",
+          "cal": 440,
+          "p": 50.5,
+          "c": 28,
+          "f": 11.7
+        },
+        {
+          "time": "08:30",
+          "name": "☕ อเมริกาโน่เย็นไม่หวาน 1 แก้ว",
+          "cal": 5,
+          "p": 0,
+          "c": 0,
+          "f": 0
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "dayName": "8 พ.ย. (วันอาทิตย์)",
+      "zone": "super_deficit",
+      "statusText": "✓ Super Deficit (Deficit 865 kcal)",
+      "caloriesEaten": 1505,
+      "exerciseBurn": 219,
+      "baseTdee": 2151,
+      "tdee": 2370,
+      "deficitBurn": 865,
+      "rawDeficit": -865,
+      "protein": 164,
+      "workouts": [
+        {
+          "id": "w5",
+          "category": "เวท",
+          "name": "🏋️ เวทเทรนนิ่ง อก + หน้าท้อง (38 นาที)",
+          "duration": 38,
+          "calBurn": 219
+        }
+      ],
+      "items": [
+        {
+          "time": "21:00",
+          "name": "🥛 Vitaday Protein Shake ช็อกโกแลตเข้มข้น",
+          "cal": 170,
+          "p": 35,
+          "c": 6,
+          "f": 2
+        },
+        {
+          "time": "18:40",
+          "name": "🍱 ข้าวผัดไข่ขาวอกไก่คลีน",
+          "cal": 380,
+          "p": 44,
+          "c": 35,
+          "f": 4.5
+        },
+        {
+          "time": "13:10",
+          "name": "🍗 อกไก่นุ่มรสพริกไทยดำ 2 ซอง",
+          "cal": 180,
+          "p": 35,
+          "c": 2,
+          "f": 3
+        },
+        {
+          "time": "11:30",
+          "name": "🍱 ข้าวกล้อง 100g + ลาบไก่คลีน",
+          "cal": 390,
+          "p": 42,
+          "c": 26,
+          "f": 8
+        },
+        {
+          "time": "08:00",
+          "name": "☕ อเมริกาโน่เย็น 1 แก้ว + กล้วยหอม 1 ลูก",
+          "cal": 125,
+          "p": 1,
+          "c": 28,
+          "f": 0
+        }
+      ]
+    },
+    {
+      "date": "2026-11-07",
+      "dayName": "7 พ.ย. (วันเสาร์)",
+      "zone": "safe_deficit",
+      "statusText": "⚡ Safe Zone (เบิร์นเวท 495 kcal)",
+      "caloriesEaten": 2705,
+      "exerciseBurn": 495,
+      "baseTdee": 2150,
+      "tdee": 2645,
+      "deficitBurn": -60,
+      "rawDeficit": 60,
+      "protein": 166,
+      "workouts": [
+        {
+          "id": "w6",
+          "category": "เวท",
+          "name": "🏋️ เวทเทรนนิ่ง Leg Day จัดเต็ม (71 นาที)",
+          "duration": 71,
+          "calBurn": 495
+        }
+      ],
+      "items": [
+        {
+          "time": "23:14",
+          "name": "🍺 เบียร์ NAD NAP Lager 490ml (1 กระป๋อง)",
+          "cal": 190,
+          "p": 1.5,
+          "c": 15,
+          "f": 0
+        },
+        {
+          "time": "21:30",
+          "name": "🥩 ชาบูเนื้อลีน + ผักสดรวม + ไข่ไก่ 2 ฟอง",
+          "cal": 950,
+          "p": 58,
+          "c": 20,
+          "f": 38
+        },
+        {
+          "time": "17:00",
+          "name": "🥛 นมโปรตีนรสช็อกโกแลต 350ml",
+          "cal": 210,
+          "p": 31,
+          "c": 15,
+          "f": 1.5
+        },
+        {
+          "time": "14:06",
+          "name": "🍱 ข้าวสวย + ไก่ผัดกระเทียม + ไข่ต้ม 2 ฟอง",
+          "cal": 440,
+          "p": 38,
+          "c": 29,
+          "f": 18.7
+        },
+        {
+          "time": "10:00",
+          "name": "🥪 แซนด์วิชอกไก่ไข่ดาวขนมปังโฮลวีต",
+          "cal": 320,
+          "p": 25,
+          "c": 30,
+          "f": 8
+        }
+      ]
+    },
+    {
+      "date": "2026-11-06",
+      "dayName": "6 พ.ย. (วันศุกร์)",
+      "zone": "surplus",
+      "statusText": "⚠️ Surplus เกินงบ (+110 kcal)",
+      "caloriesEaten": 2900,
+      "exerciseBurn": 634,
+      "baseTdee": 2156,
+      "tdee": 2790,
+      "deficitBurn": -110,
+      "rawDeficit": 110,
+      "protein": 170,
+      "workouts": [
+        {
+          "id": "w7",
+          "category": "คาร์ดิโอ",
+          "name": "🏃 วิ่งลู่วิ่งไฟฟ้า 4.88 km (60 นาที)",
+          "duration": 60,
+          "calBurn": 359
+        },
+        {
+          "id": "w8",
+          "category": "เวท",
+          "name": "🏋️ เวทเทรนนิ่ง ไหล่ & หลังส่วนบน (62 นาที)",
+          "duration": 62,
+          "calBurn": 275
+        }
+      ],
+      "items": [
+        {
+          "time": "22:00",
+          "name": "🍺 เบียร์สดสิงห์ 3 เหยือกใหญ่",
+          "cal": 980,
+          "p": 3,
+          "c": 84,
+          "f": 0
+        },
+        {
+          "time": "19:00",
+          "name": "🍗 ไก่ย่างส้มตำไม่หวาน + ข้าวเหนียว 1 ห่อ",
+          "cal": 580,
+          "p": 55,
+          "c": 45,
+          "f": 12
+        },
+        {
+          "time": "15:00",
+          "name": "🥛 เวย์โปรตีนไอโซเลท 1 สกู๊ป",
+          "cal": 130,
+          "p": 27,
+          "c": 2,
+          "f": 1
+        },
+        {
+          "time": "12:30",
+          "name": "🍱 ข้าวราดกะเพราอกไก่ไข่ต้ม",
+          "cal": 490,
+          "p": 48,
+          "c": 40,
+          "f": 10
+        }
+      ]
+    },
+    {
+      "date": "2026-11-05",
+      "dayName": "5 พ.ย. (วันพฤหัสบดี)",
+      "zone": "super_deficit",
+      "statusText": "✓ Super Deficit (Deficit 270 kcal)",
+      "caloriesEaten": 1880,
+      "exerciseBurn": 380,
+      "baseTdee": 1770,
+      "tdee": 2150,
+      "deficitBurn": 270,
+      "rawDeficit": -270,
+      "protein": 169.5,
+      "workouts": [
+        {
+          "id": "w9",
+          "category": "คาร์ดิโอ",
+          "name": "🏃 คาร์ดิโอ วิ่งลู่สลับเดินชัน 45 นาที",
+          "duration": 45,
+          "calBurn": 380
+        }
+      ],
+      "items": [
+        {
+          "time": "20:30",
+          "name": "🥛 Vitaday Protein Drink รสองุ่น",
+          "cal": 160,
+          "p": 38,
+          "c": 0,
+          "f": 0
+        },
+        {
+          "time": "18:15",
+          "name": "🍱 ข้าวสวย 100g + อกไก่นุ่ม 200g + ผักต้ม",
+          "cal": 390,
+          "p": 52,
+          "c": 28,
+          "f": 4
+        },
+        {
+          "time": "12:30",
+          "name": "🍱 ลาบสันในหมูคลีน + ข้าวกล้อง",
+          "cal": 420,
+          "p": 45,
+          "c": 30,
+          "f": 8
+        }
+      ]
+    },
+    {
+      "date": "2026-11-04",
+      "dayName": "4 พ.ย. (วันพุธ)",
+      "zone": "safe_deficit",
+      "statusText": "✓ Super Deficit (Deficit 515 kcal)",
+      "caloriesEaten": 1950,
+      "exerciseBurn": 316,
+      "baseTdee": 2149,
+      "tdee": 2465,
+      "deficitBurn": 515,
+      "rawDeficit": -515,
+      "protein": 197,
+      "workouts": [
+        {
+          "id": "w10",
+          "category": "เวท",
+          "name": "🏋️ เวทเทรนนิ่ง Pull Day จัดเต็ม",
+          "duration": 55,
+          "calBurn": 316
+        }
+      ],
+      "items": [
+        {
+          "time": "20:00",
+          "name": "🥛 เวย์โปรตีนไอโซเลท 2 สกู๊ป",
+          "cal": 260,
+          "p": 54,
+          "c": 4,
+          "f": 2
+        },
+        {
+          "time": "17:45",
+          "name": "🍗 อกไก่ย่าง 250g + สลัดผัก",
+          "cal": 360,
+          "p": 62,
+          "c": 8,
+          "f": 6
+        },
+        {
+          "time": "12:30",
+          "name": "🍱 ข้าวไรซ์เบอร์รี่ + ปลากะพงนึ่งซีอิ๊ว",
+          "cal": 450,
+          "p": 48,
+          "c": 35,
+          "f": 7
+        }
+      ]
+    },
+    {
+      "date": "2026-11-03",
+      "dayName": "3 พ.ย. (วันอังคาร)",
+      "zone": "super_deficit",
+      "statusText": "✓ Super Deficit (Deficit 680 kcal)",
+      "caloriesEaten": 1900,
+      "exerciseBurn": 270,
+      "baseTdee": 2310,
+      "tdee": 2580,
+      "deficitBurn": 680,
+      "rawDeficit": -680,
+      "protein": 172,
+      "workouts": [
+        {
+          "id": "w11",
+          "category": "คาร์ดิโอ",
+          "name": "🏃 เดินชันบนลู่วิ่ง Zone 2 (40 นาที)",
+          "duration": 40,
+          "calBurn": 270
+        }
+      ],
+      "items": [
+        {
+          "time": "19:30",
+          "name": "🍱 ข้าวสวย 100g + ไก่ย่าง 200g",
+          "cal": 400,
+          "p": 53,
+          "c": 28,
+          "f": 5.5
+        },
+        {
+          "time": "15:00",
+          "name": "🥛 Vitaday Protein รสองุ่น",
+          "cal": 160,
+          "p": 38,
+          "c": 0,
+          "f": 0
+        },
+        {
+          "time": "12:00",
+          "name": "🍱 ข้าวราดเนื้อสไลซ์ผัดพริกไทยดำคลีน",
+          "cal": 480,
+          "p": 45,
+          "c": 32,
+          "f": 12
+        }
+      ]
+    },
+    {
+      "date": "2026-11-02",
+      "dayName": "2 พ.ย. (วันจันทร์)",
+      "zone": "super_deficit",
+      "statusText": "✓ Super Deficit (Deficit 670 kcal)",
+      "caloriesEaten": 1870,
+      "exerciseBurn": 330,
+      "baseTdee": 2210,
+      "tdee": 2540,
+      "deficitBurn": 670,
+      "rawDeficit": -670,
+      "protein": 168,
+      "workouts": [
+        {
+          "id": "w12",
+          "category": "เวท",
+          "name": "🏋️ เวทเทรนนิ่ง Push Day อก/ไหล่/หลังแขน",
+          "duration": 50,
+          "calBurn": 330
+        }
+      ],
+      "items": [
+        {
+          "time": "20:15",
+          "name": "🥛 Sunshine Dairy นมโปรตีนมอลต์",
+          "cal": 230,
+          "p": 33,
+          "c": 23,
+          "f": 1
+        },
+        {
+          "time": "18:00",
+          "name": "🍱 ข้าวกล้อง + สันในไก่ผัดกระเทียม",
+          "cal": 410,
+          "p": 48,
+          "c": 30,
+          "f": 6
+        },
+        {
+          "time": "12:30",
+          "name": "🍱 ก๋วยเตี๋ยวไก่ฉีกเส้นหมี่น้ำใสพิเศษเนื้อ",
+          "cal": 380,
+          "p": 38,
+          "c": 36,
+          "f": 5
+        }
+      ]
+    },
+    {
+      "date": "2026-11-01",
+      "dayName": "1 พ.ย. (วันอาทิตย์)",
+      "zone": "super_deficit",
+      "statusText": "✓ Super Deficit (Deficit 460 kcal)",
+      "caloriesEaten": 2030,
+      "exerciseBurn": 350,
+      "baseTdee": 2140,
+      "tdee": 2490,
+      "deficitBurn": 460,
+      "rawDeficit": -460,
+      "protein": 175,
+      "workouts": [
+        {
+          "id": "w13",
+          "category": "เวท",
+          "name": "🏋️ เวทเทรนนิ่ง ขา & ไหล่ (50 นาที)",
+          "duration": 50,
+          "calBurn": 350
+        }
+      ],
+      "items": [
+        {
+          "time": "20:00",
+          "name": "🥛 เวย์โปรตีน 1.5 สกู๊ป",
+          "cal": 195,
+          "p": 40.5,
+          "c": 3,
+          "f": 1.5
+        },
+        {
+          "time": "17:30",
+          "name": "🍱 ข้าวสวย 100g + ไก่ย่าง 200g",
+          "cal": 400,
+          "p": 53,
+          "c": 28,
+          "f": 5.5
+        },
+        {
+          "time": "13:00",
+          "name": "🥩 สเต็กอกไก่ Santa Fe + สลัดผัก",
+          "cal": 450,
+          "p": 52,
+          "c": 15,
+          "f": 10
+        }
+      ]
+    },
+    {
+      "date": "2026-10-31",
+      "dayName": "31 ต.ค. (วันเสาร์ - Halloween)",
+      "zone": "safe_deficit",
+      "statusText": "⚡ Safe Zone (Deficit 250 kcal)",
+      "caloriesEaten": 2150,
+      "exerciseBurn": 370,
+      "baseTdee": 2030,
+      "tdee": 2400,
+      "deficitBurn": 250,
+      "rawDeficit": -250,
+      "protein": 160,
+      "workouts": [
+        {
+          "id": "w14",
+          "category": "เวท",
+          "name": "🏋️ เวทเทรนนิ่ง Upper Body Power",
+          "duration": 55,
+          "calBurn": 370
+        }
+      ],
+      "items": [
+        {
+          "time": "22:00",
+          "name": "🍺 Singha Highball Cola 340ml",
+          "cal": 110,
+          "p": 0,
+          "c": 8,
+          "f": 0
+        },
+        {
+          "time": "19:00",
+          "name": "🍱 ข้าวกล้อง + อกไก่ผัดพริกไทยดำ",
+          "cal": 420,
+          "p": 46,
+          "c": 32,
+          "f": 6
+        },
+        {
+          "time": "13:30",
+          "name": "🍱 ข้าวสวย 100g + ไก่ย่าง 200g",
+          "cal": 400,
+          "p": 53,
+          "c": 28,
+          "f": 5.5
+        }
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "dayName": "30 ต.ค. (วันศุกร์)",
+      "zone": "super_deficit",
+      "statusText": "✓ Super Deficit (Deficit 640 kcal)",
+      "caloriesEaten": 1850,
+      "exerciseBurn": 340,
+      "baseTdee": 2150,
+      "tdee": 2490,
+      "deficitBurn": 640,
+      "rawDeficit": -640,
+      "protein": 166,
+      "workouts": [
+        {
+          "id": "w15",
+          "category": "เวท",
+          "name": "🏋️ เวทเทรนนิ่ง หลัง & หน้าแขน",
+          "duration": 50,
+          "calBurn": 340
+        }
+      ],
+      "items": [
+        {
+          "time": "20:30",
+          "name": "🥛 Vitaday Protein Drink",
+          "cal": 160,
+          "p": 38,
+          "c": 0,
+          "f": 0
+        },
+        {
+          "time": "18:00",
+          "name": "🍱 ข้าวสวย 100g + ไก่ย่าง 200g",
+          "cal": 400,
+          "p": 53,
+          "c": 28,
+          "f": 5.5
+        },
+        {
+          "time": "12:00",
+          "name": "🍱 เกาเหลาเนื้อตุ๋นพิเศษเนื้อล้วน",
+          "cal": 430,
+          "p": 46,
+          "c": 8,
+          "f": 16
+        }
+      ]
+    },
+    {
+      "date": "2026-10-29",
+      "dayName": "29 ต.ค. (วันพฤหัสบดี)",
+      "zone": "super_deficit",
+      "statusText": "✓ Super Deficit (Deficit 620 kcal)",
+      "caloriesEaten": 1780,
+      "exerciseBurn": 320,
+      "baseTdee": 2080,
+      "tdee": 2400,
+      "deficitBurn": 620,
+      "rawDeficit": -620,
+      "protein": 168,
+      "workouts": [
+        {
+          "id": "w16",
+          "category": "เวท",
+          "name": "🏋️ เวทเทรนนิ่ง อก & หลังแขน",
+          "duration": 50,
+          "calBurn": 320
+        }
+      ],
+      "items": [
+        {
+          "time": "20:00",
+          "name": "🥛 นมโปรตีน Sunshine Dairy",
+          "cal": 230,
+          "p": 33,
+          "c": 23,
+          "f": 1
+        },
+        {
+          "time": "18:15",
+          "name": "🍱 ข้าวสวย 100g + ไก่ย่าง 200g",
+          "cal": 400,
+          "p": 53,
+          "c": 28,
+          "f": 5.5
+        },
+        {
+          "time": "12:30",
+          "name": "🍱 ข้าวไรซ์เบอร์รี่ + อกไก่คั่วกลิ้งคลีน",
+          "cal": 410,
+          "p": 45,
+          "c": 30,
+          "f": 6
+        }
+      ]
+    },
+    {
+      "date": "2026-10-28",
+      "dayName": "28 ต.ค. (วันพุธ - Day 1 InBody 270)",
+      "zone": "super_deficit",
+      "statusText": "🧬 Day 1 InBody 270 (นน. 83.1kg | ไขมัน 22.8%)",
+      "caloriesEaten": 1820,
+      "exerciseBurn": 180,
+      "baseTdee": 2220,
+      "tdee": 2400,
+      "deficitBurn": 580,
+      "rawDeficit": -580,
+      "protein": 161,
+      "workouts": [
+        {
+          "id": "w17",
+          "category": "คาร์ดิโอ",
+          "name": "🏃 เดินลู่วิ่งทดสอบสมรรถภาพ",
+          "duration": 25,
+          "calBurn": 180
+        }
+      ],
+      "items": [
+        {
+          "time": "20:00",
+          "name": "🍳 อกไก่คั่วไข่ขาวพริกไทยดำ (มื้อแรกหลัง InBody)",
+          "cal": 380,
+          "p": 50,
+          "c": 6,
+          "f": 12
+        },
+        {
+          "time": "18:14",
+          "name": "🧬 ตรวจวัดร่างกาย InBody 270 (83.1kg / 22.8% Fat)",
+          "cal": 0,
+          "p": 0,
+          "c": 0,
+          "f": 0
+        },
+        {
+          "time": "13:00",
+          "name": "🍱 ข้าวสวย 100g + ไก่ย่างลอกหนัง 150g",
+          "cal": 350,
+          "p": 40,
+          "c": 28,
+          "f": 4.5
+        },
+        {
+          "time": "09:00",
+          "name": "☕ อเมริกาโน่เย็นไม่หวาน 1 แก้ว",
+          "cal": 5,
+          "p": 0,
+          "c": 1,
+          "f": 0
+        }
+      ]
+    }
+  ]
+}
