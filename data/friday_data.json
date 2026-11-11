@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-11T08:17:49.853Z",
+  "updatedAt": "2026-11-11T08:18:53.997Z",
   "updatedThai": "11 พ.ย. (วันพุธ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -221,16 +221,25 @@
       "date": "2026-11-11",
       "dayName": "11 พ.ย. (วันพุธ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 400 & เบิร์น +0 kcal)",
-      "caloriesEaten": 400,
+      "statusText": "✓ Super Deficit (กิน 415 & เบิร์น +0 kcal)",
+      "caloriesEaten": 415,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 1800,
-      "rawDeficit": -1800,
-      "protein": 40,
+      "deficitBurn": 1785,
+      "rawDeficit": -1785,
+      "protein": 54,
       "workouts": [],
       "items": [
+        {
+          "id": 1794385131588,
+          "time": "15:18",
+          "name": "ไข่ต้ม CP 2 ฟอง",
+          "cal": 15,
+          "p": 14,
+          "c": 1,
+          "f": 10
+        },
         {
           "id": 1794384122724,
           "time": "15:02",
