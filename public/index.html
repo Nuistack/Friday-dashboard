@@ -2,7 +2,10 @@
 <html lang="th" class="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Friday Coach">
   <title>Friday Coach - Dashboard</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
@@ -85,7 +88,11 @@
       </div>
     </div>
     <div class="flex items-center gap-2">
-      <div class="flex items-center gap-1.5 bg-cyber-card px-3 py-1.5 rounded-xl border border-cyber-border">
+      <button id="btn-open-sync" class="flex items-center gap-1 bg-cyber-card px-2.5 py-1.5 rounded-xl border border-emerald-800/70 text-[11px] font-bold text-emerald-400 active:scale-95 transition-transform">
+        <span>☁️</span>
+        <span id="sync-status-label">Local</span>
+      </button>
+      <div class="flex items-center gap-1.5 bg-cyber-card px-2.5 py-1.5 rounded-xl border border-cyber-border">
         <span class="text-sm">🪙</span>
         <span id="header-coins" class="text-sm font-extrabold text-amber-400 font-num">650</span>
       </div>
@@ -122,7 +129,7 @@
               <span id="metric-calories-eaten" class="text-xl font-black text-white font-num">635</span>
               <span class="text-xs text-slate-400 font-bold block">/ 1,900 kcal</span>
             </div>
-            <span class="text-[11px] text-emerald-400 block font-bold">เหลือ 1,265</span>
+            <span id="metric-quota-left" class="text-[11px] text-emerald-400 block font-bold">เหลือ 1,900</span>
           </div>
 
           <!-- Card 2: โปรตีน / เป้าหมาย -->
@@ -132,7 +139,7 @@
               <span id="metric-protein-eaten" class="text-xl font-black text-amber-400 font-num">54.5</span>
               <span class="text-xs text-slate-400 font-bold block">/ 160 g</span>
             </div>
-            <span class="text-[11px] text-amber-400/90 block font-bold">ขาด 107g</span>
+            <span id="metric-protein-left" class="text-[11px] text-amber-400/90 block font-bold">ขาด 160.0g</span>
           </div>
 
           <!-- Card 3: TDEE เพดาน -->
@@ -681,34 +688,45 @@
     </button>
   </nav>
 
-  <!-- Day Details Modal -->
+  <!-- Day Details Modal (Supports View, Edit, Delete, and Add on Today & Past Days) -->
   <div id="modal-day-details" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-    <div class="bg-cyber-surface border border-cyber-border rounded-2xl max-w-sm w-full p-4 space-y-3.5 max-h-[85vh] overflow-y-auto">
+    <div class="bg-cyber-surface border border-cyber-border rounded-2xl max-w-sm w-full p-4 space-y-3.5 max-h-[88vh] overflow-y-auto">
       <div class="flex items-center justify-between border-b border-cyber-border/70 pb-2">
         <div>
-          <span id="mday-title" class="font-extrabold text-white text-base block">10 พ.ย. 2026</span>
-          <span id="mday-subtitle" class="text-xs text-slate-400 block">สรุปพลังงาน อาหาร และการออกกำลังกาย</span>
+          <span id="mday-title" class="font-extrabold text-white text-base block">11 พ.ย. 2026</span>
+          <span id="mday-subtitle" class="text-xs text-slate-400 block">แตะ ✏️ เพื่อแก้ไข หรือ 🗑️ เพื่อลบ</span>
         </div>
-        <button id="btn-close-day-details" class="text-slate-400 hover:text-white text-xl font-bold p-1">&times;</button>
+        <button id="btn-close-day-details" class="text-slate-400 hover:text-white text-2xl font-bold p-1 leading-none">&times;</button>
       </div>
 
       <div class="grid grid-cols-4 gap-1.5 text-center text-xs">
         <div class="bg-cyber-black p-2 rounded-xl border border-cyber-border">
           <span class="text-xs text-slate-400 block mb-0.5">กิน</span>
-          <span id="mday-cal" class="font-black text-white font-num text-sm">405</span>
+          <span id="mday-cal" class="font-black text-white font-num text-sm">0</span>
         </div>
         <div class="bg-cyber-black p-2 rounded-xl border border-emerald-800">
           <span class="text-xs text-emerald-400 block mb-0.5">ออกกำลัง</span>
-          <span id="mday-workout-burn" class="font-black text-emerald-300 font-num text-sm">+520</span>
+          <span id="mday-workout-burn" class="font-black text-emerald-300 font-num text-sm">+0</span>
         </div>
         <div class="bg-cyber-black p-2 rounded-xl border border-cyber-border">
           <span class="text-xs text-slate-400 block mb-0.5">TDEE</span>
-          <span id="mday-tdee" class="font-black text-amber-300 font-num text-sm">2,720</span>
+          <span id="mday-tdee" class="font-black text-amber-300 font-num text-sm">2,200</span>
         </div>
         <div class="bg-cyber-black p-2 rounded-xl border border-cyan-800">
           <span class="text-xs text-cyber-cyan block mb-0.5">Deficit</span>
-          <span id="mday-deficit" class="font-black text-cyber-cyan font-num text-sm">-2,315</span>
+          <span id="mday-deficit" class="font-black text-cyber-cyan font-num text-sm">-2,200</span>
         </div>
+      </div>
+
+      <!-- Add Food to Selected Day -->
+      <div class="bg-cyber-black/80 p-2.5 rounded-xl border border-cyber-border space-y-2">
+        <span class="text-xs font-bold text-cyber-cyan block">+ เพิ่มอาหารลงในวันนี้</span>
+        <div class="flex gap-1.5">
+          <input id="mday-add-food-name" type="text" placeholder="ชื่ออาหาร..." class="flex-1 bg-cyber-card border border-cyber-border rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-cyber-cyan">
+          <input id="mday-add-food-cal" type="number" placeholder="kcal" class="w-16 bg-cyber-card border border-cyber-border rounded-lg px-2 py-1.5 text-xs text-cyber-cyan font-bold text-center focus:outline-none">
+          <input id="mday-add-food-p" type="number" step="0.5" placeholder="P(g)" class="w-14 bg-cyber-card border border-cyber-border rounded-lg px-2 py-1.5 text-xs text-amber-400 font-bold text-center focus:outline-none">
+        </div>
+        <button id="btn-mday-add-food" class="w-full py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs">+ เพิ่มอาหาร</button>
       </div>
 
       <div class="space-y-1.5">
@@ -718,7 +736,91 @@
 
       <div class="space-y-1.5">
         <span class="text-xs font-black text-slate-300 block">🍽️ รายการอาหาร:</span>
-        <div id="mday-foods-list" class="space-y-1.5 text-xs divide-y divide-cyber-border/50"></div>
+        <div id="mday-foods-list" class="space-y-1.5 text-xs"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Item Modal (Food or Workout, Today or Past Day) -->
+  <div id="modal-edit-item" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-cyber-surface border border-cyber-border rounded-2xl max-w-sm w-full p-4 space-y-3">
+      <div class="flex items-center justify-between border-b border-cyber-border pb-2">
+        <span id="edit-modal-title" class="font-extrabold text-white text-sm">✏️ แก้ไขรายการ</span>
+        <button id="btn-close-edit-modal" class="text-slate-400 hover:text-white text-xl font-bold">&times;</button>
+      </div>
+      <div class="space-y-2.5 text-xs">
+        <div>
+          <label class="block text-slate-400 font-bold mb-1">ชื่อรายการ:</label>
+          <input id="edit-item-name" type="text" class="w-full bg-cyber-black border border-cyber-border rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-cyber-cyan">
+        </div>
+        <div id="edit-food-fields" class="grid grid-cols-4 gap-2 text-center">
+          <div class="bg-cyber-black p-2 rounded-xl border border-cyber-border">
+            <span class="text-[11px] text-slate-400 block">แคลอรี</span>
+            <input id="edit-item-cal" type="number" class="w-full bg-transparent text-center font-num text-sm font-bold text-cyber-cyan focus:outline-none">
+          </div>
+          <div class="bg-cyber-black p-2 rounded-xl border border-cyber-border">
+            <span class="text-[11px] text-slate-400 block">โปรตีน</span>
+            <input id="edit-item-p" type="number" step="0.5" class="w-full bg-transparent text-center font-num text-sm font-bold text-amber-400 focus:outline-none">
+          </div>
+          <div class="bg-cyber-black p-2 rounded-xl border border-cyber-border">
+            <span class="text-[11px] text-slate-400 block">คาร์บ</span>
+            <input id="edit-item-c" type="number" class="w-full bg-transparent text-center font-num text-sm font-bold text-slate-300 focus:outline-none">
+          </div>
+          <div class="bg-cyber-black p-2 rounded-xl border border-cyber-border">
+            <span class="text-[11px] text-slate-400 block">ไขมัน</span>
+            <input id="edit-item-f" type="number" step="0.5" class="w-full bg-transparent text-center font-num text-sm font-bold text-slate-300 focus:outline-none">
+          </div>
+        </div>
+        <div id="edit-workout-fields" class="hidden grid grid-cols-2 gap-2 text-center">
+          <div class="bg-cyber-black p-2 rounded-xl border border-cyber-border">
+            <span class="text-[11px] text-slate-400 block">เวลา (นาที)</span>
+            <input id="edit-workout-dur" type="number" class="w-full bg-transparent text-center font-num text-sm font-bold text-white focus:outline-none">
+          </div>
+          <div class="bg-cyber-black p-2 rounded-xl border border-cyber-border">
+            <span class="text-[11px] text-emerald-400 block">เบิร์น (kcal)</span>
+            <input id="edit-workout-cal" type="number" class="w-full bg-transparent text-center font-num text-sm font-bold text-emerald-300 focus:outline-none">
+          </div>
+        </div>
+        <button id="btn-save-edit-item" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-black text-sm">
+          ✓ บันทึกการแก้ไข
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cloud Sync & Export Modal -->
+  <div id="modal-cloud-sync" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-cyber-surface border border-cyber-border rounded-2xl max-w-sm w-full p-4 space-y-3">
+      <div class="flex items-center justify-between border-b border-cyber-border pb-2">
+        <span class="font-extrabold text-white text-sm">☁️ สถานะฐานข้อมูล & Cloud Sync</span>
+        <button id="btn-close-sync-modal" class="text-slate-400 hover:text-white text-xl font-bold">&times;</button>
+      </div>
+      <div class="text-xs text-slate-300 space-y-2 leading-relaxed">
+        <p class="bg-cyber-black p-2.5 rounded-xl border border-cyber-border">
+          <strong class="text-emerald-400">✓ บันทึกในเครื่อง (Local DB):</strong> ทำงานอัตโนมัติทุกครั้งที่เพิ่ม/แก้ไข/ลบ รีเฟรชไม่หายครับ
+        </p>
+        <p class="bg-cyber-black p-2.5 rounded-xl border border-cyber-border">
+          <strong class="text-amber-400">ℹ️ ทำไม AI ในแชทถึงไม่เห็น?</strong> เว็บนี้รันแบบ Static HTML บนมือถือ ยังไม่ได้เชื่อม Server กลาง (Firebase/Supabase) หากต้องการส่งข้อมูลให้ Friday ในแชท กดปุ่มคัดลอกด้านล่างได้เลยครับ
+        </p>
+      </div>
+      <button id="btn-copy-today-summary" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 font-black text-xs">
+        📋 คัดลอกสรุปวันนี้ส่งให้ Friday ในแชท
+      </button>
+      <div class="grid grid-cols-2 gap-2">
+        <button id="btn-export-json" class="py-2 rounded-xl bg-cyber-card border border-cyber-border text-slate-200 hover:border-cyan-500 font-bold text-xs">
+          💾 สำรองข้อมูล (.json)
+        </button>
+        <label class="py-2 rounded-xl bg-cyber-card border border-cyber-border text-slate-200 hover:border-emerald-500 font-bold text-xs text-center cursor-pointer">
+          📂 กู้คืนข้อมูล
+          <input id="input-import-json" type="file" accept=".json,application/json" class="hidden">
+        </label>
+      </div>
+      <div class="pt-2 border-t border-cyber-border space-y-1.5">
+        <label class="block text-[11px] font-bold text-slate-400">หรือเชื่อมต่อ Firebase Realtime DB URL (ถ้ามี):</label>
+        <div class="flex gap-1.5">
+          <input id="cloud-firebase-url" type="url" placeholder="https://your-app.firebaseio.com" class="flex-1 bg-cyber-black border border-cyber-border rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-cyber-cyan">
+          <button id="btn-save-cloud-url" class="px-3 py-1.5 rounded-lg bg-cyan-600 text-white font-bold text-xs">เชื่อม</button>
+        </div>
       </div>
     </div>
   </div>
@@ -1169,43 +1271,78 @@
       };
     }
 
+    function recalculateDayMetrics(dayObj) {
+      if (!dayObj) return;
+      if (!Array.isArray(dayObj.items)) dayObj.items = [];
+      if (!Array.isArray(dayObj.workouts)) dayObj.workouts = [];
+
+      let totalCal = 0, totalP = 0;
+      dayObj.items.forEach(i => {
+        totalCal += Number(i.cal || 0);
+        totalP += Number(i.p || 0);
+      });
+
+      let totalWorkoutBurn = 0;
+      dayObj.workouts.forEach(w => {
+        totalWorkoutBurn += Number(w.calBurn || 0);
+      });
+
+      const baseTdee = Number(dayObj.baseTdee || 2200);
+      dayObj.caloriesEaten = Math.round(totalCal);
+      dayObj.protein = Number(totalP.toFixed(1));
+      dayObj.exerciseBurn = Math.round(totalWorkoutBurn);
+      dayObj.tdee = Math.round(baseTdee + totalWorkoutBurn);
+      dayObj.deficitBurn = dayObj.tdee - dayObj.caloriesEaten;
+      dayObj.rawDeficit = dayObj.caloriesEaten - dayObj.tdee;
+
+      if (dayObj.deficitBurn >= 400) {
+        dayObj.zone = 'super_deficit';
+        dayObj.statusText = `✓ Super Deficit (กิน ${dayObj.caloriesEaten} & เบิร์น +${dayObj.exerciseBurn} kcal)`;
+      } else if (dayObj.deficitBurn >= 0) {
+        dayObj.zone = 'safe_deficit';
+        dayObj.statusText = `⚡ Safe Zone (กิน ${dayObj.caloriesEaten} & เบิร์น +${dayObj.exerciseBurn} kcal)`;
+      } else {
+        dayObj.zone = 'surplus';
+        dayObj.statusText = `⚠️ Surplus เกิน TDEE (+${Math.abs(dayObj.deficitBurn)} kcal)`;
+      }
+    }
+
     function syncThaiDateTime() {
       const thai = getThaiDate();
 
-      // Check if date has rolled over
-      if (fullHistoricalLogs.length > 0 && fullHistoricalLogs[0].date !== thai.isoDate) {
-        // Finalize previous day name (remove 'วันนี้')
-        if (fullHistoricalLogs[0].dayName.includes('วันนี้')) {
-          fullHistoricalLogs[0].dayName = fullHistoricalLogs[0].dayName.replace(' - วันนี้', '').replace('วันนี้', '').trim();
+      // Remove 'วันนี้' from older dates
+      fullHistoricalLogs.forEach(d => {
+        if (d.date !== thai.isoDate && d.dayName && d.dayName.includes('วันนี้')) {
+          d.dayName = d.dayName.replace(' - วันนี้', '').replace('(วันนี้)', '').trim();
         }
+      });
 
-        // Check if an entry for today already exists
-        let todayLog = fullHistoricalLogs.find(d => d.date === thai.isoDate);
-        if (!todayLog) {
-          todayLog = {
-            date: thai.isoDate,
-            dayName: thai.todayLabel,
-            zone: 'super_deficit',
-            statusText: '✓ Super Deficit (เริ่มต้นวันใหม่)',
-            caloriesEaten: 0,
-            exerciseBurn: 0,
-            baseTdee: 2200,
-            tdee: 2200,
-            deficitBurn: 2200,
-            rawDeficit: -2200,
-            protein: 0,
-            workouts: [],
-            items: []
-          };
-          fullHistoricalLogs.unshift(todayLog);
-        }
-
-        state.today = todayLog;
-        saveToStorage();
-      } else if (fullHistoricalLogs.length > 0) {
-        state.today = fullHistoricalLogs[0];
-        state.today.dayName = thai.todayLabel;
+      // Find or create today's log cleanly
+      let todayLog = fullHistoricalLogs.find(d => d.date === thai.isoDate);
+      if (!todayLog) {
+        todayLog = {
+          date: thai.isoDate,
+          dayName: thai.todayLabel,
+          zone: 'super_deficit',
+          statusText: '✓ Super Deficit (เริ่มต้นวันใหม่)',
+          caloriesEaten: 0,
+          exerciseBurn: 0,
+          baseTdee: 2200,
+          tdee: 2200,
+          deficitBurn: 2200,
+          rawDeficit: -2200,
+          protein: 0,
+          workouts: [],
+          items: []
+        };
+        fullHistoricalLogs.unshift(todayLog);
+      } else {
+        todayLog.dayName = thai.todayLabel;
       }
+
+      state.today = todayLog;
+      recalculateDayMetrics(state.today);
+      saveToStorage();
 
       // Update Header & UI Titles
       const headerTitle = document.getElementById('header-today-title');
@@ -1218,70 +1355,79 @@
       if (userStatus) userStatus.innerHTML = `คุณนุ้ย &bull; ${thai.dayNum} ${thai.monthName} ${thai.yearCE} &bull; 83.1 kg &bull; 22.8% Fat`;
     }
 
-    // ==================== LOCALSTORAGE PERSISTENCE ENGINE ====================
+    // ==================== LOCALSTORAGE & CLOUD SYNC ENGINE ====================
+    let cloudSyncUrl = localStorage.getItem('friday_cloud_url_v8') || '';
+
     function saveToStorage() {
       try {
-        localStorage.setItem('friday_today_items_v7', JSON.stringify(state.today.items));
-        localStorage.setItem('friday_today_workouts_v6', JSON.stringify(state.today.workouts));
-        localStorage.setItem('friday_food_db_v6', JSON.stringify(foodDatabase));
-        localStorage.setItem('friday_workout_db_v6', JSON.stringify(workoutDatabase));
-        localStorage.setItem('friday_history_logs_v7', JSON.stringify(fullHistoricalLogs));
-        localStorage.setItem('friday_coins_v6', state.coins.toString());
+        localStorage.setItem('friday_food_db_v8', JSON.stringify(foodDatabase));
+        localStorage.setItem('friday_workout_db_v8', JSON.stringify(workoutDatabase));
+        localStorage.setItem('friday_history_logs_v8', JSON.stringify(fullHistoricalLogs));
+        localStorage.setItem('friday_coins_v8', state.coins.toString());
+
+        if (cloudSyncUrl) {
+          const cleanUrl = cloudSyncUrl.replace(/\/$/, '') + '/friday_data.json';
+          fetch(cleanUrl, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              updatedAt: new Date().toISOString(),
+              foodDatabase,
+              workoutDatabase,
+              fullHistoricalLogs,
+              coins: state.coins
+            })
+          }).then(() => {
+            const lbl = document.getElementById('sync-status-label');
+            if (lbl) lbl.innerText = 'Synced';
+          }).catch(() => {});
+        }
       } catch (e) {
         console.error('Storage save error:', e);
       }
     }
 
-    function loadFromStorage() {
+    async function loadFromStorage() {
       try {
-        // 1. Load Food Database
-        const fDb = localStorage.getItem('friday_food_db_v6');
+        if (cloudSyncUrl) {
+          const lbl = document.getElementById('sync-status-label');
+          if (lbl) lbl.innerText = 'Cloud';
+          try {
+            const cleanUrl = cloudSyncUrl.replace(/\/$/, '') + '/friday_data.json';
+            const res = await fetch(cleanUrl);
+            if (res.ok) {
+              const cloudData = await res.json();
+              if (cloudData && Array.isArray(cloudData.fullHistoricalLogs)) {
+                localStorage.setItem('friday_history_logs_v8', JSON.stringify(cloudData.fullHistoricalLogs));
+                if (Array.isArray(cloudData.foodDatabase)) localStorage.setItem('friday_food_db_v8', JSON.stringify(cloudData.foodDatabase));
+                if (Array.isArray(cloudData.workoutDatabase)) localStorage.setItem('friday_workout_db_v8', JSON.stringify(cloudData.workoutDatabase));
+              }
+            }
+          } catch (err) {}
+        }
+
+        const fDb = localStorage.getItem('friday_food_db_v8');
         if (fDb) {
           const parsed = JSON.parse(fDb);
           if (Array.isArray(parsed) && parsed.length > 0) foodDatabase = parsed;
         }
 
-        // 2. Load Workout Database
-        const wDb = localStorage.getItem('friday_workout_db_v6');
+        const wDb = localStorage.getItem('friday_workout_db_v8');
         if (wDb) {
           const parsed = JSON.parse(wDb);
           if (Array.isArray(parsed) && parsed.length > 0) workoutDatabase = parsed;
         }
 
-        // 3. Load Historical Logs
-        const hLogs = localStorage.getItem('friday_history_logs_v7');
+        const hLogs = localStorage.getItem('friday_history_logs_v8');
         if (hLogs) {
           const parsed = JSON.parse(hLogs);
           if (Array.isArray(parsed) && parsed.length > 0) {
-            for (let i = 0; i < parsed.length; i++) {
-              if (i < fullHistoricalLogs.length) fullHistoricalLogs[i] = parsed[i];
-              else fullHistoricalLogs.push(parsed[i]);
-            }
+            fullHistoricalLogs.length = 0;
+            parsed.forEach(item => fullHistoricalLogs.push(item));
           }
         }
 
-        // 4. Load Today Items
-        const tItems = localStorage.getItem('friday_today_items_v7');
-        if (tItems) {
-          const parsed = JSON.parse(tItems);
-          if (Array.isArray(parsed)) {
-            state.today.items = parsed;
-            if (fullHistoricalLogs.length > 0) fullHistoricalLogs[0].items = parsed;
-          }
-        }
-
-        // 5. Load Today Workouts
-        const tWorkouts = localStorage.getItem('friday_today_workouts_v6');
-        if (tWorkouts) {
-          const parsed = JSON.parse(tWorkouts);
-          if (Array.isArray(parsed)) {
-            state.today.workouts = parsed;
-            if (fullHistoricalLogs.length > 0) fullHistoricalLogs[0].workouts = parsed;
-          }
-        }
-
-        // 6. Load Coins
-        const c = localStorage.getItem('friday_coins_v6');
+        const c = localStorage.getItem('friday_coins_v8');
         if (c) {
           state.coins = parseInt(c) || 650;
           const hc = document.getElementById('header-coins');
@@ -1293,8 +1439,6 @@
         console.error('Storage load error:', e);
       }
     }
-
-    // Populate Datalists for future auto-complete
 
     function updateDatalists() {
       const wDatalist = document.getElementById('workout-datalist');
@@ -1320,36 +1464,50 @@
 
     // ==================== DASHBOARD & ENERGY BALANCE ====================
     function renderDashboard() {
-      let totalCal = 0, totalP = 0;
-      state.today.items.forEach(i => {
-        totalCal += Number(i.cal || 0);
-        totalP += Number(i.p || 0);
-      });
+      recalculateDayMetrics(state.today);
 
-      let totalWorkoutBurn = 0;
+      const totalCal = state.today.caloriesEaten;
+      const totalP = state.today.protein;
+      const totalWorkoutBurn = state.today.exerciseBurn;
       let totalWorkoutMins = 0;
-      state.today.workouts.forEach(w => {
-        totalWorkoutBurn += Number(w.calBurn || 0);
-        totalWorkoutMins += Number(w.duration || 0);
-      });
+      state.today.workouts.forEach(w => { totalWorkoutMins += Number(w.duration || 0); });
 
-      state.today.caloriesEaten = totalCal;
-      state.today.exerciseBurn = totalWorkoutBurn;
-      state.today.protein = totalP;
-      state.today.tdee = state.today.baseTdee + totalWorkoutBurn;
-      state.today.deficitBurn = state.today.tdee - totalCal;
-      state.today.rawDeficit = totalCal - state.today.tdee;
-
-      // Update 3 Big Cards
+      // 1. กิน / โควตา 1,900
       document.getElementById('metric-calories-eaten').innerText = totalCal.toLocaleString();
+      const quotaLeft1900 = 1900 - totalCal;
+      const quotaLeftEl = document.getElementById('metric-quota-left');
+      if (quotaLeftEl) {
+        if (quotaLeft1900 >= 0) {
+          quotaLeftEl.className = 'text-[11px] text-emerald-400 block font-bold';
+          quotaLeftEl.innerText = 'เหลือ ' + quotaLeft1900.toLocaleString();
+        } else {
+          quotaLeftEl.className = 'text-[11px] text-amber-400 block font-bold';
+          quotaLeftEl.innerText = 'เกิน 1,900 อยู่ ' + Math.abs(quotaLeft1900).toLocaleString();
+        }
+      }
+
+      // 2. โปรตีน / เป้าหมาย 160g
       document.getElementById('metric-protein-eaten').innerText = totalP.toFixed(1);
+      const proteinMissing = 160 - totalP;
+      const proteinLeftEl = document.getElementById('metric-protein-left');
+      if (proteinLeftEl) {
+        if (proteinMissing > 0) {
+          proteinLeftEl.className = 'text-[11px] text-amber-400/90 block font-bold';
+          proteinLeftEl.innerText = 'ขาด ' + proteinMissing.toFixed(1) + 'g';
+        } else {
+          proteinLeftEl.className = 'text-[11px] text-emerald-400 block font-bold';
+          proteinLeftEl.innerText = '✓ ครบเป้า (+' + Math.abs(proteinMissing).toFixed(1) + 'g)';
+        }
+      }
+
+      // 3. TDEE เพดาน
       document.getElementById('metric-tdee').innerText = state.today.tdee.toLocaleString();
       document.getElementById('metric-workout-add-label').innerText = '+' + totalWorkoutBurn.toLocaleString() + ' เบิร์นเพิ่ม';
 
-      // Update Metabolism Gauge & Deficit
+      // 4. แถบแสดงโควต้าระดับการเผาผลาญ
       const defVal = state.today.deficitBurn;
       document.getElementById('metric-deficit').innerText = (defVal >= 0 ? '-' : '+') + Math.abs(defVal).toLocaleString();
-      
+
       const badge = document.getElementById('metric-deficit-badge');
       if (defVal >= 400) {
         badge.className = 'px-3 py-1 rounded-full text-xs font-black bg-emerald-950 text-emerald-300 border border-emerald-800';
@@ -1362,43 +1520,49 @@
         badge.innerText = '⚠️ Surplus เกิน TDEE';
       }
 
-      const left = Math.max(0, 1900 + totalWorkoutBurn - totalCal);
-      document.getElementById('metric-calories-left').innerText = left.toLocaleString();
+      const tdeeLeft = Math.max(0, state.today.tdee - totalCal);
+      document.getElementById('metric-calories-left').innerText = tdeeLeft.toLocaleString();
       document.getElementById('bar-eat-text').innerText = totalCal.toLocaleString();
       document.getElementById('bar-tdee-text').innerText = state.today.tdee.toLocaleString();
 
       const eatPercent = Math.min(100, Math.round((totalCal / state.today.tdee) * 100));
       document.getElementById('bar-metabolism-progress').style.width = eatPercent + '%';
 
-      // Protein Bar
       const pPercent = Math.min(100, Math.round((totalP / 160) * 100));
       document.getElementById('bar-protein-progress').style.width = pPercent + '%';
       document.getElementById('metric-protein-percent').innerText = pPercent;
 
-      // 4. Render Today Food List
+      // 5. Render Today Food List (with Edit & Delete buttons)
       const foodList = document.getElementById('today-items-list');
       foodList.innerHTML = '';
       document.getElementById('today-item-count').innerText = state.today.items.length + ' รายการ';
 
-      state.today.items.forEach((item, idx) => {
-        const div = document.createElement('div');
-        div.className = 'p-3 bg-cyber-black rounded-xl border border-cyber-border flex items-center justify-between text-xs';
-        div.innerHTML = `
-          <div>
-            <span class="font-bold text-white text-sm block">${item.name}</span>
-            <span class="text-xs text-slate-400 block">${item.time || '12:00'} &bull; P ${item.p}g &bull; C ${item.c || 0}g &bull; F ${item.f || 0}g</span>
-          </div>
-          <div class="flex items-center gap-2.5">
-            <span class="font-extrabold text-cyber-cyan font-num text-sm">${item.cal} kcal</span>
-            <button class="text-slate-500 hover:text-rose-400 p-1.5 font-bold text-base" onclick="deleteTodayFood(${idx})">
-              &times;
-            </button>
-          </div>
-        `;
-        foodList.appendChild(div);
-      });
+      if (state.today.items.length === 0) {
+        foodList.innerHTML = '<span class="text-xs text-slate-500 block py-2 text-center">ยังไม่มีรายการอาหารวันนี้ (พิมพ์เพิ่มด้านบนได้เลย)</span>';
+      } else {
+        state.today.items.forEach((item, idx) => {
+          const div = document.createElement('div');
+          div.className = 'p-3 bg-cyber-black rounded-xl border border-cyber-border flex items-center justify-between text-xs gap-2';
+          div.innerHTML = `
+            <div class="min-w-0 flex-1">
+              <span class="font-bold text-white text-sm block truncate">${item.name}</span>
+              <span class="text-xs text-slate-400 block">${item.time || '12:00'} &bull; P ${item.p}g &bull; C ${item.c || 0}g &bull; F ${item.f || 0}g</span>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <span class="font-extrabold text-cyber-cyan font-num text-sm mr-1">${item.cal} kcal</span>
+              <button class="px-2 py-1 rounded-lg bg-slate-800 hover:bg-cyan-900 text-slate-300 hover:text-white text-[11px] font-bold" onclick="openEditModal('${state.today.date}', 'food', ${idx})">
+                ✏️
+              </button>
+              <button class="px-2 py-1 rounded-lg bg-rose-950/60 hover:bg-rose-800 text-rose-400 hover:text-white text-[11px] font-bold border border-rose-900/50" onclick="deleteTodayFood(${idx})">
+                ลบ
+              </button>
+            </div>
+          `;
+          foodList.appendChild(div);
+        });
+      }
 
-      // 5. Render Today Workout Summary & List
+      // 6. Render Today Workout Summary & List (with Edit & Delete buttons)
       document.getElementById('today-workout-badge-total').innerText = 'รวม +' + totalWorkoutBurn.toLocaleString() + ' kcal';
       document.getElementById('sum-workout-time').innerText = totalWorkoutMins + ' นาที';
       document.getElementById('sum-workout-cal').innerText = '+' + totalWorkoutBurn.toLocaleString() + ' kcal';
@@ -1407,23 +1571,26 @@
       wList.innerHTML = '';
 
       if (state.today.workouts.length === 0) {
-        wList.innerHTML = '<span class="text-xs text-slate-500 block py-1">ยังไม่มีการออกกำลังกายวันนี้ (กรอกด้านบนแล้วกดบันทึกได้เลย)</span>';
+        wList.innerHTML = '<span class="text-xs text-slate-500 block py-1 text-center">ยังไม่มีการออกกำลังกายวันนี้</span>';
       } else {
         state.today.workouts.forEach((w, idx) => {
           const div = document.createElement('div');
-          div.className = 'p-3 bg-cyber-black rounded-xl border border-cyber-border flex items-center justify-between text-xs';
+          div.className = 'p-3 bg-cyber-black rounded-xl border border-cyber-border flex items-center justify-between text-xs gap-2';
           div.innerHTML = `
-            <div class="flex items-center gap-2.5">
-              <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800">${w.category}</span>
-              <div>
-                <span class="font-bold text-white text-sm block">${w.name}</span>
-                <span class="text-xs text-slate-400 block">${w.duration} นาที &bull; เผาผลาญแอคทีฟ</span>
+            <div class="flex items-center gap-2 min-w-0 flex-1">
+              <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800 shrink-0">${w.category}</span>
+              <div class="min-w-0 flex-1">
+                <span class="font-bold text-white text-sm block truncate">${w.name}</span>
+                <span class="text-xs text-slate-400 block">${w.duration} นาที</span>
               </div>
             </div>
-            <div class="flex items-center gap-2.5">
-              <span class="font-extrabold text-emerald-300 font-num text-sm">+${w.calBurn} kcal</span>
-              <button class="text-slate-500 hover:text-rose-400 p-1.5 font-bold text-base" onclick="deleteTodayWorkout(${idx})">
-                &times;
+            <div class="flex items-center gap-1.5 shrink-0">
+              <span class="font-extrabold text-emerald-300 font-num text-sm mr-1">+${w.calBurn}</span>
+              <button class="px-2 py-1 rounded-lg bg-slate-800 hover:bg-cyan-900 text-slate-300 hover:text-white text-[11px] font-bold" onclick="openEditModal('${state.today.date}', 'workout', ${idx})">
+                ✏️
+              </button>
+              <button class="px-2 py-1 rounded-lg bg-rose-950/60 hover:bg-rose-800 text-rose-400 hover:text-white text-[11px] font-bold border border-rose-900/50" onclick="deleteTodayWorkout(${idx})">
+                ลบ
               </button>
             </div>
           `;
@@ -1432,26 +1599,27 @@
       }
     }
 
-    function deleteTodayFood(idx) {
-      state.today.items.splice(idx, 1);
-      fullHistoricalLogs[0].items = state.today.items;
+    function refreshAllViews() {
       saveToStorage();
       renderDashboard();
+      renderMonthlyCalendar(state.calMonth);
       renderAllFoodHistory();
       initChart(state.periodMode);
+    }
+
+    function deleteTodayFood(idx) {
+      state.today.items.splice(idx, 1);
+      refreshAllViews();
       showToast('ลบรายการอาหารเรียบร้อย');
     }
 
     function deleteTodayWorkout(idx) {
       state.today.workouts.splice(idx, 1);
-      fullHistoricalLogs[0].workouts = state.today.workouts;
-      saveToStorage();
-      renderDashboard();
-      renderAllFoodHistory();
-      initChart(state.periodMode);
+      refreshAllViews();
       showToast('ลบรายการออกกำลังกายเรียบร้อย');
     }
 
+    
     // ==================== CALENDAR ENGINE ====================
     function renderMonthlyCalendar(month = state.calMonth) {
       state.calMonth = month;
@@ -1563,13 +1731,16 @@
       }
     }
 
+    let activeModalDate = null;
     function openDayDetailsModal(dateStr) {
+      activeModalDate = dateStr;
       const day = fullHistoricalLogs.find(d => d.date === dateStr);
       if (!day) {
         showToast('ไม่พบข้อมูลของวันที่ ' + dateStr);
         return;
       }
 
+      recalculateDayMetrics(day);
       document.getElementById('mday-title').innerText = day.dayName;
       document.getElementById('mday-subtitle').innerText = day.statusText;
       document.getElementById('mday-cal').innerText = day.caloriesEaten.toLocaleString();
@@ -1580,36 +1751,94 @@
       const wList = document.getElementById('mday-workouts-list');
       wList.innerHTML = '';
       if (day.workouts && day.workouts.length > 0) {
-        day.workouts.forEach(w => {
+        day.workouts.forEach((w, idx) => {
           const row = document.createElement('div');
-          row.className = 'p-2 bg-cyber-black rounded-lg border border-cyber-border flex items-center justify-between text-xs';
+          row.className = 'p-2 bg-cyber-black rounded-lg border border-cyber-border flex items-center justify-between text-xs gap-2';
           row.innerHTML = `
-            <div>
-              <span class="font-bold text-white text-sm block">${w.name}</span>
-              <span class="text-xs text-slate-400 block">${w.duration} นาที</span>
+            <div class="min-w-0 flex-1">
+              <span class="font-bold text-white text-xs block truncate">${w.name}</span>
+              <span class="text-[11px] text-slate-400 block">${w.duration} นาที</span>
             </div>
-            <span class="font-bold text-emerald-400 font-num text-sm">+${w.calBurn} kcal</span>
+            <div class="flex items-center gap-1 shrink-0">
+              <span class="font-bold text-emerald-400 font-num text-xs mr-1">+${w.calBurn}</span>
+              <button class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px]" onclick="openEditModal('${dateStr}', 'workout', ${idx})">✏️</button>
+              <button class="px-1.5 py-0.5 rounded bg-rose-950 text-rose-400 text-[11px]" onclick="deleteDayItem('${dateStr}', 'workout', ${idx})">ลบ</button>
+            </div>
           `;
           wList.appendChild(row);
         });
       } else {
-        wList.innerHTML = '<span class="text-xs text-slate-500">ไม่มีการออกกำลังกายเฉพาะในวันนี้</span>';
+        wList.innerHTML = '<span class="text-xs text-slate-500">ไม่มีการออกกำลังกายในวันนี้</span>';
       }
 
       const fList = document.getElementById('mday-foods-list');
       fList.innerHTML = '';
-      day.items.forEach(it => {
-        const row = document.createElement('div');
-        row.className = 'py-1.5 flex items-center justify-between text-xs';
-        row.innerHTML = `
-          <span class="text-slate-200 truncate max-w-[200px] text-xs">${it.name}</span>
-          <span class="font-bold font-num text-cyber-cyan text-sm">${it.cal > 0 ? it.cal + ' kcal' : '-'}</span>
-        `;
-        fList.appendChild(row);
-      });
+      if (day.items && day.items.length > 0) {
+        day.items.forEach((it, idx) => {
+          const row = document.createElement('div');
+          row.className = 'p-2 bg-cyber-black rounded-lg border border-cyber-border flex items-center justify-between text-xs gap-2';
+          row.innerHTML = `
+            <div class="min-w-0 flex-1">
+              <span class="text-slate-200 font-bold block truncate text-xs">${it.name}</span>
+              <span class="text-[11px] text-slate-400 block">P ${it.p || 0}g &bull; C ${it.c || 0}g &bull; F ${it.f || 0}g</span>
+            </div>
+            <div class="flex items-center gap-1 shrink-0">
+              <span class="font-bold font-num text-cyber-cyan text-xs mr-1">${it.cal || 0}</span>
+              <button class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px]" onclick="openEditModal('${dateStr}', 'food', ${idx})">✏️</button>
+              <button class="px-1.5 py-0.5 rounded bg-rose-950 text-rose-400 text-[11px]" onclick="deleteDayItem('${dateStr}', 'food', ${idx})">ลบ</button>
+            </div>
+          `;
+          fList.appendChild(row);
+        });
+      } else {
+        fList.innerHTML = '<span class="text-xs text-slate-500">ไม่มีรายการอาหารในวันนี้</span>';
+      }
 
       document.getElementById('modal-day-details').classList.remove('hidden');
     }
+
+    window.deleteDayItem = function(dateStr, type, idx) {
+      const day = fullHistoricalLogs.find(d => d.date === dateStr);
+      if (!day) return;
+      if (type === 'food') day.items.splice(idx, 1);
+      else day.workouts.splice(idx, 1);
+      recalculateDayMetrics(day);
+      refreshAllViews();
+      openDayDetailsModal(dateStr);
+      showToast('ลบรายการเรียบร้อย');
+    };
+
+    let editContext = null;
+    window.openEditModal = function(dateStr, type, idx) {
+      const day = fullHistoricalLogs.find(d => d.date === dateStr);
+      if (!day) return;
+      editContext = { dateStr, type, idx };
+
+      const foodFields = document.getElementById('edit-food-fields');
+      const workoutFields = document.getElementById('edit-workout-fields');
+
+      if (type === 'food') {
+        const item = day.items[idx];
+        document.getElementById('edit-modal-title').innerText = '✏️ แก้ไขรายการอาหาร';
+        document.getElementById('edit-item-name').value = item.name;
+        document.getElementById('edit-item-cal').value = item.cal || 0;
+        document.getElementById('edit-item-p').value = item.p || 0;
+        document.getElementById('edit-item-c').value = item.c || 0;
+        document.getElementById('edit-item-f').value = item.f || 0;
+        foodFields.classList.remove('hidden');
+        workoutFields.classList.add('hidden');
+      } else {
+        const w = day.workouts[idx];
+        document.getElementById('edit-modal-title').innerText = '✏️ แก้ไขการออกกำลังกาย';
+        document.getElementById('edit-item-name').value = w.name;
+        document.getElementById('edit-workout-dur').value = w.duration || 30;
+        document.getElementById('edit-workout-cal').value = w.calBurn || 0;
+        foodFields.classList.add('hidden');
+        workoutFields.classList.remove('hidden');
+      }
+
+      document.getElementById('modal-edit-item').classList.remove('hidden');
+    };
 
     // ==================== STATS CHART ====================
     let historyChartInstance = null;
@@ -1912,8 +2141,8 @@
     }
 
     // ==================== EVENT LISTENERS ====================
-    document.addEventListener('DOMContentLoaded', () => {
-      loadFromStorage();
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadFromStorage();
       syncThaiDateTime();
       updateDatalists();
       renderDashboard();
@@ -1952,6 +2181,82 @@
       document.getElementById('btn-cal-nov').addEventListener('click', () => {
         renderMonthlyCalendar('nov');
         showToast('สลับดูปฏิทิน: พฤศจิกายน 2026');
+      });
+
+      
+      // Add Food inside Day Details Modal (Today or Past Day)
+      document.getElementById('btn-mday-add-food').addEventListener('click', () => {
+        if (!activeModalDate) return;
+        const day = fullHistoricalLogs.find(d => d.date === activeModalDate);
+        if (!day) return;
+        const name = document.getElementById('mday-add-food-name').value.trim() || 'อาหารเพิ่มเติม';
+        const cal = parseFloat(document.getElementById('mday-add-food-cal').value) || 0;
+        const p = parseFloat(document.getElementById('mday-add-food-p').value) || 0;
+        day.items.unshift({ id: Date.now(), time: new Date().toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' }), name, cal, p, c: 0, f: 0 });
+        document.getElementById('mday-add-food-name').value = '';
+        document.getElementById('mday-add-food-cal').value = '';
+        document.getElementById('mday-add-food-p').value = '';
+        recalculateDayMetrics(day);
+        refreshAllViews();
+        openDayDetailsModal(activeModalDate);
+        showToast(`เพิ่ม "${name}" ลงวันที่ ${activeModalDate} แล้ว`);
+      });
+
+      // Edit Item Modal Listeners
+      document.getElementById('btn-close-edit-modal').addEventListener('click', () => {
+        document.getElementById('modal-edit-item').classList.add('hidden');
+      });
+
+      document.getElementById('btn-save-edit-item').addEventListener('click', () => {
+        if (!editContext) return;
+        const day = fullHistoricalLogs.find(d => d.date === editContext.dateStr);
+        if (!day) return;
+
+        const newName = document.getElementById('edit-item-name').value.trim();
+        if (editContext.type === 'food') {
+          const it = day.items[editContext.idx];
+          it.name = newName || it.name;
+          it.cal = parseFloat(document.getElementById('edit-item-cal').value) || 0;
+          it.p = parseFloat(document.getElementById('edit-item-p').value) || 0;
+          it.c = parseFloat(document.getElementById('edit-item-c').value) || 0;
+          it.f = parseFloat(document.getElementById('edit-item-f').value) || 0;
+        } else {
+          const w = day.workouts[editContext.idx];
+          w.name = newName || w.name;
+          w.duration = parseInt(document.getElementById('edit-workout-dur').value) || 30;
+          w.calBurn = parseInt(document.getElementById('edit-workout-cal').value) || 0;
+        }
+
+        recalculateDayMetrics(day);
+        refreshAllViews();
+        document.getElementById('modal-edit-item').classList.add('hidden');
+        if (!document.getElementById('modal-day-details').classList.contains('hidden')) {
+          openDayDetailsModal(editContext.dateStr);
+        }
+        showToast('บันทึกการแก้ไขเรียบร้อย');
+      });
+
+      // Cloud Sync Modal Listeners
+      document.getElementById('btn-open-sync').addEventListener('click', () => {
+        document.getElementById('cloud-firebase-url').value = cloudSyncUrl;
+        document.getElementById('modal-cloud-sync').classList.remove('hidden');
+      });
+      document.getElementById('btn-close-sync-modal').addEventListener('click', () => {
+        document.getElementById('modal-cloud-sync').classList.add('hidden');
+      });
+      document.getElementById('btn-save-cloud-url').addEventListener('click', () => {
+        cloudSyncUrl = document.getElementById('cloud-firebase-url').value.trim();
+        localStorage.setItem('friday_cloud_url_v8', cloudSyncUrl);
+        saveToStorage();
+        showToast(cloudSyncUrl ? 'เชื่อมต่อ Cloud DB สำเร็จ!' : 'ยกเลิก Cloud Sync (ใช้ Local DB)');
+        document.getElementById('modal-cloud-sync').classList.add('hidden');
+      });
+      document.getElementById('btn-copy-today-summary').addEventListener('click', () => {
+        const d = state.today;
+        const foods = d.items.map(i => `- ${i.name} (${i.cal} kcal / P ${i.p}g)`).join('\n') || '- ยังไม่มี';
+        const wks = d.workouts.map(w => `- ${w.name} (${w.duration}น. / +${w.calBurn} kcal)`).join('\n') || '- ยังไม่มี';
+        const summary = `📊 สรุปวันที่ ${d.dayName}\nกิน: ${d.caloriesEaten}/1900 kcal | โปรตีน: ${d.protein}/160g | TDEE: ${d.tdee} | Deficit: ${d.rawDeficit} kcal\n🍽️ อาหาร:\n${foods}\n⚡ ออกกำลังกาย:\n${wks}`;
+        navigator.clipboard.writeText(summary).then(() => showToast('คัดลอกสรุปวันนี้แล้ว! นำไปวางในแชทได้เลย'));
       });
 
       document.getElementById('btn-close-day-details').addEventListener('click', () => {
