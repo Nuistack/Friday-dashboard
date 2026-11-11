@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-11T11:41:07.436Z",
+  "updatedAt": "2026-11-11T11:41:39.125Z",
   "updatedThai": "11 พ.ย. (วันพุธ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -126,6 +126,12 @@
   ],
   "workoutDatabase": [
     {
+      "name": "ขา",
+      "duration": 63,
+      "cal": 385,
+      "cat": "เวท"
+    },
+    {
       "name": "เวทเทรนนิ่ง Upper Body Power",
       "duration": 50,
       "cal": 320,
@@ -221,15 +227,23 @@
       "date": "2026-11-11",
       "dayName": "11 พ.ย. (วันพุธ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 415 & เบิร์น +0 kcal)",
+      "statusText": "✓ Super Deficit (กิน 415 & เบิร์น +385 kcal)",
       "caloriesEaten": 415,
-      "exerciseBurn": 0,
+      "exerciseBurn": 385,
       "baseTdee": 2200,
-      "tdee": 2200,
-      "deficitBurn": 1785,
-      "rawDeficit": -1785,
+      "tdee": 2585,
+      "deficitBurn": 2170,
+      "rawDeficit": -2170,
       "protein": 54,
-      "workouts": [],
+      "workouts": [
+        {
+          "id": "w_1794397297846",
+          "category": "เวท",
+          "name": "ขา",
+          "duration": 63,
+          "calBurn": 385
+        }
+      ],
       "items": [
         {
           "id": 1794385131588,
