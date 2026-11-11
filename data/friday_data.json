@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-11T13:02:31.389Z",
+  "updatedAt": "2026-11-11T13:21:45.426Z",
   "updatedThai": "11 พ.ย. (วันพุธ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1794403304150",
+      "name": "ข้าวไรซ์ สเต็กปลาดอลลี่",
+      "cal": 125,
+      "p": 10.5,
+      "c": 15,
+      "f": 2.5
+    },
     {
       "id": "f1",
       "name": "ข้าวสวย 100g + ไก่ย่างลอกหนัง 200g",
@@ -227,14 +235,14 @@
       "date": "2026-11-11",
       "dayName": "11 พ.ย. (วันพุธ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 595 & เบิร์น +385 kcal)",
-      "caloriesEaten": 595,
+      "statusText": "✓ Super Deficit (กิน 720 & เบิร์น +385 kcal)",
+      "caloriesEaten": 720,
       "exerciseBurn": 385,
       "baseTdee": 2200,
       "tdee": 2585,
-      "deficitBurn": 1990,
-      "rawDeficit": -1990,
-      "protein": 90,
+      "deficitBurn": 1865,
+      "rawDeficit": -1865,
+      "protein": 100.5,
       "workouts": [
         {
           "id": "w_1794397297846",
@@ -245,6 +253,15 @@
         }
       ],
       "items": [
+        {
+          "id": 1794403304133,
+          "time": "20:21",
+          "name": "ข้าวไรซ์ สเต็กปลาดอลลี่",
+          "cal": 125,
+          "p": 10.5,
+          "c": 15,
+          "f": 2.5
+        },
         {
           "id": 1794397319188,
           "time": "18:41",
@@ -278,7 +295,7 @@
       "date": "2026-11-10",
       "dayName": "10 พ.ย. (วันอังคาร)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 635 kcal & เบิร์น +520 kcal)",
+      "statusText": "✓ Super Deficit (กิน 635 & เบิร์น +520 kcal)",
       "caloriesEaten": 635,
       "exerciseBurn": 520,
       "baseTdee": 2200,
