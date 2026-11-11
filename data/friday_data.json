@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-11T11:41:39.125Z",
+  "updatedAt": "2026-11-11T11:42:00.441Z",
   "updatedThai": "11 พ.ย. (วันพุธ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -227,14 +227,14 @@
       "date": "2026-11-11",
       "dayName": "11 พ.ย. (วันพุธ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 415 & เบิร์น +385 kcal)",
-      "caloriesEaten": 415,
+      "statusText": "✓ Super Deficit (กิน 595 & เบิร์น +385 kcal)",
+      "caloriesEaten": 595,
       "exerciseBurn": 385,
       "baseTdee": 2200,
       "tdee": 2585,
-      "deficitBurn": 2170,
-      "rawDeficit": -2170,
-      "protein": 54,
+      "deficitBurn": 1990,
+      "rawDeficit": -1990,
+      "protein": 90,
       "workouts": [
         {
           "id": "w_1794397297846",
@@ -245,6 +245,15 @@
         }
       ],
       "items": [
+        {
+          "id": 1794397319188,
+          "time": "18:41",
+          "name": "BOBBI Plant Protein Lemonade",
+          "cal": 180,
+          "p": 36,
+          "c": 8,
+          "f": 0
+        },
         {
           "id": 1794385131588,
           "time": "15:18",
