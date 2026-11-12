@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-12T17:02:26.758Z",
+  "updatedAt": "2026-11-12T17:02:37.445Z",
   "updatedThai": "13 พ.ย. (วันศุกร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -288,14 +288,14 @@
       "date": "2026-11-12",
       "dayName": "12 พ.ย. (วันพฤหัสบดี)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 1946 & เบิร์น +569 kcal)",
-      "caloriesEaten": 1946,
+      "statusText": "✓ Super Deficit (กิน 1731 & เบิร์น +569 kcal)",
+      "caloriesEaten": 1731,
       "exerciseBurn": 569,
       "baseTdee": 2200,
       "tdee": 2769,
-      "deficitBurn": 823,
-      "rawDeficit": -823,
-      "protein": 170.5,
+      "deficitBurn": 1038,
+      "rawDeficit": -1038,
+      "protein": 169,
       "workouts": [
         {
           "id": "w_1794484674747",
@@ -313,15 +313,6 @@
         }
       ],
       "items": [
-        {
-          "id": 1794502945554,
-          "time": "00:02",
-          "name": "เบียรสิงห์กระป๋องยาว",
-          "cal": 215,
-          "p": 1.5,
-          "c": 0,
-          "f": 0
-        },
         {
           "id": 1794499681217,
           "time": "23:08",
