@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-12T05:18:25.922Z",
+  "updatedAt": "2026-11-12T05:19:54.063Z",
   "updatedThai": "12 พ.ย. (วันพฤหัสบดี - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1794460792843",
+      "name": "ข้าวไก่ย่างไข่ต้ม 3 ฟอง",
+      "cal": 401,
+      "p": 46,
+      "c": 30,
+      "f": 9
+    },
     {
       "id": "f_1794403393435",
       "name": "อกไก่ต้ม 200 g",
@@ -243,16 +251,25 @@
       "date": "2026-11-12",
       "dayName": "12 พ.ย. (วันพฤหัสบดี - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 5 & เบิร์น +0 kcal)",
-      "caloriesEaten": 5,
+      "statusText": "✓ Super Deficit (กิน 406 & เบิร์น +0 kcal)",
+      "caloriesEaten": 406,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 2195,
-      "rawDeficit": -2195,
-      "protein": 0,
+      "deficitBurn": 1794,
+      "rawDeficit": -1794,
+      "protein": 46,
       "workouts": [],
       "items": [
+        {
+          "id": 1794460792837,
+          "time": "12:19",
+          "name": "ข้าวไก่ย่างไข่ต้ม 3 ฟอง",
+          "cal": 401,
+          "p": 46,
+          "c": 30,
+          "f": 9
+        },
         {
           "id": 1794457193519,
           "time": "11:19",
