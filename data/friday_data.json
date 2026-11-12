@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-12T13:27:05.102Z",
+  "updatedAt": "2026-11-12T13:27:47.778Z",
   "updatedThai": "12 พ.ย. (วันพฤหัสบดี - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -265,13 +265,13 @@
       "date": "2026-11-12",
       "dayName": "12 พ.ย. (วันพฤหัสบดี - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 1491 & เบิร์น +569 kcal)",
-      "caloriesEaten": 1491,
+      "statusText": "✓ Super Deficit (กิน 1591 & เบิร์น +569 kcal)",
+      "caloriesEaten": 1591,
       "exerciseBurn": 569,
       "baseTdee": 2200,
       "tdee": 2769,
-      "deficitBurn": 1278,
-      "rawDeficit": -1278,
+      "deficitBurn": 1178,
+      "rawDeficit": -1178,
       "protein": 154,
       "workouts": [
         {
@@ -294,7 +294,7 @@
           "id": 1794490023802,
           "time": "20:27",
           "name": "เดี๋ยวหมูแดงหมูกรอบ และสะโพกหมูลวก",
-          "cal": 900,
+          "cal": 1000,
           "p": 72,
           "c": 20,
           "f": 40
