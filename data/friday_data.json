@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-12T05:29:10.946Z",
+  "updatedAt": "2026-11-12T05:29:46.627Z",
   "updatedThai": "12 พ.ย. (วันพฤหัสบดี - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -372,14 +372,14 @@
       "date": "2026-11-10",
       "dayName": "10 พ.ย. (วันอังคาร)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 1035 & เบิร์น +520 kcal)",
-      "caloriesEaten": 1035,
+      "statusText": "✓ Super Deficit (กิน 1435 & เบิร์น +520 kcal)",
+      "caloriesEaten": 1435,
       "exerciseBurn": 520,
       "baseTdee": 2200,
       "tdee": 2720,
-      "deficitBurn": 1685,
-      "rawDeficit": -1685,
-      "protein": 84.5,
+      "deficitBurn": 1285,
+      "rawDeficit": -1285,
+      "protein": 109.5,
       "workouts": [
         {
           "id": "w1",
@@ -397,6 +397,15 @@
         }
       ],
       "items": [
+        {
+          "id": 1794461385424,
+          "time": "12:29",
+          "name": "ข้าวเยน",
+          "cal": 400,
+          "p": 25,
+          "c": 0,
+          "f": 0
+        },
         {
           "id": 1794461345544,
           "time": "12:29",
