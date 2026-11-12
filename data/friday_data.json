@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-12T17:02:37.445Z",
+  "updatedAt": "2026-11-12T17:03:01.275Z",
   "updatedThai": "13 พ.ย. (วันศุกร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -288,14 +288,14 @@
       "date": "2026-11-12",
       "dayName": "12 พ.ย. (วันพฤหัสบดี)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 1731 & เบิร์น +569 kcal)",
-      "caloriesEaten": 1731,
+      "statusText": "✓ Super Deficit (กิน 2161 & เบิร์น +569 kcal)",
+      "caloriesEaten": 2161,
       "exerciseBurn": 569,
       "baseTdee": 2200,
       "tdee": 2769,
-      "deficitBurn": 1038,
-      "rawDeficit": -1038,
-      "protein": 169,
+      "deficitBurn": 608,
+      "rawDeficit": -608,
+      "protein": 172,
       "workouts": [
         {
           "id": "w_1794484674747",
@@ -313,6 +313,15 @@
         }
       ],
       "items": [
+        {
+          "id": 1794502980071,
+          "time": "00:03",
+          "name": "เบียร์สิงห์กระป๋องยาว 2",
+          "cal": 430,
+          "p": 3,
+          "c": 0,
+          "f": 0
+        },
         {
           "id": 1794499681217,
           "time": "23:08",
