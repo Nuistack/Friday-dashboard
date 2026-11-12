@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-12T11:56:20.374Z",
+  "updatedAt": "2026-11-12T11:57:00.518Z",
   "updatedThai": "12 พ.ย. (วันพฤหัสบดี - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -251,15 +251,23 @@
       "date": "2026-11-12",
       "dayName": "12 พ.ย. (วันพฤหัสบดี - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 411 & เบิร์น +0 kcal)",
+      "statusText": "✓ Super Deficit (กิน 411 & เบิร์น +327 kcal)",
       "caloriesEaten": 411,
-      "exerciseBurn": 0,
+      "exerciseBurn": 327,
       "baseTdee": 2200,
-      "tdee": 2200,
-      "deficitBurn": 1789,
-      "rawDeficit": -1789,
+      "tdee": 2527,
+      "deficitBurn": 2116,
+      "rawDeficit": -2116,
       "protein": 46,
-      "workouts": [],
+      "workouts": [
+        {
+          "id": "w_1794484619253",
+          "category": "เวท",
+          "name": "เวทเทรนนิ่ง อก & หลังแขน",
+          "duration": 70,
+          "calBurn": 327
+        }
+      ],
       "items": [
         {
           "id": 1794474833812,
