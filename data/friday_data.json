@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-12T05:28:44.631Z",
+  "updatedAt": "2026-11-12T05:29:06.747Z",
   "updatedThai": "12 พ.ย. (วันพฤหัสบดี - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -372,14 +372,14 @@
       "date": "2026-11-10",
       "dayName": "10 พ.ย. (วันอังคาร)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 635 & เบิร์น +520 kcal)",
-      "caloriesEaten": 635,
+      "statusText": "✓ Super Deficit (กิน 1035 & เบิร์น +520 kcal)",
+      "caloriesEaten": 1035,
       "exerciseBurn": 520,
       "baseTdee": 2200,
       "tdee": 2720,
-      "deficitBurn": 2085,
-      "rawDeficit": -2085,
-      "protein": 54.5,
+      "deficitBurn": 1685,
+      "rawDeficit": -1685,
+      "protein": 84.5,
       "workouts": [
         {
           "id": "w1",
@@ -397,6 +397,15 @@
         }
       ],
       "items": [
+        {
+          "id": 1794461345544,
+          "time": "12:29",
+          "name": "ไก่ย่าง",
+          "cal": 400,
+          "p": 30,
+          "c": 0,
+          "f": 0
+        },
         {
           "id": 1794461323415,
           "time": "12:28",
