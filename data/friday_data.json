@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-12T11:57:00.518Z",
+  "updatedAt": "2026-11-12T11:57:56.002Z",
   "updatedThai": "12 พ.ย. (วันพฤหัสบดี - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -150,6 +150,12 @@
   ],
   "workoutDatabase": [
     {
+      "name": "เดินชัน",
+      "duration": 33,
+      "cal": 242,
+      "cat": "เวท"
+    },
+    {
       "name": "ขา",
       "duration": 63,
       "cal": 385,
@@ -251,15 +257,22 @@
       "date": "2026-11-12",
       "dayName": "12 พ.ย. (วันพฤหัสบดี - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 411 & เบิร์น +327 kcal)",
+      "statusText": "✓ Super Deficit (กิน 411 & เบิร์น +569 kcal)",
       "caloriesEaten": 411,
-      "exerciseBurn": 327,
+      "exerciseBurn": 569,
       "baseTdee": 2200,
-      "tdee": 2527,
-      "deficitBurn": 2116,
-      "rawDeficit": -2116,
+      "tdee": 2769,
+      "deficitBurn": 2358,
+      "rawDeficit": -2358,
       "protein": 46,
       "workouts": [
+        {
+          "id": "w_1794484674747",
+          "category": "เวท",
+          "name": "เดินชัน",
+          "duration": 33,
+          "calBurn": 242
+        },
         {
           "id": "w_1794484619253",
           "category": "เวท",
