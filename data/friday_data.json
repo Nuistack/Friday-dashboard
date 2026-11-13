@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-13T11:34:46.847Z",
+  "updatedAt": "2026-11-13T11:35:36.028Z",
   "updatedThai": "13 พ.ย. (วันศุกร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1794569734783",
+      "name": "ส้มตำไก่ย่าง",
+      "cal": 800,
+      "p": 50,
+      "c": 40,
+      "f": 25
+    },
     {
       "id": "f_1794499681227",
       "name": "Betagen 15g",
@@ -273,16 +281,25 @@
       "date": "2026-11-13",
       "dayName": "13 พ.ย. (วันศุกร์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 180 & เบิร์น +0 kcal)",
-      "caloriesEaten": 180,
+      "statusText": "✓ Super Deficit (กิน 980 & เบิร์น +0 kcal)",
+      "caloriesEaten": 980,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 2020,
-      "rawDeficit": -2020,
-      "protein": 36,
+      "deficitBurn": 1220,
+      "rawDeficit": -1220,
+      "protein": 86,
       "workouts": [],
       "items": [
+        {
+          "id": 1794569734776,
+          "time": "18:35",
+          "name": "ส้มตำไก่ย่าง",
+          "cal": 800,
+          "p": 50,
+          "c": 40,
+          "f": 25
+        },
         {
           "id": 1794569685591,
           "time": "18:34",
