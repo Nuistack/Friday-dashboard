@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T14:21:49.454Z",
+  "updatedAt": "2026-11-14T14:22:00.941Z",
   "updatedThai": "14 พ.ย. (วันเสาร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -319,14 +319,14 @@
       "date": "2026-11-14",
       "dayName": "14 พ.ย. (วันเสาร์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 1285 & เบิร์น +250 kcal)",
-      "caloriesEaten": 1285,
+      "statusText": "✓ Super Deficit (กิน 1515 & เบิร์น +250 kcal)",
+      "caloriesEaten": 1515,
       "exerciseBurn": 250,
       "baseTdee": 2200,
       "tdee": 2450,
-      "deficitBurn": 1165,
-      "rawDeficit": -1165,
-      "protein": 102,
+      "deficitBurn": 935,
+      "rawDeficit": -935,
+      "protein": 135,
       "workouts": [
         {
           "id": "w_1794658450551",
@@ -337,6 +337,15 @@
         }
       ],
       "items": [
+        {
+          "id": 1794666119680,
+          "time": "21:21",
+          "name": "นมโปรตีน Sunshine Dairy มอลต์ช็อกโกแลต 340ml",
+          "cal": 230,
+          "p": 33,
+          "c": 23,
+          "f": 1
+        },
         {
           "id": 1794661004307,
           "time": "19:56",
