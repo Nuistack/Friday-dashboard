@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-14T12:03:58.434Z",
+  "updatedAt": "2026-11-14T12:07:48.945Z",
   "updatedThai": "14 พ.ย. (วันเสาร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1794658067639",
+      "name": "เกี๊ยวหมูแดง",
+      "cal": 450,
+      "p": 30,
+      "c": 30,
+      "f": 25
+    },
     {
       "id": "f_1794657837202",
       "name": "เนื้อย่าง 100 g",
@@ -289,16 +297,25 @@
       "date": "2026-11-14",
       "dayName": "14 พ.ย. (วันเสาร์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 140 & เบิร์น +0 kcal)",
-      "caloriesEaten": 140,
+      "statusText": "✓ Super Deficit (กิน 590 & เบิร์น +0 kcal)",
+      "caloriesEaten": 590,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 2060,
-      "rawDeficit": -2060,
-      "protein": 25,
+      "deficitBurn": 1610,
+      "rawDeficit": -1610,
+      "protein": 55,
       "workouts": [],
       "items": [
+        {
+          "id": 1794658067628,
+          "time": "19:07",
+          "name": "เกี๊ยวหมูแดง",
+          "cal": 450,
+          "p": 30,
+          "c": 30,
+          "f": 25
+        },
         {
           "id": 1794657837195,
           "time": "19:03",
