@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-14T12:03:12.393Z",
+  "updatedAt": "2026-11-14T12:03:58.434Z",
   "updatedThai": "14 พ.ย. (วันเสาร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1794657837202",
+      "name": "เนื้อย่าง 100 g",
+      "cal": 140,
+      "p": 25,
+      "c": 4,
+      "f": 5
+    },
     {
       "id": "f_1794569734783",
       "name": "ส้มตำไก่ย่าง",
@@ -281,16 +289,26 @@
       "date": "2026-11-14",
       "dayName": "14 พ.ย. (วันเสาร์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 0 & เบิร์น +0 kcal)",
-      "caloriesEaten": 0,
+      "statusText": "✓ Super Deficit (กิน 140 & เบิร์น +0 kcal)",
+      "caloriesEaten": 140,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 2200,
-      "rawDeficit": -2200,
-      "protein": 0,
+      "deficitBurn": 2060,
+      "rawDeficit": -2060,
+      "protein": 25,
       "workouts": [],
-      "items": []
+      "items": [
+        {
+          "id": 1794657837195,
+          "time": "19:03",
+          "name": "เนื้อย่าง 100 g",
+          "cal": 140,
+          "p": 25,
+          "c": 4,
+          "f": 5
+        }
+      ]
     },
     {
       "date": "2026-11-13",
