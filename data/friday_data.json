@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T12:12:38.027Z",
+  "updatedAt": "2026-11-14T12:13:02.962Z",
   "updatedThai": "14 พ.ย. (วันเสาร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -313,16 +313,25 @@
       "date": "2026-11-14",
       "dayName": "14 พ.ย. (วันเสาร์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 1100 & เบิร์น +0 kcal)",
-      "caloriesEaten": 1100,
+      "statusText": "✓ Super Deficit (กิน 1105 & เบิร์น +0 kcal)",
+      "caloriesEaten": 1105,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 1100,
-      "rawDeficit": -1100,
+      "deficitBurn": 1095,
+      "rawDeficit": -1095,
       "protein": 66,
       "workouts": [],
       "items": [
+        {
+          "id": 1794658381743,
+          "time": "19:13",
+          "name": "อเมริกาโน่เย็นไม่หวาน 1 แก้ว",
+          "cal": 5,
+          "p": 0,
+          "c": 1,
+          "f": 0
+        },
         {
           "id": 1794658356783,
           "time": "19:12",
