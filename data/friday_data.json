@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-14T12:10:16.033Z",
+  "updatedAt": "2026-11-14T12:12:38.027Z",
   "updatedThai": "14 พ.ย. (วันเสาร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1794658356785",
+      "name": "อโวกาโดน้ำผึ้งมะนาว",
+      "cal": 250,
+      "p": 2,
+      "c": 25,
+      "f": 15
+    },
     {
       "id": "f_1794658214779",
       "name": "แซนวิสแฮมชีส",
@@ -305,16 +313,25 @@
       "date": "2026-11-14",
       "dayName": "14 พ.ย. (วันเสาร์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 850 & เบิร์น +0 kcal)",
-      "caloriesEaten": 850,
+      "statusText": "✓ Super Deficit (กิน 1100 & เบิร์น +0 kcal)",
+      "caloriesEaten": 1100,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 1350,
-      "rawDeficit": -1350,
-      "protein": 64,
+      "deficitBurn": 1100,
+      "rawDeficit": -1100,
+      "protein": 66,
       "workouts": [],
       "items": [
+        {
+          "id": 1794658356783,
+          "time": "19:12",
+          "name": "อโวกาโดน้ำผึ้งมะนาว",
+          "cal": 250,
+          "p": 2,
+          "c": 25,
+          "f": 15
+        },
         {
           "id": 1794658214776,
           "time": "19:10",
