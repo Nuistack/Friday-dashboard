@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-14T16:31:22.609Z",
+  "updatedAt": "2026-11-14T16:36:56.202Z",
   "updatedThai": "14 พ.ย. (วันเสาร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1794674214870",
+      "name": "เบียร์สิงห์ 620 ml",
+      "cal": 230,
+      "p": 1,
+      "c": 15,
+      "f": 0
+    },
     {
       "id": "f_1794672005856",
       "name": "เลย์",
@@ -326,17 +334,26 @@
     {
       "date": "2026-11-14",
       "dayName": "14 พ.ย. (วันเสาร์ - วันนี้)",
-      "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 1715 & เบิร์น +0 kcal)",
-      "caloriesEaten": 1715,
+      "zone": "safe_deficit",
+      "statusText": "⚡ Safe Zone (กิน 1945 & เบิร์น +0 kcal)",
+      "caloriesEaten": 1945,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 485,
-      "rawDeficit": -485,
-      "protein": 136,
+      "deficitBurn": 255,
+      "rawDeficit": -255,
+      "protein": 137,
       "workouts": [],
       "items": [
+        {
+          "id": 1794674214862,
+          "time": "23:36",
+          "name": "เบียร์สิงห์ 620 ml",
+          "cal": 230,
+          "p": 1,
+          "c": 15,
+          "f": 0
+        },
         {
           "id": 1794672005854,
           "time": "23:00",
