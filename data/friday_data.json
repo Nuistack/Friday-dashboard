@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T12:13:02.962Z",
+  "updatedAt": "2026-11-14T12:13:54.921Z",
   "updatedThai": "14 พ.ย. (วันเสาร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -373,17 +373,26 @@
     {
       "date": "2026-11-13",
       "dayName": "13 พ.ย. (วันศุกร์)",
-      "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 980 & เบิร์น +0 kcal)",
-      "caloriesEaten": 980,
+      "zone": "surplus",
+      "statusText": "⚠️ Surplus เกิน TDEE (+180 kcal)",
+      "caloriesEaten": 2380,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 1220,
-      "rawDeficit": -1220,
-      "protein": 86,
+      "deficitBurn": -180,
+      "rawDeficit": 180,
+      "protein": 136,
       "workouts": [],
       "items": [
+        {
+          "id": 1794658433716,
+          "time": "19:13",
+          "name": "เหล้า อาหาร",
+          "cal": 1400,
+          "p": 50,
+          "c": 0,
+          "f": 0
+        },
         {
           "id": 1794569734776,
           "time": "18:35",
