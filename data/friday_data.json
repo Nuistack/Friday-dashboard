@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-15T14:42:12.443Z",
+  "updatedAt": "2026-11-15T14:43:46.159Z",
   "updatedThai": "15 พ.ย. (วันอาทิตย์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1794753824933",
+      "name": "Vitaday apple",
+      "cal": 140,
+      "p": 33,
+      "c": 0,
+      "f": 0
+    },
     {
       "id": "f_1794748123651",
       "name": "ข้าวเย็น",
@@ -351,14 +359,14 @@
       "date": "2026-11-15",
       "dayName": "15 พ.ย. (วันอาทิตย์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 1745 & เบิร์น +362 kcal)",
-      "caloriesEaten": 1745,
+      "statusText": "✓ Super Deficit (กิน 1885 & เบิร์น +362 kcal)",
+      "caloriesEaten": 1885,
       "exerciseBurn": 362,
       "baseTdee": 2200,
       "tdee": 2562,
-      "deficitBurn": 817,
-      "rawDeficit": -817,
-      "protein": 158,
+      "deficitBurn": 677,
+      "rawDeficit": -677,
+      "protein": 191,
       "workouts": [
         {
           "id": "w_1794742223229",
@@ -369,6 +377,15 @@
         }
       ],
       "items": [
+        {
+          "id": 1794753824922,
+          "time": "21:43",
+          "name": "Vitaday apple",
+          "cal": 140,
+          "p": 33,
+          "c": 0,
+          "f": 0
+        },
         {
           "id": 1794748123648,
           "time": "20:08",
