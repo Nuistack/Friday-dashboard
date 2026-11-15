@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-15T16:48:46.198Z",
+  "updatedAt": "2026-11-15T16:49:28.606Z",
   "updatedThai": "15 พ.ย. (วันอาทิตย์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1794761367389",
+      "name": "เบียร์สิงห์ lite",
+      "cal": 149,
+      "p": 1,
+      "c": 10,
+      "f": 0
+    },
     {
       "id": "f_1794753824933",
       "name": "Vitaday apple",
@@ -359,14 +367,14 @@
       "date": "2026-11-15",
       "dayName": "15 พ.ย. (วันอาทิตย์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 1885 & เบิร์น +362 kcal)",
-      "caloriesEaten": 1885,
+      "statusText": "✓ Super Deficit (กิน 2034 & เบิร์น +362 kcal)",
+      "caloriesEaten": 2034,
       "exerciseBurn": 362,
       "baseTdee": 2200,
       "tdee": 2562,
-      "deficitBurn": 677,
-      "rawDeficit": -677,
-      "protein": 191,
+      "deficitBurn": 528,
+      "rawDeficit": -528,
+      "protein": 192,
       "workouts": [
         {
           "id": "w_1794742223229",
@@ -377,6 +385,15 @@
         }
       ],
       "items": [
+        {
+          "id": 1794761367386,
+          "time": "23:49",
+          "name": "เบียร์สิงห์ lite",
+          "cal": 149,
+          "p": 1,
+          "c": 10,
+          "f": 0
+        },
         {
           "id": 1794753824922,
           "time": "21:43",
