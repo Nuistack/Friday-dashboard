@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-15T07:40:00.268Z",
+  "updatedAt": "2026-11-15T07:40:37.159Z",
   "updatedThai": "15 พ.ย. (วันอาทิตย์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1794728435930",
+      "name": "ข้าวมันไก่",
+      "cal": 630,
+      "p": 60,
+      "c": 52,
+      "f": 17
+    },
     {
       "id": "f_1794674214870",
       "name": "เบียร์สิงห์ 620 ml",
@@ -335,16 +343,25 @@
       "date": "2026-11-15",
       "dayName": "15 พ.ย. (วันอาทิตย์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 460 & เบิร์น +0 kcal)",
-      "caloriesEaten": 460,
+      "statusText": "✓ Super Deficit (กิน 1090 & เบิร์น +0 kcal)",
+      "caloriesEaten": 1090,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 1740,
-      "rawDeficit": -1740,
-      "protein": 2,
+      "deficitBurn": 1110,
+      "rawDeficit": -1110,
+      "protein": 62,
       "workouts": [],
       "items": [
+        {
+          "id": 1794728435923,
+          "time": "14:40",
+          "name": "ข้าวมันไก่",
+          "cal": 630,
+          "p": 60,
+          "c": 52,
+          "f": 17
+        },
         {
           "id": 1794685211379,
           "time": "02:40",
