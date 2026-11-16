@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-16T05:33:28.003Z",
+  "updatedAt": "2026-11-16T05:39:48.428Z",
   "updatedThai": "16 พ.ย. (วันจันทร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -367,16 +367,26 @@
       "date": "2026-11-16",
       "dayName": "16 พ.ย. (วันจันทร์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 0 & เบิร์น +0 kcal)",
-      "caloriesEaten": 0,
+      "statusText": "✓ Super Deficit (กิน 440 & เบิร์น +0 kcal)",
+      "caloriesEaten": 440,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 2200,
-      "rawDeficit": -2200,
-      "protein": 0,
+      "deficitBurn": 1760,
+      "rawDeficit": -1760,
+      "protein": 48,
       "workouts": [],
-      "items": []
+      "items": [
+        {
+          "id": 1794807587113,
+          "time": "12:39",
+          "name": "ข้าวมันไก่",
+          "cal": 440,
+          "p": 48,
+          "c": 40,
+          "f": 5
+        }
+      ]
     },
     {
       "date": "2026-11-15",
