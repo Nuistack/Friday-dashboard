@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-16T12:49:53.819Z",
+  "updatedAt": "2026-11-16T12:50:25.749Z",
   "updatedThai": "16 พ.ย. (วันจันทร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1794833424487",
+      "name": "มื้อเย็น",
+      "cal": 1325,
+      "p": 122,
+      "c": 40,
+      "f": 60
+    },
     {
       "id": "f_1794812028857",
       "name": "โตเกียวกล้วยนูเทลล่า",
@@ -374,17 +382,26 @@
     {
       "date": "2026-11-16",
       "dayName": "16 พ.ย. (วันจันทร์ - วันนี้)",
-      "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 560 & เบิร์น +0 kcal)",
-      "caloriesEaten": 560,
+      "zone": "safe_deficit",
+      "statusText": "⚡ Safe Zone (กิน 1885 & เบิร์น +0 kcal)",
+      "caloriesEaten": 1885,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 1640,
-      "rawDeficit": -1640,
-      "protein": 50,
+      "deficitBurn": 315,
+      "rawDeficit": -315,
+      "protein": 172,
       "workouts": [],
       "items": [
+        {
+          "id": 1794833424474,
+          "time": "19:50",
+          "name": "มื้อเย็น",
+          "cal": 1325,
+          "p": 122,
+          "c": 40,
+          "f": 60
+        },
         {
           "id": 1794812028849,
           "time": "13:53",
