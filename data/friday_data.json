@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-16T06:53:19.411Z",
+  "updatedAt": "2026-11-16T06:53:50.076Z",
   "updatedThai": "16 พ.ย. (วันจันทร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1794812028857",
+      "name": "โตเกียวกล้วยนูเทลล่า",
+      "cal": 120,
+      "p": 2,
+      "c": 20,
+      "f": 4
+    },
     {
       "id": "f_1794761367389",
       "name": "เบียร์สิงห์ lite",
@@ -367,16 +375,25 @@
       "date": "2026-11-16",
       "dayName": "16 พ.ย. (วันจันทร์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 440 & เบิร์น +0 kcal)",
-      "caloriesEaten": 440,
+      "statusText": "✓ Super Deficit (กิน 560 & เบิร์น +0 kcal)",
+      "caloriesEaten": 560,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 1760,
-      "rawDeficit": -1760,
-      "protein": 48,
+      "deficitBurn": 1640,
+      "rawDeficit": -1640,
+      "protein": 50,
       "workouts": [],
       "items": [
+        {
+          "id": 1794812028849,
+          "time": "13:53",
+          "name": "โตเกียวกล้วยนูเทลล่า",
+          "cal": 120,
+          "p": 2,
+          "c": 20,
+          "f": 4
+        },
         {
           "id": 1794807587113,
           "time": "12:39",
