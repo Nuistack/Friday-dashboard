@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-17T05:39:25.987Z",
+  "updatedAt": "2026-11-17T05:39:58.548Z",
   "updatedThai": "17 พ.ย. (วันอังคาร - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1794893997303",
+      "name": "เกาเหลาเนื้อตุ๋น",
+      "cal": 380,
+      "p": 25,
+      "c": 35,
+      "f": 20
+    },
     {
       "id": "f_1794833424487",
       "name": "มื้อเย็น",
@@ -389,16 +397,26 @@
       "date": "2026-11-17",
       "dayName": "17 พ.ย. (วันอังคาร - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 0 & เบิร์น +0 kcal)",
-      "caloriesEaten": 0,
+      "statusText": "✓ Super Deficit (กิน 380 & เบิร์น +0 kcal)",
+      "caloriesEaten": 380,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 2200,
-      "rawDeficit": -2200,
-      "protein": 0,
+      "deficitBurn": 1820,
+      "rawDeficit": -1820,
+      "protein": 25,
       "workouts": [],
-      "items": []
+      "items": [
+        {
+          "id": 1794893997295,
+          "time": "12:39",
+          "name": "เกาเหลาเนื้อตุ๋น",
+          "cal": 380,
+          "p": 25,
+          "c": 35,
+          "f": 20
+        }
+      ]
     },
     {
       "date": "2026-11-16",
