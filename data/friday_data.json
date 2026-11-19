@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-19T12:45:25.556Z",
+  "updatedAt": "2026-11-19T12:46:10.450Z",
   "updatedThai": "19 พ.ย. (วันพฤหัสบดี - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1795092369227",
+      "name": "ข้าวกลางวัน",
+      "cal": 500,
+      "p": 30,
+      "c": 40,
+      "f": 10
+    },
     {
       "id": "f_1795092227806",
       "name": "ขนมปังปิ้ง",
@@ -405,16 +413,25 @@
       "date": "2026-11-19",
       "dayName": "19 พ.ย. (วันพฤหัสบดี - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 1145 & เบิร์น +0 kcal)",
-      "caloriesEaten": 1145,
+      "statusText": "✓ Super Deficit (กิน 1645 & เบิร์น +0 kcal)",
+      "caloriesEaten": 1645,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 1055,
-      "rawDeficit": -1055,
-      "protein": 52,
+      "deficitBurn": 555,
+      "rawDeficit": -555,
+      "protein": 82,
       "workouts": [],
       "items": [
+        {
+          "id": 1795092369225,
+          "time": "19:46",
+          "name": "ข้าวกลางวัน",
+          "cal": 500,
+          "p": 30,
+          "c": 40,
+          "f": 10
+        },
         {
           "id": 1795092324288,
           "time": "19:45",
