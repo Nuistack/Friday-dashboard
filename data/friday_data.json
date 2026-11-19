@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-19T12:43:15.146Z",
+  "updatedAt": "2026-11-19T12:43:49.058Z",
   "updatedThai": "19 พ.ย. (วันพฤหัสบดี - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1795092227806",
+      "name": "ขนมปังปิ้ง",
+      "cal": 640,
+      "p": 10,
+      "c": 76,
+      "f": 32
+    },
     {
       "id": "f_1794893997303",
       "name": "เกาเหลาเนื้อตุ๋น",
@@ -397,16 +405,26 @@
       "date": "2026-11-19",
       "dayName": "19 พ.ย. (วันพฤหัสบดี - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 0 & เบิร์น +0 kcal)",
-      "caloriesEaten": 0,
+      "statusText": "✓ Super Deficit (กิน 640 & เบิร์น +0 kcal)",
+      "caloriesEaten": 640,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 2200,
-      "rawDeficit": -2200,
-      "protein": 0,
+      "deficitBurn": 1560,
+      "rawDeficit": -1560,
+      "protein": 10,
       "workouts": [],
-      "items": []
+      "items": [
+        {
+          "id": 1795092227799,
+          "time": "19:43",
+          "name": "ขนมปังปิ้ง",
+          "cal": 640,
+          "p": 10,
+          "c": 76,
+          "f": 32
+        }
+      ]
     },
     {
       "date": "2026-11-17",
