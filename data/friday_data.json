@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-20T13:00:51.337Z",
+  "updatedAt": "2026-11-20T13:01:31.453Z",
   "updatedThai": "20 พ.ย. (วันศุกร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1795179690188",
+      "name": "อาหารเย็น",
+      "cal": 640,
+      "p": 66.5,
+      "c": 39,
+      "f": 24
+    },
     {
       "id": "f_1795165670406",
       "name": "ข้าวกลางวัน ข่าไก่",
@@ -421,16 +429,25 @@
       "date": "2026-11-20",
       "dayName": "20 พ.ย. (วันศุกร์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 760 & เบิร์น +0 kcal)",
-      "caloriesEaten": 760,
+      "statusText": "✓ Super Deficit (กิน 1400 & เบิร์น +0 kcal)",
+      "caloriesEaten": 1400,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 1440,
-      "rawDeficit": -1440,
-      "protein": 65,
+      "deficitBurn": 800,
+      "rawDeficit": -800,
+      "protein": 131.5,
       "workouts": [],
       "items": [
+        {
+          "id": 1795179690177,
+          "time": "20:01",
+          "name": "อาหารเย็น",
+          "cal": 640,
+          "p": 66.5,
+          "c": 39,
+          "f": 24
+        },
         {
           "id": 1795165670398,
           "time": "16:07",
