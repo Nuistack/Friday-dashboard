@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T09:07:51.665Z",
+  "updatedAt": "2026-11-20T09:08:30.277Z",
   "updatedThai": "20 พ.ย. (วันศุกร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -445,17 +445,26 @@
     {
       "date": "2026-11-19",
       "dayName": "19 พ.ย. (วันพฤหัสบดี)",
-      "zone": "safe_deficit",
-      "statusText": "⚡ Safe Zone (กิน 1875 & เบิร์น +0 kcal)",
-      "caloriesEaten": 1875,
+      "zone": "surplus",
+      "statusText": "⚠️ Surplus เกิน TDEE (+135 kcal)",
+      "caloriesEaten": 2335,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 325,
-      "rawDeficit": -325,
+      "deficitBurn": -135,
+      "rawDeficit": 135,
       "protein": 83,
       "workouts": [],
       "items": [
+        {
+          "id": 1795165709072,
+          "time": "16:08",
+          "name": "เบียรสิง",
+          "cal": 460,
+          "p": 0,
+          "c": 0,
+          "f": 0
+        },
         {
           "id": 1795101862375,
           "time": "22:24",
