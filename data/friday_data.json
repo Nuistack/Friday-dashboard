@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T13:01:31.453Z",
+  "updatedAt": "2026-11-20T13:04:17.967Z",
   "updatedThai": "20 พ.ย. (วันศุกร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -310,6 +310,12 @@
   ],
   "workoutDatabase": [
     {
+      "name": "เวท",
+      "duration": 90,
+      "cal": 412,
+      "cat": "เวท"
+    },
+    {
       "name": "อก ไหล่ หลังแขน",
       "duration": 45,
       "cal": 211,
@@ -429,15 +435,23 @@
       "date": "2026-11-20",
       "dayName": "20 พ.ย. (วันศุกร์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 1400 & เบิร์น +0 kcal)",
+      "statusText": "✓ Super Deficit (กิน 1400 & เบิร์น +412 kcal)",
       "caloriesEaten": 1400,
-      "exerciseBurn": 0,
+      "exerciseBurn": 412,
       "baseTdee": 2200,
-      "tdee": 2200,
-      "deficitBurn": 800,
-      "rawDeficit": -800,
+      "tdee": 2612,
+      "deficitBurn": 1212,
+      "rawDeficit": -1212,
       "protein": 131.5,
-      "workouts": [],
+      "workouts": [
+        {
+          "id": "w_1795179856661",
+          "category": "เวท",
+          "name": "เวท",
+          "duration": 90,
+          "calBurn": 412
+        }
+      ],
       "items": [
         {
           "id": 1795179690177,
