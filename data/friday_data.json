@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T13:39:48.483Z",
+  "updatedAt": "2026-11-21T13:40:53.827Z",
   "updatedThai": "21 พ.ย. (วันเสาร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -451,15 +451,22 @@
       "date": "2026-11-21",
       "dayName": "21 พ.ย. (วันเสาร์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 1295 & เบิร์น +304 kcal)",
+      "statusText": "✓ Super Deficit (กิน 1295 & เบิร์น +499 kcal)",
       "caloriesEaten": 1295,
-      "exerciseBurn": 304,
+      "exerciseBurn": 499,
       "baseTdee": 2200,
-      "tdee": 2504,
-      "deficitBurn": 1209,
-      "rawDeficit": -1209,
+      "tdee": 2699,
+      "deficitBurn": 1404,
+      "rawDeficit": -1404,
       "protein": 142,
       "workouts": [
+        {
+          "id": "w_1795268452573",
+          "category": "คาร์ดิโอ",
+          "name": "เดินชันบนลู่วิ่งไฟฟ้า Incline Zone 2",
+          "duration": 30,
+          "calBurn": 195
+        },
         {
           "id": "w_1795268387195",
           "category": "เวท",
