@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T16:38:49.180Z",
+  "updatedAt": "2026-11-21T16:39:06.526Z",
   "updatedThai": "21 พ.ย. (วันเสาร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -451,14 +451,14 @@
       "date": "2026-11-21",
       "dayName": "21 พ.ย. (วันเสาร์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 1295 & เบิร์น +499 kcal)",
-      "caloriesEaten": 1295,
+      "statusText": "✓ Super Deficit (กิน 1435 & เบิร์น +499 kcal)",
+      "caloriesEaten": 1435,
       "exerciseBurn": 499,
       "baseTdee": 2200,
       "tdee": 2699,
-      "deficitBurn": 1404,
-      "rawDeficit": -1404,
-      "protein": 142,
+      "deficitBurn": 1264,
+      "rawDeficit": -1264,
+      "protein": 157,
       "workouts": [
         {
           "id": "w_1795268452573",
@@ -476,6 +476,15 @@
         }
       ],
       "items": [
+        {
+          "id": 1795279145273,
+          "time": "23:39",
+          "name": "Betagen 15g",
+          "cal": 140,
+          "p": 15,
+          "c": 16,
+          "f": 2
+        },
         {
           "id": 1795268096421,
           "time": "20:34",
