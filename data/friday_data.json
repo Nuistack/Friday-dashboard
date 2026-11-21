@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-21T13:34:20.677Z",
+  "updatedAt": "2026-11-21T13:34:57.671Z",
   "updatedThai": "21 พ.ย. (วันเสาร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1795268096428",
+      "name": "ข้าวเนื้อย่าง",
+      "cal": 685,
+      "p": 66,
+      "c": 45,
+      "f": 26
+    },
     {
       "id": "f_1795186660645",
       "name": "Vitaday apple 140",
@@ -443,16 +451,25 @@
       "date": "2026-11-21",
       "dayName": "21 พ.ย. (วันเสาร์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 610 & เบิร์น +0 kcal)",
-      "caloriesEaten": 610,
+      "statusText": "✓ Super Deficit (กิน 1295 & เบิร์น +0 kcal)",
+      "caloriesEaten": 1295,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 1590,
-      "rawDeficit": -1590,
-      "protein": 76,
+      "deficitBurn": 905,
+      "rawDeficit": -905,
+      "protein": 142,
       "workouts": [],
       "items": [
+        {
+          "id": 1795268096421,
+          "time": "20:34",
+          "name": "ข้าวเนื้อย่าง",
+          "cal": 685,
+          "p": 66,
+          "c": 45,
+          "f": 26
+        },
         {
           "id": 1795248789738,
           "time": "15:13",
