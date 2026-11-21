@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-21T08:12:58.418Z",
+  "updatedAt": "2026-11-21T08:13:10.990Z",
   "updatedThai": "21 พ.ย. (วันเสาร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -443,16 +443,25 @@
       "date": "2026-11-21",
       "dayName": "21 พ.ย. (วันเสาร์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 470 & เบิร์น +0 kcal)",
-      "caloriesEaten": 470,
+      "statusText": "✓ Super Deficit (กิน 610 & เบิร์น +0 kcal)",
+      "caloriesEaten": 610,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 1730,
-      "rawDeficit": -1730,
-      "protein": 43,
+      "deficitBurn": 1590,
+      "rawDeficit": -1590,
+      "protein": 76,
       "workouts": [],
       "items": [
+        {
+          "id": 1795248789738,
+          "time": "15:13",
+          "name": "Vitaday apple 140",
+          "cal": 140,
+          "p": 33,
+          "c": 0,
+          "f": 0
+        },
         {
           "id": 1795245676798,
           "time": "14:21",
