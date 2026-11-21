@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-21T16:39:06.526Z",
+  "updatedAt": "2026-11-21T16:44:40.108Z",
   "updatedThai": "21 พ.ย. (วันเสาร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1795279478879",
+      "name": "Protein chips",
+      "cal": 70,
+      "p": 5,
+      "c": 7,
+      "f": 4
+    },
     {
       "id": "f_1795268096428",
       "name": "ข้าวเนื้อย่าง",
@@ -451,14 +459,14 @@
       "date": "2026-11-21",
       "dayName": "21 พ.ย. (วันเสาร์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 1435 & เบิร์น +499 kcal)",
-      "caloriesEaten": 1435,
+      "statusText": "✓ Super Deficit (กิน 1505 & เบิร์น +499 kcal)",
+      "caloriesEaten": 1505,
       "exerciseBurn": 499,
       "baseTdee": 2200,
       "tdee": 2699,
-      "deficitBurn": 1264,
-      "rawDeficit": -1264,
-      "protein": 157,
+      "deficitBurn": 1194,
+      "rawDeficit": -1194,
+      "protein": 162,
       "workouts": [
         {
           "id": "w_1795268452573",
@@ -476,6 +484,15 @@
         }
       ],
       "items": [
+        {
+          "id": 1795279478878,
+          "time": "23:44",
+          "name": "Protein chips",
+          "cal": 70,
+          "p": 5,
+          "c": 7,
+          "f": 4
+        },
         {
           "id": 1795279145273,
           "time": "23:39",
