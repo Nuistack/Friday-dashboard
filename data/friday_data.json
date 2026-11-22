@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T18:25:33.368Z",
+  "updatedAt": "2026-11-22T18:25:56.648Z",
   "updatedThai": "23 พ.ย. (วันจันทร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -490,13 +490,13 @@
       "date": "2026-11-22",
       "dayName": "22 พ.ย. (วันอาทิตย์)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 2005 & เบิร์น +344 kcal)",
-      "caloriesEaten": 2005,
+      "statusText": "✓ Super Deficit (กิน 2140 & เบิร์น +344 kcal)",
+      "caloriesEaten": 2140,
       "exerciseBurn": 344,
       "baseTdee": 2200,
       "tdee": 2544,
-      "deficitBurn": 539,
-      "rawDeficit": -539,
+      "deficitBurn": 404,
+      "rawDeficit": -404,
       "protein": 179.5,
       "workouts": [
         {
@@ -508,6 +508,15 @@
         }
       ],
       "items": [
+        {
+          "id": 1795371955421,
+          "time": "01:25",
+          "name": "Full moon ipa",
+          "cal": 135,
+          "p": 0,
+          "c": 0,
+          "f": 0
+        },
         {
           "id": 1795367632182,
           "time": "00:13",
