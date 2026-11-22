@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T17:13:44.678Z",
+  "updatedAt": "2026-11-22T17:13:53.386Z",
   "updatedThai": "23 พ.ย. (วันจันทร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -490,14 +490,14 @@
       "date": "2026-11-22",
       "dayName": "22 พ.ย. (วันอาทิตย์)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 1790 & เบิร์น +344 kcal)",
-      "caloriesEaten": 1790,
+      "statusText": "✓ Super Deficit (กิน 2005 & เบิร์น +344 kcal)",
+      "caloriesEaten": 2005,
       "exerciseBurn": 344,
       "baseTdee": 2200,
       "tdee": 2544,
-      "deficitBurn": 754,
-      "rawDeficit": -754,
-      "protein": 178.5,
+      "deficitBurn": 539,
+      "rawDeficit": -539,
+      "protein": 179.5,
       "workouts": [
         {
           "id": "w_1795350132012",
@@ -508,6 +508,15 @@
         }
       ],
       "items": [
+        {
+          "id": 1795367632182,
+          "time": "00:13",
+          "name": "เบียร",
+          "cal": 215,
+          "p": 1,
+          "c": 0,
+          "f": 0
+        },
         {
           "id": 1795367623466,
           "time": "00:13",
