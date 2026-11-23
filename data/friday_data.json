@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-23T05:27:31.104Z",
+  "updatedAt": "2026-11-23T05:28:25.992Z",
   "updatedThai": "23 พ.ย. (วันจันทร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1795411704719",
+      "name": "ข้าวหมูแดง",
+      "cal": 665,
+      "p": 47,
+      "c": 49,
+      "f": 29
+    },
     {
       "id": "f_1795351625627",
       "name": "เนื้อย่างสันใน 200 g",
@@ -475,16 +483,26 @@
       "date": "2026-11-23",
       "dayName": "23 พ.ย. (วันจันทร์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 0 & เบิร์น +0 kcal)",
-      "caloriesEaten": 0,
+      "statusText": "✓ Super Deficit (กิน 665 & เบิร์น +0 kcal)",
+      "caloriesEaten": 665,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 2200,
-      "rawDeficit": -2200,
-      "protein": 0,
+      "deficitBurn": 1535,
+      "rawDeficit": -1535,
+      "protein": 47,
       "workouts": [],
-      "items": []
+      "items": [
+        {
+          "id": 1795411704714,
+          "time": "12:28",
+          "name": "ข้าวหมูแดง",
+          "cal": 665,
+          "p": 47,
+          "c": 49,
+          "f": 29
+        }
+      ]
     },
     {
       "date": "2026-11-22",
