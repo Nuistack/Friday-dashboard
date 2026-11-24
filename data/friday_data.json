@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-24T15:26:10.128Z",
+  "updatedAt": "2026-11-24T16:00:46.114Z",
   "updatedThai": "24 พ.ย. (วันอังคาร - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -507,15 +507,23 @@
       "date": "2026-11-24",
       "dayName": "24 พ.ย. (วันอังคาร - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 1317 & เบิร์น +0 kcal)",
+      "statusText": "✓ Super Deficit (กิน 1317 & เบิร์น +412 kcal)",
       "caloriesEaten": 1317,
-      "exerciseBurn": 0,
+      "exerciseBurn": 412,
       "baseTdee": 2200,
-      "tdee": 2200,
-      "deficitBurn": 883,
-      "rawDeficit": -883,
+      "tdee": 2612,
+      "deficitBurn": 1295,
+      "rawDeficit": -1295,
       "protein": 143.5,
-      "workouts": [],
+      "workouts": [
+        {
+          "id": "w_1795536044826",
+          "category": "เวท",
+          "name": "เวท",
+          "duration": 90,
+          "calBurn": 412
+        }
+      ],
       "items": [
         {
           "id": 1795533968882,
