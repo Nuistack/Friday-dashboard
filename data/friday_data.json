@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-24T01:31:00.520Z",
+  "updatedAt": "2026-11-24T01:31:37.140Z",
   "updatedThai": "24 พ.ย. (วันอังคาร - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1795483895882",
+      "name": "อาหารเช้า",
+      "cal": 142,
+      "p": 4.5,
+      "c": 24,
+      "f": 3
+    },
     {
       "id": "f_1795411704719",
       "name": "ข้าวหมูแดง",
@@ -483,16 +491,26 @@
       "date": "2026-11-24",
       "dayName": "24 พ.ย. (วันอังคาร - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 0 & เบิร์น +0 kcal)",
-      "caloriesEaten": 0,
+      "statusText": "✓ Super Deficit (กิน 142 & เบิร์น +0 kcal)",
+      "caloriesEaten": 142,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 2200,
-      "rawDeficit": -2200,
-      "protein": 0,
+      "deficitBurn": 2058,
+      "rawDeficit": -2058,
+      "protein": 4.5,
       "workouts": [],
-      "items": []
+      "items": [
+        {
+          "id": 1795483895875,
+          "time": "08:31",
+          "name": "อาหารเช้า",
+          "cal": 142,
+          "p": 4.5,
+          "c": 24,
+          "f": 3
+        }
+      ]
     },
     {
       "date": "2026-11-23",
