@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-25T07:53:59.542Z",
+  "updatedAt": "2026-11-25T07:56:38.871Z",
   "updatedThai": "25 พ.ย. (วันพุธ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1795593397595",
+      "name": "ขนมปัง",
+      "cal": 142,
+      "p": 4.5,
+      "c": 24.5,
+      "f": 3
+    },
     {
       "id": "f_1795533968892",
       "name": "นมโปรตีน Sunshine Dairy จืด",
@@ -507,16 +515,25 @@
       "date": "2026-11-25",
       "dayName": "25 พ.ย. (วันพุธ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 565 & เบิร์น +0 kcal)",
-      "caloriesEaten": 565,
+      "statusText": "✓ Super Deficit (กิน 707 & เบิร์น +0 kcal)",
+      "caloriesEaten": 707,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 1635,
-      "rawDeficit": -1635,
-      "protein": 77,
+      "deficitBurn": 1493,
+      "rawDeficit": -1493,
+      "protein": 81.5,
       "workouts": [],
       "items": [
+        {
+          "id": 1795593397585,
+          "time": "14:56",
+          "name": "ขนมปัง",
+          "cal": 142,
+          "p": 4.5,
+          "c": 24.5,
+          "f": 3
+        },
         {
           "id": 1795585717788,
           "time": "12:48",
