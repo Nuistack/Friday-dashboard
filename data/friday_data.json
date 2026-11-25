@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-25T14:48:37.487Z",
+  "updatedAt": "2026-11-25T16:10:05.346Z",
   "updatedThai": "25 พ.ย. (วันพุธ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1795622990299",
+      "name": "Full moon Cold IPA",
+      "cal": 139,
+      "p": 0,
+      "c": 3.7,
+      "f": 0
+    },
     {
       "id": "f_1795610215740",
       "name": "ซูชิ",
@@ -529,13 +537,13 @@
       "date": "2026-11-25",
       "dayName": "25 พ.ย. (วันพุธ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 1758 & เบิร์น +252 kcal)",
-      "caloriesEaten": 1758,
+      "statusText": "✓ Super Deficit (กิน 2036 & เบิร์น +252 kcal)",
+      "caloriesEaten": 2036,
       "exerciseBurn": 252,
       "baseTdee": 2200,
       "tdee": 2452,
-      "deficitBurn": 694,
-      "rawDeficit": -694,
+      "deficitBurn": 416,
+      "rawDeficit": -416,
       "protein": 175.5,
       "workouts": [
         {
@@ -547,6 +555,24 @@
         }
       ],
       "items": [
+        {
+          "id": 1795623004108,
+          "time": "23:10",
+          "name": "Full moon Cold IPA",
+          "cal": 139,
+          "p": 0,
+          "c": 3.7,
+          "f": 0
+        },
+        {
+          "id": 1795622990291,
+          "time": "23:09",
+          "name": "Full moon Cold IPA",
+          "cal": 139,
+          "p": 0,
+          "c": 3.7,
+          "f": 0
+        },
         {
           "id": 1795618116232,
           "time": "21:48",
