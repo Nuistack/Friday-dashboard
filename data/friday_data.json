@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-25T12:35:21.880Z",
+  "updatedAt": "2026-11-25T12:36:57.036Z",
   "updatedThai": "25 พ.ย. (วันพุธ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1795610215740",
+      "name": "ซูชิ",
+      "cal": 911,
+      "p": 61,
+      "c": 85,
+      "f": 36
+    },
     {
       "id": "f_1795593397595",
       "name": "ขนมปัง",
@@ -515,16 +523,25 @@
       "date": "2026-11-25",
       "dayName": "25 พ.ย. (วันพุธ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 707 & เบิร์น +0 kcal)",
-      "caloriesEaten": 707,
+      "statusText": "✓ Super Deficit (กิน 1618 & เบิร์น +0 kcal)",
+      "caloriesEaten": 1618,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 1493,
-      "rawDeficit": -1493,
-      "protein": 81.5,
+      "deficitBurn": 582,
+      "rawDeficit": -582,
+      "protein": 142.5,
       "workouts": [],
       "items": [
+        {
+          "id": 1795610215728,
+          "time": "19:36",
+          "name": "ซูชิ",
+          "cal": 911,
+          "p": 61,
+          "c": 85,
+          "f": 36
+        },
         {
           "id": 1795593397585,
           "time": "14:56",
