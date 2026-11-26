@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-26T13:19:18.024Z",
+  "updatedAt": "2026-11-26T13:19:57.280Z",
   "updatedThai": "26 พ.ย. (วันพฤหัสบดี - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1795699196013",
+      "name": "เนื้อย่าง",
+      "cal": 585,
+      "p": 56,
+      "c": 11,
+      "f": 35
+    },
     {
       "id": "f_1795622990299",
       "name": "Full moon Cold IPA",
@@ -537,16 +545,25 @@
       "date": "2026-11-26",
       "dayName": "26 พ.ย. (วันพฤหัสบดี - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 780 & เบิร์น +0 kcal)",
-      "caloriesEaten": 780,
+      "statusText": "✓ Super Deficit (กิน 1365 & เบิร์น +0 kcal)",
+      "caloriesEaten": 1365,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 1420,
-      "rawDeficit": -1420,
-      "protein": 102,
+      "deficitBurn": 835,
+      "rawDeficit": -835,
+      "protein": 158,
       "workouts": [],
       "items": [
+        {
+          "id": 1795699196005,
+          "time": "20:19",
+          "name": "เนื้อย่าง",
+          "cal": 585,
+          "p": 56,
+          "c": 11,
+          "f": 35
+        },
         {
           "id": 1795699156774,
           "time": "20:19",
