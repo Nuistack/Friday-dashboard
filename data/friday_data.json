@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T13:39:16.664Z",
+  "updatedAt": "2026-11-27T13:39:49.505Z",
   "updatedThai": "27 พ.ย. (วันศุกร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -446,6 +446,12 @@
   ],
   "workoutDatabase": [
     {
+      "name": "วิ่ง",
+      "duration": 30,
+      "cal": 201,
+      "cat": "คาร์ดิโอ"
+    },
+    {
       "name": "หลัง แขน",
       "duration": 59,
       "cal": 229,
@@ -582,16 +588,23 @@
     {
       "date": "2026-11-27",
       "dayName": "27 พ.ย. (วันศุกร์ - วันนี้)",
-      "zone": "safe_deficit",
-      "statusText": "⚡ Safe Zone (กิน 2036 & เบิร์น +229 kcal)",
+      "zone": "super_deficit",
+      "statusText": "✓ Super Deficit (กิน 2036 & เบิร์น +430 kcal)",
       "caloriesEaten": 2036,
-      "exerciseBurn": 229,
+      "exerciseBurn": 430,
       "baseTdee": 2200,
-      "tdee": 2429,
-      "deficitBurn": 393,
-      "rawDeficit": -393,
+      "tdee": 2630,
+      "deficitBurn": 594,
+      "rawDeficit": -594,
       "protein": 194,
       "workouts": [
+        {
+          "id": "w_1795786788271",
+          "category": "คาร์ดิโอ",
+          "name": "วิ่ง",
+          "duration": 30,
+          "calBurn": 201
+        },
         {
           "id": "w_1795786755374",
           "category": "เวท",
