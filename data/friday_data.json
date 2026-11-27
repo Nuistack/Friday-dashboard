@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-27T16:51:04.282Z",
+  "updatedAt": "2026-11-27T16:52:04.116Z",
   "updatedThai": "27 พ.ย. (วันศุกร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1795798322833",
+      "name": "เบีย",
+      "cal": 400,
+      "p": 3,
+      "c": 29,
+      "f": 0
+    },
     {
       "id": "f_1795786615796",
       "name": "กล้วยทอด",
@@ -588,15 +596,15 @@
     {
       "date": "2026-11-27",
       "dayName": "27 พ.ย. (วันศุกร์ - วันนี้)",
-      "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 2036 & เบิร์น +430 kcal)",
-      "caloriesEaten": 2036,
+      "zone": "safe_deficit",
+      "statusText": "⚡ Safe Zone (กิน 2436 & เบิร์น +430 kcal)",
+      "caloriesEaten": 2436,
       "exerciseBurn": 430,
       "baseTdee": 2200,
       "tdee": 2630,
-      "deficitBurn": 594,
-      "rawDeficit": -594,
-      "protein": 194,
+      "deficitBurn": 194,
+      "rawDeficit": -194,
+      "protein": 197,
       "workouts": [
         {
           "id": "w_1795786788271",
@@ -614,6 +622,15 @@
         }
       ],
       "items": [
+        {
+          "id": 1795798322822,
+          "time": "23:52",
+          "name": "เบีย",
+          "cal": 400,
+          "p": 3,
+          "c": 29,
+          "f": 0
+        },
         {
           "id": 1795786615786,
           "time": "20:36",
