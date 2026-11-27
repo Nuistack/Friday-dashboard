@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T06:44:40.794Z",
+  "updatedAt": "2026-11-27T06:45:27.638Z",
   "updatedThai": "27 พ.ย. (วันศุกร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -585,17 +585,26 @@
     {
       "date": "2026-11-26",
       "dayName": "26 พ.ย. (วันพฤหัสบดี)",
-      "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 1515 & เบิร์น +0 kcal)",
-      "caloriesEaten": 1515,
+      "zone": "safe_deficit",
+      "statusText": "⚡ Safe Zone (กิน 1945 & เบิร์น +0 kcal)",
+      "caloriesEaten": 1945,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 685,
-      "rawDeficit": -685,
-      "protein": 162,
+      "deficitBurn": 255,
+      "rawDeficit": -255,
+      "protein": 164,
       "workouts": [],
       "items": [
+        {
+          "id": 1795761926433,
+          "time": "13:45",
+          "name": "เบียร์",
+          "cal": 430,
+          "p": 2,
+          "c": 0,
+          "f": 0
+        },
         {
           "id": 1795707753349,
           "time": "22:42",
