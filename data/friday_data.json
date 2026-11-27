@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-27T13:35:12.970Z",
+  "updatedAt": "2026-11-27T13:36:57.106Z",
   "updatedThai": "27 พ.ย. (วันศุกร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1795786615796",
+      "name": "กล้วยทอด",
+      "cal": 170,
+      "p": 2,
+      "c": 24,
+      "f": 7
+    },
     {
       "id": "f_1795786511724",
       "name": "ข้าวเยน",
@@ -569,16 +577,25 @@
       "date": "2026-11-27",
       "dayName": "27 พ.ย. (วันศุกร์ - วันนี้)",
       "zone": "safe_deficit",
-      "statusText": "⚡ Safe Zone (กิน 1866 & เบิร์น +0 kcal)",
-      "caloriesEaten": 1866,
+      "statusText": "⚡ Safe Zone (กิน 2036 & เบิร์น +0 kcal)",
+      "caloriesEaten": 2036,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 334,
-      "rawDeficit": -334,
-      "protein": 192,
+      "deficitBurn": 164,
+      "rawDeficit": -164,
+      "protein": 194,
       "workouts": [],
       "items": [
+        {
+          "id": 1795786615786,
+          "time": "20:36",
+          "name": "กล้วยทอด",
+          "cal": 170,
+          "p": 2,
+          "c": 24,
+          "f": 7
+        },
         {
           "id": 1795786511718,
           "time": "20:35",
