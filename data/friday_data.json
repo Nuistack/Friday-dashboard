@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-28T08:13:45.151Z",
+  "updatedAt": "2026-11-28T08:15:51.345Z",
   "updatedThai": "28 พ.ย. (วันเสาร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1795853750060",
+      "name": "ข้าวกล้องครึ่งถ้วย",
+      "cal": 135,
+      "p": 2,
+      "c": 28,
+      "f": 0
+    },
     {
       "id": "f_1795798322833",
       "name": "เบีย",
@@ -597,16 +605,25 @@
       "date": "2026-11-28",
       "dayName": "28 พ.ย. (วันเสาร์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 700 & เบิร์น +0 kcal)",
-      "caloriesEaten": 700,
+      "statusText": "✓ Super Deficit (กิน 835 & เบิร์น +0 kcal)",
+      "caloriesEaten": 835,
       "exerciseBurn": 0,
       "baseTdee": 2200,
       "tdee": 2200,
-      "deficitBurn": 1500,
-      "rawDeficit": -1500,
-      "protein": 103,
+      "deficitBurn": 1365,
+      "rawDeficit": -1365,
+      "protein": 105,
       "workouts": [],
       "items": [
+        {
+          "id": 1795853750048,
+          "time": "15:15",
+          "name": "ข้าวกล้องครึ่งถ้วย",
+          "cal": 135,
+          "p": 2,
+          "c": 28,
+          "f": 0
+        },
         {
           "id": 1795853623910,
           "time": "15:13",
