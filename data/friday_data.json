@@ -1,8 +1,16 @@
 {
-  "updatedAt": "2026-11-28T13:02:37.489Z",
+  "updatedAt": "2026-11-28T13:03:16.445Z",
   "updatedThai": "28 พ.ย. (วันเสาร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
+    {
+      "id": "f_1795870995195",
+      "name": "เนื้อเปื่อย",
+      "cal": 600,
+      "p": 65,
+      "c": 4,
+      "f": 26
+    },
     {
       "id": "f_1795853750060",
       "name": "ข้าวกล้องครึ่งถ้วย",
@@ -605,14 +613,14 @@
       "date": "2026-11-28",
       "dayName": "28 พ.ย. (วันเสาร์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 835 & เบิร์น +361 kcal)",
-      "caloriesEaten": 835,
+      "statusText": "✓ Super Deficit (กิน 1435 & เบิร์น +361 kcal)",
+      "caloriesEaten": 1435,
       "exerciseBurn": 361,
       "baseTdee": 2200,
       "tdee": 2561,
-      "deficitBurn": 1726,
-      "rawDeficit": -1726,
-      "protein": 105,
+      "deficitBurn": 1126,
+      "rawDeficit": -1126,
+      "protein": 170,
       "workouts": [
         {
           "id": "w_1795863637897",
@@ -623,6 +631,15 @@
         }
       ],
       "items": [
+        {
+          "id": 1795870995191,
+          "time": "20:03",
+          "name": "เนื้อเปื่อย",
+          "cal": 600,
+          "p": 65,
+          "c": 4,
+          "f": 26
+        },
         {
           "id": 1795853750048,
           "time": "15:15",
