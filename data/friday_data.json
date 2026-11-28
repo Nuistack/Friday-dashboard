@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-28T13:03:16.445Z",
+  "updatedAt": "2026-11-28T13:05:42.888Z",
   "updatedThai": "28 พ.ย. (วันเสาร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -470,6 +470,12 @@
   ],
   "workoutDatabase": [
     {
+      "name": "ขัดห้องน้ำ",
+      "duration": 31,
+      "cal": 114,
+      "cat": "คาร์ดิโอ"
+    },
+    {
       "name": "วิ่ง",
       "duration": 30,
       "cal": 201,
@@ -613,15 +619,22 @@
       "date": "2026-11-28",
       "dayName": "28 พ.ย. (วันเสาร์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 1435 & เบิร์น +361 kcal)",
+      "statusText": "✓ Super Deficit (กิน 1435 & เบิร์น +475 kcal)",
       "caloriesEaten": 1435,
-      "exerciseBurn": 361,
+      "exerciseBurn": 475,
       "baseTdee": 2200,
-      "tdee": 2561,
-      "deficitBurn": 1126,
-      "rawDeficit": -1126,
+      "tdee": 2675,
+      "deficitBurn": 1240,
+      "rawDeficit": -1240,
       "protein": 170,
       "workouts": [
+        {
+          "id": "w_1795871141609",
+          "category": "คาร์ดิโอ",
+          "name": "ขัดห้องน้ำ",
+          "duration": 31,
+          "calBurn": 114
+        },
         {
           "id": "w_1795863637897",
           "category": "คาร์ดิโอ",
