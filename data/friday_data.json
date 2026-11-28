@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-28T15:42:43.967Z",
+  "updatedAt": "2026-11-28T15:43:32.032Z",
   "updatedThai": "28 พ.ย. (วันเสาร์ - วันนี้)",
   "coins": 650,
   "foodDatabase": [
@@ -619,14 +619,14 @@
       "date": "2026-11-28",
       "dayName": "28 พ.ย. (วันเสาร์ - วันนี้)",
       "zone": "super_deficit",
-      "statusText": "✓ Super Deficit (กิน 1435 & เบิร์น +475 kcal)",
-      "caloriesEaten": 1435,
+      "statusText": "✓ Super Deficit (กิน 1574 & เบิร์น +475 kcal)",
+      "caloriesEaten": 1574,
       "exerciseBurn": 475,
       "baseTdee": 2200,
       "tdee": 2675,
-      "deficitBurn": 1240,
-      "rawDeficit": -1240,
-      "protein": 170,
+      "deficitBurn": 1101,
+      "rawDeficit": -1101,
+      "protein": 171,
       "workouts": [
         {
           "id": "w_1795871141609",
@@ -644,6 +644,15 @@
         }
       ],
       "items": [
+        {
+          "id": 1795880610781,
+          "time": "22:43",
+          "name": "Full moon Cold IPA",
+          "cal": 139,
+          "p": 1,
+          "c": 3.7,
+          "f": 0
+        },
         {
           "id": 1795870995191,
           "time": "20:03",
